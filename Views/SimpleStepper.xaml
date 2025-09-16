@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="benProj.Views.SimpleStepper"
              Title="SimpleStepper">
-    <VerticalStackLayout BackgroundColor="LightGrey" WidthRequest="200" >
+    <VerticalStackLayout BackgroundColor="LightGrey" WidthRequest="450" >
         <Label x:Name="lblresult"  Grid.Row="0" Grid.ColumnSpan="4" Text="0" HorizontalOptions="Center" FontSize="45" VerticalOptions="Center"/>
         <Label Text="Best calculator" HorizontalOptions="Center" FontSize="20" BackgroundColor="DarkOrange"/>
         <Grid RowSpacing="5" ColumnSpacing="5" ColumnDefinitions="*,*,*,*"  RowDefinitions="*,*,*,*,*,*" BackgroundColor="Red">
