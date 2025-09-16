@@ -57,11 +57,7 @@ public partial class SimpleStepper : ContentPage
     }
     private void ButtonClearClicked(object sender, EventArgs e)
     {
-
-
         lblresult.Text = "";
     }
-
-
 }
 
