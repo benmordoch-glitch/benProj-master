@@ -9,6 +9,18 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- RegisterPage -->
+            <Style x:Key="errorLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="Text" Value=""/>
+            </Style>
+            <!-- RegisterPage -->
+
+            <!-- LoginPage -->
+            
+            <!-- LoginPage -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
