@@ -12,7 +12,9 @@ namespace benProj
             //MainPage = new AppShell();
             //MainPage = new AboutMe();
             //MainPage = new PlayGround();
-            MainPage = new RegisterPage();
+            //MainPage = new RegisterPage();
+            MainPage = new LoginPage();
+
 
         }
     }

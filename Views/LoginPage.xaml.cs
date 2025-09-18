@@ -1,19 +1,18 @@
 namespace benProj.Views;
 using System.Text.RegularExpressions;
 
-public partial class RegisterPage : ContentPage
+public partial class LoginPage : ContentPage
 {
     bool isValid;
-    public RegisterPage()
+    public LoginPage()
 	{
 		InitializeComponent();
-        //EntryFullName.Text = "";
         EntryPrivateName.Text = "";
         EntryPassword.Text = "";
     }
     private void ResetErrors()
     {
-        LblErrorPrivateName.Text = "";
+        EntryPrivateName.Text = "";
         LblErrorPassword.Text = "";
     }
     private void ButtonRegister_Clicked(object sender, EventArgs e)

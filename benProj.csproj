@@ -78,6 +78,9 @@
 	  <MauiXaml Update="SignUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PlayGround.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -16,10 +16,26 @@
                 <Setter Property="FontSize" Value="10"/>
                 <Setter Property="Text" Value=""/>
             </Style>
-            <!-- RegisterPage -->
+            <!-- continue -->
+            <Style x:Key="fotterbtn" TargetType="Button">
+                <Setter Property="Margin" Value="4" />
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Background" Value="LightPink"/>
+            </Style>
 
-            <!-- LoginPage -->
+            <!-- RegisterPage -->
             
+            <!-- LoginPage -->
+            <Style x:Key="footTitle" TargetType="Button">
+                <Setter Property="Margin" Value="4" />
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="DarkCyan"/>
+            </Style>
             <!-- LoginPage -->
         </ResourceDictionary>
     </Application.Resources>
