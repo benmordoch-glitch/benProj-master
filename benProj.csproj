@@ -57,15 +57,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Images\**" />
-	  <Compile Remove="Images\**" />
-	  <EmbeddedResource Remove="Images\**" />
-	  <MauiCss Remove="Images\**" />
-	  <MauiXaml Remove="Images\**" />
-	  <None Remove="Images\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
@@ -75,7 +66,10 @@
 	  <MauiXaml Update="AboutMe.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="SignUp.xaml">
+	  <MauiXaml Update="HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SplashScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginPage.xaml">
@@ -90,9 +84,10 @@
 	  <MauiXaml Update="Views\SimpleStepper.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\StamExample.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Images\" />
 	</ItemGroup>
 
 </Project>

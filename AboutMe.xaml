@@ -8,11 +8,13 @@
             Text="About"
             FontSize="50"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            />
         <Label 
              Text="Benja"
              FontSize="20"
              VerticalOptions="Center" 
-             HorizontalOptions="Center" />
-    </VerticalStackLayout>  
+             HorizontalOptions="Center" 
+            />
+        </VerticalStackLayout>  
 </ContentPage>

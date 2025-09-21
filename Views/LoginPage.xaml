@@ -37,7 +37,7 @@
                 Grid.Column="1" 
                 />
         </Grid>
-       
+
         <Label 
             x:Name="LblErrorPassword" 
             Text="" 
@@ -45,25 +45,31 @@
             FontSize="10"
             />
         <!-- שדה שני-->
-        
-        <!--FOOTER -->
-        <Grid  x:Name="footTitle"
-             Grid.Row="2"
-             BackgroundColor="#E6DBAC" 
-             ColumnDefinitions="*,*" 
-             RowDefinitions="*,*" >
 
-            <Button 
-                 Text="Go to Login" 
-                  Grid.Row="0" 
-                 Grid.ColumnSpan="2" 
-                 Background="Transparent"
-                TextColor="DarkCyan"
-                />
-            <Label
-                Style="{StaticResource footTitle}"
+        <!--FOOTER -->
+        <VerticalStackLayout
+            x:Name="footTitle"
+            Grid.Row="2">
+
+            <Frame CornerRadius="50"
+                    HorizontalOptions="Center">
+                <Button
+                    Text="Ok" 
+                    Padding="0"
+                    Background="Transparent"
+                    TextColor="DarkCyan"
+                    FontSize="24"
+                    Margin="4"
+                    />
+            </Frame>
+        </VerticalStackLayout>
+        <Label
+            Text="I didnt sign in yet"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Grid.Column="1"
+            Grid.Row="1"
             />
-        </Grid>
 
     </VerticalStackLayout>
 </ContentPage>
