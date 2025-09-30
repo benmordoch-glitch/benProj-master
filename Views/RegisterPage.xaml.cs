@@ -41,4 +41,18 @@ public partial class RegisterPage : ContentPage
     {
         EntryPassword.IsPassword = !EntryPassword.IsPassword;
     }
+    // Button_GoToLogin_Clicked
+    private void Button_GoToLogin_Clicked(object sender, EventArgs e)
+    {
+        ServiceRegister sr = ServiceRegister.GetInstance();
+        sr.Name = EntryPrivateName.Text;
+        sr.FamilyName = EntryFamilyName.Text;
+        sr.UserName = EntryUserName.Text;
+        sr.Password = EntryPassword.Text;
+        sr.BirthDate = new DateOnly(EntryBirthDate.Date.Year, EntryBirthDate.Date.Month, EntryBirthDate.Date.Day);
+    }
+    private async void ButtonlinkToLogin_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new LoginPage());
+    }
 }

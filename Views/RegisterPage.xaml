@@ -51,7 +51,16 @@
                     x:Name="LblErrorEmail" 
                     Style="{StaticResource errorLabel}"
                     />
-
+                <Label Text="Birth Date" />
+                <DatePicker
+                    x:Name="EntryBirthDate"
+                    Style="{StaticResource errorDatePicker}"
+                    />
+                <Label 
+                     x:Name="ErrorBirthDate" 
+                     Style="{StaticResource errorLabel}"
+                     /> 
+                 <!-- Start password Grid-->
                 <Grid ColumnDefinitions="*,Auto">
                     <Entry 
                         x:Name="EntryPassword" 
@@ -72,8 +81,10 @@
                     x:Name="LblErrorPassword" 
                     Style="{StaticResource errorLabel}"
                     />
+                <!-- End password Grid-->
             </VerticalStackLayout>
         </ScrollView>
+        
         <!--FOOTER -->
         <Grid 
             
@@ -85,23 +96,23 @@
             <Button 
                 Margin="4" 
                 CornerRadius="10" 
-                Text="Go to Login" 
+                Text="Register" 
                 HorizontalOptions="Fill"  
                 VerticalOptions="Center" 
                 Grid.Row="0" 
                 Grid.ColumnSpan="2" 
-                Background="Red"         
+                Background="Red"   
+                Clicked="Button_GoToLogin_Clicked"
                 />
             <Button
                 Text="Reset" 
                 Style="{StaticResource fotterbtn}"
                 Grid.Column="0"
                 Grid.Row="1"
-
                 />
             
             <Button 
-                Text="Register" 
+                Text="already have account" 
                 Style="{StaticResource fotterbtn}"
                 Grid.Column="1"
                 Grid.Row="1"

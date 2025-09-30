@@ -16,6 +16,12 @@
                 <Setter Property="FontSize" Value="10"/>
                 <Setter Property="Text" Value=""/>
             </Style>
+            <Style x:Key="errorDatePicker" TargetType="DatePicker">
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontSize" Value="10"/>
+                
+            </Style>
+
             <!-- continue -->
             <Style x:Key="fotterbtn" TargetType="Button">
                 <Setter Property="Margin" Value="4" />
