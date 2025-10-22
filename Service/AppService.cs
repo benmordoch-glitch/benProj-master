@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace benProj
+namespace benProj.Service
 {
-    internal class ServiceRegister
+    internal class AppService
     {
-        public static ServiceRegister serviceRegister = new ServiceRegister();
+        public static AppService serviceRegister = new AppService();
 
         public string Name { get; set; }
         public string FamilyName { get; set; }
@@ -16,7 +16,7 @@ namespace benProj
         public string Password { get; set; }
         public DateOnly BirthDate { get; set; }
 
-        private ServiceRegister()
+        private AppService()
         {
             Name = string.Empty;
             FamilyName = string.Empty;
@@ -24,7 +24,7 @@ namespace benProj
             Password = string.Empty;
             BirthDate = new DateOnly(2000,1,1);
         }
-        public static ServiceRegister GetInstance()
+        public static AppService GetInstance()
         {
             return serviceRegister;
         }

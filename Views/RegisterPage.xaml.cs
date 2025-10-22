@@ -1,9 +1,11 @@
 namespace benProj.Views;
+
+using benProj.Service;
 using System.Text.RegularExpressions;
 
 public partial class RegisterPage : ContentPage
 {
-    bool isValid;
+    private bool isValid;
     public RegisterPage()
 	{
 		InitializeComponent();
@@ -44,7 +46,7 @@ public partial class RegisterPage : ContentPage
     // Button_GoToLogin_Clicked
     private void Button_GoToLogin_Clicked(object sender, EventArgs e)
     {
-        ServiceRegister sr = ServiceRegister.GetInstance();
+        AppService sr = AppService.GetInstance();
         sr.Name = EntryPrivateName.Text;
         sr.FamilyName = EntryFamilyName.Text;
         sr.UserName = EntryUserName.Text;
@@ -55,4 +57,5 @@ public partial class RegisterPage : ContentPage
     {
         await Navigation.PushAsync(new LoginPage());
     }
+
 }

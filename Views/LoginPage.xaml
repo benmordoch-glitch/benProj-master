@@ -15,32 +15,31 @@
         <!--  End title-->
         <!-- שדה ראשוןןן-->
         <Entry 
-            x:Name="EntryPrivateName" 
-            Placeholder="Enter User Name" 
+            Text="{Binding EntryPrivateName}"
+            Placeholder="Enter UserName" 
             />
         <Label 
-            x:Name="LblErrorPrivateName" 
+            Text="{Binding LblErrorPrivateName}"
             Style="{StaticResource errorLabel}"
          />
         <!-- שדה ראשוןןן-->
         <!-- שדה שני-->
         <Grid ColumnDefinitions="*,Auto">
             <Entry 
-                x:Name="EntryPassword" 
-                Placeholder="Your Password" 
-                IsPassword="True" 
+                Text="{Binding EntryPassword}"
+                Placeholder="Enter Password" 
+                IsPassword="{Binding ShowPassword}" 
                 Grid.Column="0"
                 />
             <Button 
                 Text="Show/Hide" 
-                Clicked="Button_TogglePassword_Clicked"
+           
                 Grid.Column="1" 
                 />
         </Grid>
 
         <Label 
-            x:Name="LblErrorPassword" 
-            Text="" 
+            Text="{Binding PasswordError}"
             TextColor="Red" 
             FontSize="10"
             />
@@ -54,22 +53,17 @@
             <Frame CornerRadius="50"
                     HorizontalOptions="Center">
                 <Button
-                    Text="Ok" 
+                    Text="Login" 
                     Padding="0"
                     Background="Transparent"
                     TextColor="DarkCyan"
                     FontSize="24"
                     Margin="4"
+                    IsEnabled="{Binding IsValid}"
+                    
                     />
             </Frame>
         </VerticalStackLayout>
-        <Label
-            Text="I didnt sign in yet"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            Grid.Column="1"
-            Grid.Row="1"
-            />
-
+        
     </VerticalStackLayout>
 </ContentPage>
