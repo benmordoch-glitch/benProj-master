@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.AboutMe"
-             Title="AboutMe">
+<ContentPage
+    x:Class="benProj.AboutMe"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AboutMe">
     <VerticalStackLayout>
-        <Label 
-            Text="About"
+        <Label
             FontSize="50"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            />
-        <Label 
-             Text="Benja"
-             FontSize="20"
-             VerticalOptions="Center" 
-             HorizontalOptions="Center" 
-            />
-        </VerticalStackLayout>  
+            HorizontalOptions="Center"
+            Text="About"
+            VerticalOptions="Center" />
+        <Label
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Benja"
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
 </ContentPage>

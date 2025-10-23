@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.PlayGround"
-             Title="PlayGround">
+<ContentPage
+    x:Class="benProj.Views.PlayGround"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="PlayGround">
     <!--<VerticalStackLayout>
-        <Label 
+        <Label
             Text="Welcome to PlayGround"
-            VerticalOptions="Center" 
+            VerticalOptions="Center"
             HorizontalOptions="Center" />
     </VerticalStackLayout>-->
     <VerticalStackLayout BackgroundColor="Gray" Spacing="10">
-        <Grid RowSpacing="0"  RowDefinitions="*,*,*">
-            <Button BackgroundColor="Black" Grid.Column="0"  Grid.Row="0"/>
-            <Button BackgroundColor="red" Grid.Column="0" Grid.Row="1"/>
-            <Button BackgroundColor="Yellow" Grid.Column="0" Grid.Row="2"/>
+        <Grid RowDefinitions="*,*,*" RowSpacing="0">
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="Black" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="red" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="Yellow" />
 
         </Grid>
 
 
-        <Grid RowSpacing="0"  ColumnDefinitions="*,*,*" >
-            <Button BackgroundColor="Green" Grid.Column="0"  Grid.Row="0" TextColor="Blue" Text="1"/>
-            <Button BackgroundColor="White" Grid.Column="1" Grid.Row="0" TextColor="Blue" Text="2"/>
-            <Button BackgroundColor="Red" Grid.Column="2" Grid.Row="0"  TextColor="Blue" Text="3"/>
+        <Grid ColumnDefinitions="*,*,*" RowSpacing="0">
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="Green"
+                Text="1"
+                TextColor="Blue" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="White"
+                Text="2"
+                TextColor="Blue" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                BackgroundColor="Red"
+                Text="3"
+                TextColor="Blue" />
         </Grid>
 
     </VerticalStackLayout>

@@ -10,27 +10,27 @@ namespace benProj.ViewModels
     internal class LoginViewModel : ViewModelBase
     {
 
-        private string entryPrivateName;
+        private string entryUserName;
         public string EntryPrivateName
         {
-            get { return entryPrivateName; }
+            get { return entryUserName; }
             set {
                 if (value != null)
                 {
-                    entryPrivateName = value;
+                    entryUserName = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        private string lblErrorPrivateName;
-        public string LblErrorPrivateName
+        private string lblErrorUserName;
+        public string LblErrorUsereName
         {
-            get { return lblErrorPrivateName; }
+            get { return lblErrorUserName; }
             set {
                 if (value != null)
                 {
-                    lblErrorPrivateName = value;
+                    lblErrorUserName = value;
                     OnPropertyChanged();
                 }
             }
@@ -96,16 +96,14 @@ namespace benProj.ViewModels
             }
         }
 
-
-
-
-
-
         public LoginViewModel()
         {
             ShowPassword = false;
             IsValid = false;
         }
+
+
+
        // private bool isValid;
         //public LoginPage()
         //{

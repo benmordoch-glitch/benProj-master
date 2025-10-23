@@ -1,8 +1,9 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:benProj"
-             x:Class="benProj.App">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="benProj.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:benProj">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -10,39 +11,39 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- RegisterPage -->
+            <!--  RegisterPage  -->
             <Style x:Key="errorLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="Red" />
-                <Setter Property="FontSize" Value="10"/>
-                <Setter Property="Text" Value=""/>
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="Text" Value="" />
             </Style>
             <Style x:Key="errorDatePicker" TargetType="DatePicker">
                 <Setter Property="TextColor" Value="Red" />
-                <Setter Property="FontSize" Value="10"/>
-                
+                <Setter Property="FontSize" Value="10" />
+
             </Style>
 
-            <!-- continue -->
+            <!--  continue  -->
             <Style x:Key="fotterbtn" TargetType="Button">
                 <Setter Property="Margin" Value="4" />
-                <Setter Property="CornerRadius" Value="10"/>
-                <Setter Property="HorizontalOptions" Value="Fill"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Background" Value="LightPink"/>
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Background" Value="LightPink" />
             </Style>
 
-            <!-- RegisterPage -->
-            
-            <!-- LoginPage -->
+            <!--  RegisterPage  -->
+
+            <!--  LoginPage  -->
             <Style x:Key="footTitle" TargetType="Button">
                 <Setter Property="Margin" Value="4" />
-                <Setter Property="CornerRadius" Value="10"/>
-                <Setter Property="HorizontalOptions" Value="Fill"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="TextColor" Value="DarkCyan"/>
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="DarkCyan" />
             </Style>
-            <!-- LoginPage -->
+            <!--  LoginPage  -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
