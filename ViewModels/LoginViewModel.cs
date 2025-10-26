@@ -95,6 +95,8 @@ namespace benProj.ViewModels
                 OnPropertyChanged();
             }
         }
+        //// הצבת הנתונים שהתקבלו ב-Label
+        //WelcomeLabel.Text = $"ברוך הבא, {userName}!";
 
         public LoginViewModel()
         {

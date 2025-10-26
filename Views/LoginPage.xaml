@@ -24,11 +24,14 @@
         <Grid ColumnDefinitions="*,Auto">
             <Entry
                 Grid.Column="0"
-                IsPassword="{Binding ShowPassword}"
+                IsPassword="True"
                 Placeholder="Enter Password"
                 Text="{Binding EntryPassword}" />
-            <Button Grid.Column="1" Text="Show/Hide" />
+            <Button Grid.Column="1" WidthRequest="30" ImageSource="eye.png" />
         </Grid>
+        <!--<Label x:Name="WelcomeLabel"
+               FontSize="24"
+               FontAttributes="Bold" />-->
 
         <Label
             FontSize="10"

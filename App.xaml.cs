@@ -9,10 +9,10 @@ namespace benProj
         {
             InitializeComponent();
 
-            //MainPage = new AppShell();
+            MainPage = new AppShell();
             //MainPage = new AboutMe();
             //MainPage = new PlayGround();
-            MainPage = new RegisterPage();
+            //MainPage = new RegisterPage();
             //MainPage = new LoginPage();
 
 

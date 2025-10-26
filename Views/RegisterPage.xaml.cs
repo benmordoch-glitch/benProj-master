@@ -12,6 +12,15 @@ public partial class RegisterPage : ContentPage
 		InitializeComponent();
         BindingContext = new RegisterViewModel();
     }
-    
+    public async void OnGoToLoginButtonClicked(object sender, EventArgs e)
+    {
+        
+        // יצירת מופע של המסך הבא והעברת הנתונים בבנאי שלו
+        var loginPage = new LoginPage();
+
+        // ביצוע הניווט
+        await Navigation.PushAsync(loginPage);
+    }
+
 
 }

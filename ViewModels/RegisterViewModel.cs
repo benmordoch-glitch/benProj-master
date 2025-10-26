@@ -178,6 +178,7 @@ namespace benProj.ViewModels
                 {
                     seePassword = value; OnPropertyChanged();
                 }
+               
             }
         }
 
@@ -207,6 +208,42 @@ namespace benProj.ViewModels
             }
         }
 
+        //private void OnSaveButtonClicked(object sender, EventArgs e)
+        //{
+        //    // לקיחת הנתונים משדה הקלט
+        //    string userName = UserNameEntry.Text;
+
+        //    // בדיקה אם שדה הקלט ריק
+        //    if (string.IsNullOrWhiteSpace(userName))
+        //    {
+        //        DisplayAlert("שגיאה", "נא להכניס שם", "אישור");
+        //    }
+        //    else
+        //    {
+        //        // הצגת הודעה עם הנתונים שנשמרו
+        //        DisplayAlert("הנתונים נשמרו", $"שלום, {userName}!", "אישור");
+        //    }
+        //}
+
+        //private async void OnNavigateButtonClicked(object sender, EventArgs e)
+        //{
+        //    // לקיחת הנתונים משדה הקלט לפני המעבר
+        //    string userName = NameEntry.Text;
+
+        //    // בדיקה שוב כדי לוודא שיש נתונים לפני הניווט
+        //    if (string.IsNullOrWhiteSpace(userName))
+        //    {
+        //        await DisplayAlert("שגיאה", "נא להכניס שם לפני המעבר", "אישור");
+        //        return;
+        //    }
+
+        //    // יצירת מופע של המסך הבא והעברת הנתונים בבנאי שלו
+        //    var secondPage = new SecondPage(userName);
+
+        //    // ביצוע הניווט
+        //    await Navigation.PushAsync(secondPage);
+        //}
+
 
 
 
@@ -218,6 +255,7 @@ namespace benProj.ViewModels
 
         public RegisterViewModel() 
         {
+          
         }
 
 

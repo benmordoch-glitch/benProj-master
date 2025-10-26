@@ -56,7 +56,13 @@
                         Text="{Binding EntryPassword}" />
 
 
-                    <Button Grid.Column="1" Text="{Binding SeePassword}" />
+                    <Button x:Name="ShowPass"
+                        Grid.Column="1" 
+                        WidthRequest="30" 
+                        BackgroundColor="White" 
+                        ImageSource="eye.png" />
+                        <!--Clicked="OnShowPassButtonClicked"-->
+                           
                 </Grid>
                 <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorPassword}" />
                 <Entry
@@ -70,12 +76,13 @@
 
         <!--  FOOTER  -->
         <Grid
-            x:Name="Footer"
+            x:Name="footTitle"
             Grid.Row="2"
             BackgroundColor="Yellow"
             ColumnDefinitions="*,*"
             RowDefinitions="*,*">
-            <Button
+            
+            <Button x:Name="EnterToApp"
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
                 Margin="4"
@@ -83,18 +90,22 @@
                 CornerRadius="10"
                 HorizontalOptions="Fill"
                 Text="Register"
-                VerticalOptions="Center" />
+                VerticalOptions="Center"
+                    />
+                <!--Clicked="OnEnterToAppButtonClicked"-->
+                    
             <Button
                 Grid.Row="1"
                 Grid.Column="0"
                 Style="{StaticResource fotterbtn}"
                 Text="Reset" />
 
-            <Button
+            <Button x:Name="GoToLogin"
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{StaticResource fotterbtn}"
-                Text="already have account" />
+                Text="already have account" 
+                Clicked="OnGoToLoginButtonClicked"/>
 
         </Grid>
     </Grid>
