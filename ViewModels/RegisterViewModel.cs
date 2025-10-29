@@ -1,8 +1,10 @@
-﻿using System;
+﻿using benProj.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace benProj.ViewModels
 {
@@ -194,7 +196,6 @@ namespace benProj.ViewModels
                 }
             }
         }
-
         private string footer;
         public string Footer
         {
@@ -206,6 +207,72 @@ namespace benProj.ViewModels
                     footer = value; OnPropertyChanged();
                 }
             }
+        }
+
+
+
+        // get and set for MessageForBen
+        private string messageForBen;
+        public string MessageForBen
+        {
+            get { return messageForBen; }
+            set
+            {
+                // Basic
+                //messageForEldan = value;
+                //PropertyChanged();
+
+                // Even Better
+                if (value != null)
+                {
+                    messageForBen = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        // get and set for UserInput
+        public string userInput;
+        public string UserInput
+        {
+            get { return userInput; }
+            set
+            {
+                userInput = value;
+                if (userInput != null && userInput.Length > 5)
+                {
+                    messageForBen = "The field has more than 5 characters";
+                }
+                else
+                {
+                    messageForBen = "The field has 5 or fewer characters";
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand ButtonResetCommand { get; set; }
+        public ICommand GotoLoginCommand { get; set; }
+
+        // constructor
+        public RegisterViewModel()
+        {
+            //ButtonResetCommand = new Command(ResetField);
+            GotoLoginCommand = new Command(async () => await GoToLogin());
+        }
+
+        public async Task GoToLogin()
+        {
+            // יצירת מופע של המסך הבא והעברת הנתונים בבנאי שלו
+            var loginPage = new LoginPage();
+
+            // ביצוע הניווט
+            await Application.Current.MainPage.Navigation.PushAsync(loginPage);
+        }
+        private async Task ResetField()
+        {
+            UserInput = "";
+            messageForBen = "";
         }
 
         //private void OnSaveButtonClicked(object sender, EventArgs e)
@@ -253,10 +320,7 @@ namespace benProj.ViewModels
 
 
 
-        public RegisterViewModel() 
-        {
-          
-        }
+        
 
 
         //private void ResetErrors()

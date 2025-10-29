@@ -1,15 +1,17 @@
-﻿using System;
+﻿using benProj.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace benProj.ViewModels
 {
     internal class LoginViewModel : ViewModelBase
     {
-
+        #region get and set
         private string entryUserName;
         public string EntryPrivateName
         {
@@ -95,18 +97,34 @@ namespace benProj.ViewModels
                 OnPropertyChanged();
             }
         }
+        #endregion
+        #region command declaration
+        public ICommand GoToRegisterCommand { get; set; }
+        #endregion
         //// הצבת הנתונים שהתקבלו ב-Label
         //WelcomeLabel.Text = $"ברוך הבא, {userName}!";
-
+        // constructor
         public LoginViewModel()
         {
             ShowPassword = false;
             IsValid = false;
+            GoToRegisterCommand = new Command(async () => await GoToRegister());
+        }
+        
+
+       
+
+        public async Task GoToRegister()
+        {
+            // יצירת מופע של המסך הבא והעברת הנתונים בבנאי שלו
+            var registerPage = new RegisterPage();
+
+            // ביצוע הניווט
+            await Application.Current.MainPage.Navigation.PushAsync(registerPage);
         }
 
 
-
-       // private bool isValid;
+        // private bool isValid;
         //public LoginPage()
         //{
         //    InitializeComponent();
@@ -138,10 +156,6 @@ namespace benProj.ViewModels
         //        isValid = false;
         //    }
 
-        //}
-        //private void Button_TogglePassword_Clicked(object sender, EventArgs e)
-        //{
-        //    EntryPassword.IsPassword = !EntryPassword.IsPassword;
         //}
     }
 }

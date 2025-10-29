@@ -54,5 +54,17 @@
             </Frame>
         </VerticalStackLayout>
 
+        <Button
+            
+              IsEnabled="True"
+             Margin="4"
+            Background="Transparent"
+               Grid.Row="2"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Text="Return to RegisterPage" 
+               Command="{Binding GoToRegisterCommand}"
+             TextColor="DarkCyan" />
+
     </VerticalStackLayout>
 </ContentPage>

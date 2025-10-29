@@ -14,12 +14,14 @@
             Grid.Column="0"
             BackgroundColor="LightBlue"
             HorizontalOptions="Center"
-            Text="Welcome to Register"
+            Text="Welcome to RegisterPage"
             VerticalOptions="Center" />
         <!--  CONTENT  -->
         <ScrollView Grid.Row="1" BackgroundColor="White">
+            
             <VerticalStackLayout Padding="20" Spacing="15">
-
+               
+                
                 <Entry Placeholder="Private Name" Text="{Binding EntryPrivateName}" />
                 <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorPrivateName}" />
 
@@ -73,39 +75,55 @@
                 <!--  End password Grid  -->
             </VerticalStackLayout>
         </ScrollView>
+        
+        
 
         <!--  FOOTER  -->
         <Grid
             x:Name="footTitle"
             Grid.Row="2"
             BackgroundColor="Yellow"
-            ColumnDefinitions="*,*"
-            RowDefinitions="*,*">
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="*,*,*">
             
             <Button x:Name="EnterToApp"
                 Grid.Row="0"
-                Grid.ColumnSpan="2"
                 Margin="4"
-                Background="Red"
+                Background="Blue"
                 CornerRadius="10"
                 HorizontalOptions="Fill"
                 Text="Register"
                 VerticalOptions="Center"
                     />
                 <!--Clicked="OnEnterToAppButtonClicked"-->
-                    
-            <Button
+
+            <Button x:Name="ResetPage"
                 Grid.Row="1"
                 Grid.Column="0"
-                Style="{StaticResource fotterbtn}"
-                Text="Reset" />
+                WidthRequest="200"
+                    Background="Green"
+                    HorizontalOptions="Fill"
+                    Grid.ColumnSpan="2"
+                Text="Reset" 
 
-            <Button x:Name="GoToLogin"
-                Grid.Row="1"
-                Grid.Column="1"
-                Style="{StaticResource fotterbtn}"
-                Text="already have account" 
-                Clicked="OnGoToLoginButtonClicked"/>
+                />
+
+            <Label
+            HorizontalOptions="Center"
+            Text="{Binding MessageForBen}"
+            VerticalOptions="Center" />
+
+            <Button
+             IsEnabled="True"
+              Background="Blue"
+             Grid.Row="2"
+             Grid.Column="0"
+             Grid.ColumnSpan="3"
+             Text="already have an account" 
+             Command="{Binding GotoLoginCommand}"/>
+
+
+
 
         </Grid>
     </Grid>
