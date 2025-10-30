@@ -16,6 +16,7 @@
             Text="Welcome to LoginPage"
             VerticalOptions="Center" />
         <!--  End title  -->
+        
         <!--  שדה ראשוןןן  -->
         <Entry Placeholder="Enter UserName" Text="{Binding EntryUserName}" />
         <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
@@ -40,7 +41,7 @@
         <!--  שדה שני  -->
 
         <!--  FOOTER  -->
-        <VerticalStackLayout x:Name="footTitle" Grid.Row="2">
+        <VerticalStackLayout>
 
             <Frame CornerRadius="50" HorizontalOptions="Center">
                 <Button
@@ -58,13 +59,13 @@
             
               IsEnabled="True"
              Margin="4"
-            Background="Transparent"
+            Background="BlueViolet"
                Grid.Row="2"
                Grid.Column="0"
                Grid.ColumnSpan="2"
                Text="Return to RegisterPage" 
                Command="{Binding GoToRegisterCommand}"
-             TextColor="DarkCyan" />
+             TextColor="Pink" />
 
     </VerticalStackLayout>
 </ContentPage>

@@ -18,10 +18,10 @@
             VerticalOptions="Center" />
         <!--  CONTENT  -->
         <ScrollView Grid.Row="1" BackgroundColor="White">
-            
+
             <VerticalStackLayout Padding="20" Spacing="15">
-               
-                
+
+
                 <Entry Placeholder="Private Name" Text="{Binding EntryPrivateName}" />
                 <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorPrivateName}" />
 
@@ -61,10 +61,10 @@
                     <Button x:Name="ShowPass"
                         Grid.Column="1" 
                         WidthRequest="30" 
-                        BackgroundColor="White" 
+                        BackgroundColor="PowderBlue" 
                         ImageSource="eye.png" />
-                        <!--Clicked="OnShowPassButtonClicked"-->
-                           
+                    <!--Clicked="OnShowPassButtonClicked"-->
+
                 </Grid>
                 <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorPassword}" />
                 <Entry
@@ -75,52 +75,45 @@
                 <!--  End password Grid  -->
             </VerticalStackLayout>
         </ScrollView>
-        
-        
+
+
 
         <!--  FOOTER  -->
         <Grid
-            x:Name="footTitle"
-            Grid.Row="2"
-            BackgroundColor="Yellow"
-            ColumnDefinitions="*,*,*"
-            RowDefinitions="*,*,*">
+                x:Name="footTitle"
+                Grid.Row="2"
+                ColumnSpacing="5"
+                BackgroundColor="White"
+                ColumnDefinitions="*,*,*" >
             
-            <Button x:Name="EnterToApp"
-                Grid.Row="0"
-                Margin="4"
-                Background="Blue"
-                CornerRadius="10"
-                HorizontalOptions="Fill"
-                Text="Register"
-                VerticalOptions="Center"
-                    />
-                <!--Clicked="OnEnterToAppButtonClicked"-->
-
-            <Button x:Name="ResetPage"
-                Grid.Row="1"
-                Grid.Column="0"
-                WidthRequest="200"
-                    Background="Green"
-                    HorizontalOptions="Fill"
-                    Grid.ColumnSpan="2"
-                Text="Reset" 
-
-                />
-
-            <Label
-            HorizontalOptions="Center"
-            Text="{Binding MessageForBen}"
-            VerticalOptions="Center" />
 
             <Button
-             IsEnabled="True"
-              Background="Blue"
-             Grid.Row="2"
-             Grid.Column="0"
-             Grid.ColumnSpan="3"
-             Text="already have an account" 
-             Command="{Binding GotoLoginCommand}"/>
+                Grid.Column="1"
+                
+                Background="Blue"
+                 CornerRadius="10"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"
+                Text="Register"
+                 Command="{Binding EnterAppCommand}"
+                    />
+
+            <Button
+                Grid.Column="0" 
+                Background="Green"
+                HorizontalOptions="Fill"
+                Text= "Reset"
+                Command="{Binding ResetCommand}"/>
+
+
+
+            <Button
+                Grid.Column="2"
+                IsEnabled="True"
+                Background="Blue"
+                HorizontalOptions="Fill"
+                Text="logIn" 
+                Command="{Binding GotoLoginCommand}"/>
 
 
 

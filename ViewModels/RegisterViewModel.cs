@@ -11,8 +11,8 @@ namespace benProj.ViewModels
     internal class RegisterViewModel : ViewModelBase
     {
 
-
-		private string entryPrivateName;
+        #region Get&Set
+        private string entryPrivateName;
 		public string EntryPrivateName
         {
 			get { return entryPrivateName; }
@@ -208,9 +208,6 @@ namespace benProj.ViewModels
                 }
             }
         }
-
-
-
         // get and set for MessageForBen
         private string messageForBen;
         public string MessageForBen
@@ -218,11 +215,6 @@ namespace benProj.ViewModels
             get { return messageForBen; }
             set
             {
-                // Basic
-                //messageForEldan = value;
-                //PropertyChanged();
-
-                // Even Better
                 if (value != null)
                 {
                     messageForBen = value;
@@ -230,35 +222,19 @@ namespace benProj.ViewModels
                 }
             }
         }
+      
+        #endregion
 
-        // get and set for UserInput
-        public string userInput;
-        public string UserInput
-        {
-            get { return userInput; }
-            set
-            {
-                userInput = value;
-                if (userInput != null && userInput.Length > 5)
-                {
-                    messageForBen = "The field has more than 5 characters";
-                }
-                else
-                {
-                    messageForBen = "The field has 5 or fewer characters";
-                }
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand ButtonResetCommand { get; set; }
+        public ICommand ResetCommand { get; set; }
         public ICommand GotoLoginCommand { get; set; }
+
 
         // constructor
         public RegisterViewModel()
         {
             //ButtonResetCommand = new Command(ResetField);
             GotoLoginCommand = new Command(async () => await GoToLogin());
+            ResetCommand = new Command(ResetField);
         }
 
         public async Task GoToLogin()
@@ -269,10 +245,16 @@ namespace benProj.ViewModels
             // ביצוע הניווט
             await Application.Current.MainPage.Navigation.PushAsync(loginPage);
         }
-        private async Task ResetField()
+        private void ResetField()
         {
-            UserInput = "";
-            messageForBen = "";
+            EntryPrivateName = "";
+            EntryFamilyName = "";
+            EntryUserName = "";
+            EntryEmail = "";
+            EntryPassword = "";
+            ReTypePass = "";
+            EntryBirthDate.Date = DateTime.Now;
+
         }
 
         //private void OnSaveButtonClicked(object sender, EventArgs e)

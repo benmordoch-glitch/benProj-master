@@ -19,6 +19,7 @@ namespace benProj.ViewModels
             set {
                 if (value != null)
                 {
+
                     entryUserName = value;
                     OnPropertyChanged();
                 }
@@ -32,7 +33,9 @@ namespace benProj.ViewModels
             set {
                 if (value != null)
                 {
+                   
                     lblErrorUserName = value;
+                    
                     OnPropertyChanged();
                 }
             }

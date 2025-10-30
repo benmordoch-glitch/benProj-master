@@ -8,6 +8,7 @@ using System.Windows.Input;
 public partial class RegisterPage : ContentPage
 {
     public ICommand GotoLoginCommand { get; set; }
+    public ICommand ButtonResetCommand { get; set; }
     //private bool isValid;
     public RegisterPage()
 	{
