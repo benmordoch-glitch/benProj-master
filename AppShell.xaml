@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:benProj"
     xmlns:views="clr-namespace:benProj.Views"
     Title="benProj"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout" FlowDirection="LeftToRight">
 
     <ShellContent
         Title="Register"

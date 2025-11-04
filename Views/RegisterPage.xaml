@@ -95,6 +95,7 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"
                 Text="Register"
+                IsEnabled="{Binding IsRegisterEnable}"
                  Command="{Binding EnterAppCommand}"
                     />
 

@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace benProj.ViewModels
 {
@@ -12,6 +14,18 @@ namespace benProj.ViewModels
     {
 
         #region Get&Set
+        private bool isRegisterEnable;
+        public bool IsRegisterEnable
+        {
+            get { return isRegisterEnable; }
+            set { isRegisterEnable = value;
+                OnPropertyChanged();
+            }
+        }
+        /// <summary>
+        /// RegisterField
+        /// </summary>
+
         private string entryPrivateName;
 		public string EntryPrivateName
         {
@@ -20,14 +34,22 @@ namespace benProj.ViewModels
 			{
 				if (value != null)
 				{
-					entryPrivateName = value;
+                    entryPrivateName = value;
+                    if (value.Length < 2)
+                    {
+                        LblErrorPrivateName = "Private Name too Short";
+                    }
+                    else
+                    {
+                        LblErrorPrivateName = "";
+                    }
+                    HandleButtonRegister();
                     OnPropertyChanged();
                 }
 			}
 		}
-
-		private string lblErrorPrivateName;
-
+     
+        private string lblErrorPrivateName;
 		public string LblErrorPrivateName
         {
 			get { return lblErrorPrivateName; }
@@ -35,10 +57,15 @@ namespace benProj.ViewModels
 			{
 				if (value != null)
 				{ 
+                   
 					lblErrorPrivateName = value; 
 					OnPropertyChanged(); }
 			}
 		}
+        /// <summary>
+        /// PrivateNameField
+        /// </summary>
+
 
         private string entryFamilyName;
         public string EntryFamilyName
@@ -49,6 +76,16 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     entryFamilyName = value;
+
+                    if (value.Length < 2)
+                    {
+                        LblErrorFamilyName = "Family Name too short";
+                    }
+                    else
+                    {
+                        LblErrorFamilyName = "";
+                    }
+                    HandleButtonRegister();
                     OnPropertyChanged();
                 }
             }
@@ -67,6 +104,9 @@ namespace benProj.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// FamilyNameField
+        /// </summary>
 
         private string entryUserName;
         public string EntryUserName
@@ -75,11 +115,20 @@ namespace benProj.ViewModels
             set {
                 if (value != null)
                 {
-                    entryUserName = value; OnPropertyChanged();
+                    entryUserName = value;
+                    if (value.Length < 2)
+                    {
+                        lblErrorUserName = "User Name too short";
+                    }
+                    else
+                    {
+                        lblErrorUserName = "";
+                    }
+                    HandleButtonRegister();
+                    OnPropertyChanged();
                 }
             }
         }
-
         private string lblErrorUserName;
         public string LblErrorUserName
         {
@@ -92,6 +141,9 @@ namespace benProj.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// UserNameField
+        /// </summary>
 
         private string entryEmail;
         public string EntryEmail
@@ -101,7 +153,20 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
-                    entryEmail = value; OnPropertyChanged();
+                    entryEmail = value;
+
+                    string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                    bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
+                    if (!isPasswordOk )
+                    {
+                        LblErrorEmail = "Email not valid!";
+                    }
+                    else
+                    {
+                        LblErrorEmail = "";
+                    }
+                    HandleButtonRegister();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -114,10 +179,22 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
-                    lblErrorEmail = value; OnPropertyChanged();
+                    lblErrorEmail = value;
+                    if (value.Length < 2)
+                    {
+                        LblErrorFamilyName = "Family Name too short";
+                    }
+                    else
+                    {
+                        LblErrorFamilyName = "";
+                    }
+                    OnPropertyChanged();
                 }
             }
         }
+        /// <summary>
+        /// FamilyNameField
+        /// </summary>
 
         private DatePicker entryBirthDate;
         public DatePicker EntryBirthDate
@@ -125,10 +202,8 @@ namespace benProj.ViewModels
             get { return entryBirthDate; }
             set
             {
-                if (value != null)
-                {
-                    entryBirthDate = value; OnPropertyChanged();
-                }
+                entryBirthDate = value;
+                OnPropertyChanged();
             }
         }
 
@@ -144,15 +219,31 @@ namespace benProj.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// FamilyNameField
+        /// </summary>
+
 
         private string entryPassword;
         public string EntryPassword
         {
             get { return entryPassword; }
-            set {
+            set
+            {
                 if (value != null)
                 {
-                    entryPassword = value; OnPropertyChanged();
+                    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
+                    bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
+                    if (!isPasswordOk)
+                    {
+                        ErrorPassword = "Password not valid!";
+                    }
+                    else
+                    {
+                        ErrorPassword = "";
+                    }
+                    HandleButtonRegister();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -169,6 +260,9 @@ namespace benProj.ViewModels
                 }
             }
         }
+        /// <summary>
+        /// FamilyNameField
+        /// </summary>
 
         private string seePassword;
         public string SeePassword
@@ -197,6 +291,10 @@ namespace benProj.ViewModels
             }
         }
         private string footer;
+        /// <summary>
+        /// FamilyNameField
+        /// </summary>
+        /// 
         public string Footer
         {
             get { return footer; }
@@ -235,6 +333,9 @@ namespace benProj.ViewModels
             //ButtonResetCommand = new Command(ResetField);
             GotoLoginCommand = new Command(async () => await GoToLogin());
             ResetCommand = new Command(ResetField);
+            IsRegisterEnable = false;
+
+
         }
 
         public async Task GoToLogin()
@@ -253,8 +354,21 @@ namespace benProj.ViewModels
             EntryEmail = "";
             EntryPassword = "";
             ReTypePass = "";
-            EntryBirthDate.Date = DateTime.Now;
+            //TODO try to fix
+            //EntryBirthDate.Date = new DateTime(2018, 6, 21);
+     
+        }
 
+        private void HandleButtonRegister()
+        {
+            if (LblErrorPrivateName != "" || LblErrorFamilyName !=""||LblErrorUserName !=""|| LblErrorEmail!=""||ErrorPassword!="")
+            {
+                IsRegisterEnable = false;
+            }
+            else
+            {
+                IsRegisterEnable = true;
+            }      
         }
 
         //private void OnSaveButtonClicked(object sender, EventArgs e)
@@ -305,15 +419,7 @@ namespace benProj.ViewModels
         
 
 
-        //private void ResetErrors()
-        //{
-        //    LblErrorPrivateName.Text = "";
-        //    LblErrorPassword.Text = "";
-        //}
-        //private void ButtonRegister_Clicked(object sender, EventArgs e)
-        //{
-        //    ResetErrors();
-        //    isValid = true;
+     
 
         //    if (EntryUserName.Text.Length < 5)
         //    {
