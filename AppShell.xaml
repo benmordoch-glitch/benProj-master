@@ -17,5 +17,9 @@
         Title="Login"
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
+    <ShellContent
+         Title="Cours"
+         ContentTemplate="{DataTemplate views:CoursPage}"
+         Route="CoursePage"/>
 
 </Shell>

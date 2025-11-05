@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="benProj.Views.CoursPage"
+             xmlns:models="clr-namespace:benProj.Models"
+             Title="CoursPage">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="עמוד מסלולים"
+            VerticalOptions="Center" />
+        <CollectionView ItemsSource="{Binding Courses}">
+            <CollectionView.EmptyView>
+                <Label HorizontalTextAlignment="Center" Text="אין מסלולים." />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Cours">
+                    <Border StrokeThickness="1">
+                        <StackLayout Padding="10" BackgroundColor="LightGray">
+                            <Label FontAttributes="Bold" Text="{Binding CourseName}" />
+                            <Label Text="{Binding Distance}" />
+                            <Grid>
+                                <Ellipse
+                                    Fill="Red"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                                <Label
+                                    FontSize="12"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Difficulty}"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -10,13 +10,13 @@
             Grid.Row="0"
             Grid.Column="0"
             Margin="4"
-            BackgroundColor="LightBlue"
+            BackgroundColor="Transparent"
             FontSize="25"
             HorizontalOptions="Center"
             Text="Welcome to LoginPage"
             VerticalOptions="Center" />
         <!--  End title  -->
-        
+
         <!--  שדה ראשוןןן  -->
         <Entry Placeholder="Enter UserName" Text="{Binding EntryUserName}" />
         <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
@@ -59,7 +59,7 @@
             
               IsEnabled="True"
              Margin="4"
-            Background="BlueViolet"
+            
                Grid.Row="2"
                Grid.Column="0"
                Grid.ColumnSpan="2"
