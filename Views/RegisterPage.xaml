@@ -5,115 +5,139 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="RegisterPage">
     <Grid
+        Padding="20,0,20,0" 
         ColumnSpacing="10"
         RowDefinitions="auto,*,auto"
-        RowSpacing="10">
+        RowSpacing="10"
+        >
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="{StaticResource BenPrimary}" Offset="0.0" />
+                <GradientStop Color="White" Offset="0.5" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        
         <!--  HEADER  -->
         <Label
             Grid.Row="0"
             Grid.Column="0"
-            BackgroundColor="LightBlue"
+            TextColor="White"
             HorizontalOptions="Center"
-            Text="Welcome to RegisterPage"
+            Text="ברוכים הבאים ליצה דוט נטו"
             VerticalOptions="Center" />
         <!--  CONTENT  -->
-        <ScrollView Grid.Row="1" BackgroundColor="White">
-
-            <VerticalStackLayout Padding="20" Spacing="15">
-
-
-                <Entry Placeholder="Private Name" Text="{Binding EntryPrivateName}" />
-                <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorPrivateName}" />
-
+        <Frame  BackgroundColor="#FFFFFF" Grid.Row="1">
+  
+               
+            <ScrollView   >
+            
+                    <VerticalStackLayout Spacing="15" >
 
 
-                <Entry Placeholder="Family Name" Text="{Binding EntryFamilyName}" />
-                <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorFamilyName}" />
+                    <Entry Placeholder="Private Name" Text="{Binding EntryPrivateName}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorPrivateName}" />
 
 
 
-
-                <Entry Placeholder="User Name" Text="{Binding EntryUserName}" />
-                <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
+                    <Entry Placeholder="Family Name" Text="{Binding EntryFamilyName}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorFamilyName}" />
 
 
 
 
-                <Entry Placeholder="Email" Text="{Binding EntryEmail}" />
-                <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorEmail}" />
+                    <Entry Placeholder="User Name" Text="{Binding EntryUserName}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
 
 
 
 
-                <DatePicker Date="{Binding EntryBirthDate}" Style="{StaticResource errorDatePicker}" />
-                <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorBirthDate}" />
+                    <Entry Placeholder="Email" Text="{Binding EntryEmail}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorEmail}" />
 
 
-                <!--  Start password Grid  -->
-                <Grid ColumnDefinitions="*,Auto">
+
+
+                    <DatePicker Date="{Binding EntryBirthDate}" Style="{StaticResource errorDatePicker}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorBirthDate}" />
+
+
+                    <!--  Start password Grid  -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Entry
+                            Grid.Column="0"
+                            IsPassword="True"
+                            Placeholder="Your Password"
+                            Text="{Binding EntryPassword}" />
+
+
+                        <Button x:Name="ShowPass"
+                            Grid.Column="1" 
+                            WidthRequest="30" 
+                            TextColor="White"
+                            BackgroundColor="{StaticResource BenPrimary}" 
+                            ImageSource="eye.png" />
+                        <!--Clicked="OnShowPassButtonClicked"-->
+
+                    </Grid>
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorPassword}" />
                     <Entry
-                        Grid.Column="0"
                         IsPassword="True"
-                        Placeholder="Your Password"
-                        Text="{Binding EntryPassword}" />
+                        Placeholder="RetypePassword"
+                        Text="{Binding ReTypePass}" />
 
-
-                    <Button x:Name="ShowPass"
-                        Grid.Column="1" 
-                        WidthRequest="30" 
-                        BackgroundColor="PowderBlue" 
-                        ImageSource="eye.png" />
-                    <!--Clicked="OnShowPassButtonClicked"-->
-
-                </Grid>
-                <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorPassword}" />
-                <Entry
-                    IsPassword="True"
-                    Placeholder="RetypePassword"
-                    Text="{Binding ReTypePass}" />
-
-                <!--  End password Grid  -->
-            </VerticalStackLayout>
-        </ScrollView>
-
+                    <!--  End password Grid  -->
+                </VerticalStackLayout>
+           
+            </ScrollView>
+        </Frame>
 
 
         <!--  FOOTER  -->
         <Grid
-                x:Name="footTitle"
-                Grid.Row="2"
-                ColumnSpacing="5"
-                BackgroundColor="White"
-                ColumnDefinitions="*,*,*" >
+          
+            Grid.Row="3"
+            ColumnSpacing="5"
+           
+            ColumnDefinitions="*,*" 
+            RowDefinitions="*,*"
+            
+            >
             
 
             <Button
-                Grid.Column="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                TextColor="White"
+                Background="{StaticResource BenPrimary}"
                 
-                Background="Blue"
-                 CornerRadius="10"
+                 CornerRadius="20"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"
-                Text="Register"
+                Text="הרשמה"
                 IsEnabled="{Binding IsRegisterEnable}"
                  Command="{Binding EnterAppCommand}"
                     />
 
             <Button
                 Grid.Column="0" 
-                Background="Green"
+                Grid.Row="1"
+                 Background="Transparent"
+                  TextColor="{StaticResource BenPrimary}"
                 HorizontalOptions="Fill"
-                Text= "Reset"
+                Text= "איפוס שדות"
                 Command="{Binding ResetCommand}"/>
 
 
 
             <Button
-                Grid.Column="2"
+                Grid.Row="1"
+                Grid.Column="1"
                 IsEnabled="True"
-                Background="Blue"
+                Background="Transparent"
+                TextColor="{StaticResource BenPrimary}"
                 HorizontalOptions="Fill"
-                Text="logIn" 
+                Text="יש לך חשבון?" 
                 Command="{Binding GotoLoginCommand}"/>
 
 

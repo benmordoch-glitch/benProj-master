@@ -118,17 +118,18 @@ namespace benProj.ViewModels
                     entryUserName = value;
                     if (value.Length < 2)
                     {
-                        lblErrorUserName = "User Name too short";
+                        LblErrorUserName = "User Name too short";
                     }
                     else
                     {
-                        lblErrorUserName = "";
+                        LblErrorUserName = "";
                     }
                     HandleButtonRegister();
                     OnPropertyChanged();
                 }
             }
         }
+
         private string lblErrorUserName;
         public string LblErrorUserName
         {
@@ -144,6 +145,7 @@ namespace benProj.ViewModels
         /// <summary>
         /// UserNameField
         /// </summary>
+
 
         private string entryEmail;
         public string EntryEmail
@@ -179,15 +181,6 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
-                    lblErrorEmail = value;
-                    if (value.Length < 2)
-                    {
-                        LblErrorFamilyName = "Family Name too short";
-                    }
-                    else
-                    {
-                        LblErrorFamilyName = "";
-                    }
                     OnPropertyChanged();
                 }
             }
@@ -230,21 +223,21 @@ namespace benProj.ViewModels
             get { return entryPassword; }
             set
             {
-                if (value != null)
-                {
-                    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
-                    bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
-                    if (!isPasswordOk)
-                    {
-                        ErrorPassword = "Password not valid!";
-                    }
-                    else
-                    {
-                        ErrorPassword = "";
-                    }
-                    HandleButtonRegister();
-                    OnPropertyChanged();
-                }
+                //if (value != null)
+                //{
+                //    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
+                //    bool isPasswordOk = Regex.IsMatch(entryPassword, pattern);
+                //    if (!isPasswordOk)
+                //    {
+                //        ErrorPassword = "Password not valid!";
+                //    }
+                //    else
+                //    {
+                //        ErrorPassword = "";
+                //    }
+                //    HandleButtonRegister();
+                //    OnPropertyChanged();
+                //}
             }
         }
 
@@ -286,10 +279,29 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
-                    reTypePass = value; OnPropertyChanged();
+                    reTypePass = value;
+                    if(reTypePass != entryPassword)
+                        ErrorReTypePass = "Password not currect!";
+                    else
+                    {
+                        ErrorPassword = "";
+                    }
+                    HandleButtonRegister();
+
+                    OnPropertyChanged();
                 }
             }
         }
+
+        private string errorReTypePass;
+
+        public string ErrorReTypePass
+        {
+            get { return errorReTypePass; }
+            set { errorReTypePass = value;
+            }
+        }
+
         private string footer;
         /// <summary>
         /// FamilyNameField
@@ -330,7 +342,6 @@ namespace benProj.ViewModels
         // constructor
         public RegisterViewModel()
         {
-            //ButtonResetCommand = new Command(ResetField);
             GotoLoginCommand = new Command(async () => await GoToLogin());
             ResetCommand = new Command(ResetField);
             IsRegisterEnable = false;
@@ -361,7 +372,7 @@ namespace benProj.ViewModels
 
         private void HandleButtonRegister()
         {
-            if (LblErrorPrivateName != "" || LblErrorFamilyName !=""||LblErrorUserName !=""|| LblErrorEmail!=""||ErrorPassword!="")
+            if (LblErrorPrivateName != "" || LblErrorFamilyName !=""||LblErrorUserName !=""|| LblErrorEmail != ""||ErrorPassword!=""|| ErrorReTypePass!="")
             {
                 IsRegisterEnable = false;
             }

@@ -6,9 +6,10 @@
     xmlns:local="clr-namespace:benProj"
     xmlns:views="clr-namespace:benProj.Views"
     Title="benProj"
-    Shell.FlyoutBehavior="Flyout" FlowDirection="LeftToRight">
+    Shell.FlyoutBehavior="Flyout" FlowDirection="LeftToRight" Background="Transparent">
 
     <ShellContent
+        
         Title="Register"
         ContentTemplate="{DataTemplate views:RegisterPage}"
         Route="RegisterPage" />
