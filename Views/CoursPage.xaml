@@ -30,7 +30,7 @@
                                     FontSize="12"
                                     HorizontalOptions="Center"
                                     Text="{Binding Difficulty}"
-                                    TextColor="White"
+                                    TextColor="Blue"
                                     VerticalOptions="Center" />
                             </Grid>
                         </StackLayout>
