@@ -13,24 +13,27 @@
             <CollectionView.EmptyView>
                 <Label HorizontalTextAlignment="Center" Text="אין מסלולים." />
             </CollectionView.EmptyView>
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Cours">
-                    <Border StrokeThickness="1">
-                        <StackLayout Padding="10" BackgroundColor="LightGray">
-                            <Label FontAttributes="Bold" Text="{Binding CourseName}" />
-                            <Label Text="{Binding Distance}" />
-                            <Grid>
+                    <Border StrokeThickness="10" >
+                        <StackLayout Padding="10" BackgroundColor="LightGray" >
+                            <Label HorizontalTextAlignment="End" FontAttributes="Bold" Text="{Binding CourseName}" TextDecorations="Underline"  />
+                            <Label Text="{Binding Distance}" HorizontalTextAlignment="End" 
+                                   TextColor="blue"/>
+                            <Grid ColumnDefinitions="*,*,*">
                                 <Ellipse
-                                    Fill="Red"
-                                    HeightRequest="30"
-                                    HorizontalOptions="Center"
+                                    Grid.Column="3"
+                                    Fill="{StaticResource BenPrimary }"
+                                    HeightRequest="40"
                                     VerticalOptions="Center"
-                                    WidthRequest="30" />
+                                    WidthRequest="40" />
                                 <Label
+                                    Grid.Column="3"
                                     FontSize="12"
                                     HorizontalOptions="Center"
                                     Text="{Binding Difficulty}"
-                                    TextColor="Blue"
+                                    TextColor="White"
                                     VerticalOptions="Center" />
                             </Grid>
                         </StackLayout>

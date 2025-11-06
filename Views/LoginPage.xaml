@@ -4,68 +4,105 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="LoginPage">
-    <VerticalStackLayout>
-        <!--  title  -->
-        <Label
-            Grid.Row="0"
-            Grid.Column="0"
-            Margin="4"
-            BackgroundColor="Transparent"
-            FontSize="25"
-            HorizontalOptions="Center"
-            Text="Welcome to LoginPage"
-            VerticalOptions="Center" />
-        <!--  End title  -->
+    <Grid
+        RowDefinitions="auto,*,auto"
+        Padding="20,0,20,0" 
+        ColumnSpacing="10"
+        RowSpacing="10">
+            <!--  title  -->
+            <Label
+                
+                Margin="4"
+                BackgroundColor="Transparent"
+                FontSize="13"
+                HorizontalOptions="Center"
+                Text="Welcome to LoginPage"
+                VerticalOptions="Center" />
+                <!--  End title  -->
 
-        <!--  שדה ראשוןןן  -->
-        <Entry Placeholder="Enter UserName" Text="{Binding EntryUserName}" />
-        <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
-        <!--  שדה ראשוןןן  -->
-        <!--  שדה שני  -->
-        <Grid ColumnDefinitions="*,Auto">
-            <Entry
-                Grid.Column="0"
-                IsPassword="True"
-                Placeholder="Enter Password"
-                Text="{Binding EntryPassword}" />
-            <Button Grid.Column="1" WidthRequest="30" ImageSource="eye.png" />
-        </Grid>
-        <!--<Label x:Name="WelcomeLabel"
-               FontSize="24"
-               FontAttributes="Bold" />-->
 
-        <Label
-            FontSize="10"
-            Text="{Binding PasswordError}"
-            TextColor="Red" />
-        <!--  שדה שני  -->
+                <Frame BackgroundColor="#FFFFFF" Grid.Row="1">
+                    <ScrollView>
+                        <VerticalStackLayout Spacing="15" >
 
+                            <!--  שדה ראשוןןן  -->
+                            <Entry Placeholder="Enter UserName" Text="{Binding EntryUserName}" />
+                            <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
+                            <!--  שדה ראשוןןן  -->
+                            <!--  שדה שני  -->
+                            <Grid ColumnDefinitions="*,auto">
+                                <Entry
+                                        Grid.Row="1"
+                                        IsPassword="True"
+                                        Placeholder="Enter Password"
+                                        Text="{Binding PasswordEntry}" />
+                                <Button Grid.Column="1"  WidthRequest="30" ImageSource="eye.png" BackgroundColor="{StaticResource BenPrimary}"/>
+                            </Grid>
+
+                            <Label
+                                    FontSize="10"
+                                    Text="{Binding PasswordError}"
+                                    TextColor="Red" />
+                            <!--  שדה שני  -->
+
+                            <!--  FOOTER  -->
+
+                
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </Frame>
         <!--  FOOTER  -->
-        <VerticalStackLayout>
+        <Grid
+   
+     Grid.Row="3"
+     ColumnSpacing="5"
+    
+     ColumnDefinitions="*,*" 
+     RowDefinitions="*,*"
+     
+     >
 
-            <Frame CornerRadius="50" HorizontalOptions="Center">
-                <Button
-                    Margin="4"
-                    Padding="0"
-                    Background="Transparent"
-                    FontSize="24"
-                    IsEnabled="{Binding IsValid}"
-                    Text="Login"
-                    TextColor="DarkCyan" />
-            </Frame>
-        </VerticalStackLayout>
 
-        <Button
-            
-              IsEnabled="True"
-             Margin="4"
-            
-               Grid.Row="2"
-               Grid.Column="0"
-               Grid.ColumnSpan="2"
-               Text="Return to RegisterPage" 
-               Command="{Binding GoToRegisterCommand}"
-             TextColor="Pink" />
+            <Button
+         Grid.Column="0"
+         Grid.ColumnSpan="2"
+         Grid.Row="0"
+         TextColor="White"
+         Background="{StaticResource BenPrimary}"
+         
+          CornerRadius="20"
+         HorizontalOptions="Fill"
+         VerticalOptions="Center"
+         Text="הרשמה"
+         IsEnabled="{Binding IsLoginEnable}"
+          Command="{Binding EnterAppCommand}"
+             />
 
-    </VerticalStackLayout>
+            <Button
+         Grid.Column="0" 
+         Grid.Row="1"
+          Background="Transparent"
+           TextColor="{StaticResource BenPrimary}"
+         HorizontalOptions="Fill"
+         Text= "איפוס שדות"
+         Command="{Binding ResetCommand}"/>
+
+
+
+            <Button
+         Grid.Row="1"
+         Grid.Column="1"
+         IsEnabled="True"
+         Background="Transparent"
+         TextColor="{StaticResource BenPrimary}"
+         HorizontalOptions="Fill"
+         Text="אין לך חשבון?" 
+         Command="{Binding GoToRegisterCommand}"/>
+
+
+
+
+        </Grid>
+
+    </Grid>
 </ContentPage>

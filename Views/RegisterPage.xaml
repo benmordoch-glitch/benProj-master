@@ -7,8 +7,9 @@
     <Grid
         Padding="20,0,20,0" 
         ColumnSpacing="10"
-        RowDefinitions="auto,*,auto"
         RowSpacing="10"
+        RowDefinitions="auto,*,auto"
+        
         >
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -23,7 +24,7 @@
             Grid.Column="0"
             TextColor="White"
             HorizontalOptions="Center"
-            Text="ברוכים הבאים ליצה דוט נטו"
+            Text="ברוכים הבאים לריצה לצד המסלול"
             VerticalOptions="Center" />
         <!--  CONTENT  -->
         <Frame  BackgroundColor="#FFFFFF" Grid.Row="1">
@@ -32,6 +33,7 @@
             <ScrollView   >
             
                     <VerticalStackLayout Spacing="15" >
+                 
 
 
                     <Entry Placeholder="Private Name" Text="{Binding EntryPrivateName}" />
@@ -110,20 +112,19 @@
                 Grid.Row="0"
                 TextColor="White"
                 Background="{StaticResource BenPrimary}"
-                
-                 CornerRadius="20"
+                CornerRadius="20"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"
                 Text="הרשמה"
                 IsEnabled="{Binding IsRegisterEnable}"
-                 Command="{Binding EnterAppCommand}"
+                Command="{Binding EnterAppCommand}"
                     />
 
             <Button
                 Grid.Column="0" 
                 Grid.Row="1"
-                 Background="Transparent"
-                  TextColor="{StaticResource BenPrimary}"
+                Background="Transparent"
+                TextColor="{StaticResource BenPrimary}"
                 HorizontalOptions="Fill"
                 Text= "איפוס שדות"
                 Command="{Binding ResetCommand}"/>
@@ -138,7 +139,7 @@
                 TextColor="{StaticResource BenPrimary}"
                 HorizontalOptions="Fill"
                 Text="יש לך חשבון?" 
-                Command="{Binding GotoLoginCommand}"/>
+                Command="{Binding GoToLoginCommand}"/>
 
 
 

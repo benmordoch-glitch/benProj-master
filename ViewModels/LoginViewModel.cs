@@ -12,8 +12,20 @@ namespace benProj.ViewModels
     internal class LoginViewModel : ViewModelBase
     {
         #region get and set
+
+        private bool isLoginEnable;
+        public bool IsLoginEnable
+        {
+            get { return isLoginEnable; }
+            set
+            {
+                isLoginEnable = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string entryUserName;
-        public string EntryPrivateName
+        public string EntryUserName
         {
             get { return entryUserName; }
             set {
@@ -21,13 +33,22 @@ namespace benProj.ViewModels
                 {
 
                     entryUserName = value;
+                    if (value.Length < 2)
+                    {
+                        LblErrorUserName = "User Name too short";
+                    }
+                    else
+                    {
+                        LblErrorUserName = "";
+                    }
+                    HandleButtonLogin();
                     OnPropertyChanged();
                 }
             }
         }
 
         private string lblErrorUserName;
-        public string LblErrorUsereName
+        public string LblErrorUserName
         {
             get { return lblErrorUserName; }
             set {
@@ -35,7 +56,7 @@ namespace benProj.ViewModels
                 {
                    
                     lblErrorUserName = value;
-                    
+                    HandleButtonLogin();
                     OnPropertyChanged();
                 }
             }
@@ -62,6 +83,8 @@ namespace benProj.ViewModels
                         PasswordError = "";
                     }
                     IsValid = isOk;
+                    HandleButtonLogin();
+
                     OnPropertyChanged();
                 }
             }
@@ -75,6 +98,7 @@ namespace benProj.ViewModels
             set { 
                 if(value != null)   
                 passwordError = value;
+                HandleButtonLogin();
                 OnPropertyChanged();
             }
         }
@@ -97,68 +121,55 @@ namespace benProj.ViewModels
             get { return isValid; }
             set {
                 isValid = value;
+
                 OnPropertyChanged();
             }
         }
         #endregion
         #region command declaration
         public ICommand GoToRegisterCommand { get; set; }
+        public ICommand ResetCommand { get; set; }
         #endregion
         //// הצבת הנתונים שהתקבלו ב-Label
         //WelcomeLabel.Text = $"ברוך הבא, {userName}!";
         // constructor
+       
+        
+
+        private void ResetField()
+        {
+            EntryUserName = "";
+            EntryPassword = "";
+            LblErrorUserName = "";
+            PasswordError = "";
+
+
+        } 
+        private void HandleButtonLogin()
+        {
+            if (EntryUserName != "" || EntryPassword !="" || LblErrorUserName != "" || PasswordError != "" )
+            {
+                IsLoginEnable = false;
+            }
+            else
+            {
+                IsLoginEnable = true;
+            }
+        }
         public LoginViewModel()
         {
             ShowPassword = false;
             IsValid = false;
             GoToRegisterCommand = new Command(async () => await GoToRegister());
+            ResetCommand = new Command(ResetField);
+            IsLoginEnable = true;
         }
-        
-
        
 
         public async Task GoToRegister()
         {
-            // יצירת מופע של המסך הבא והעברת הנתונים בבנאי שלו
-            var registerPage = new RegisterPage();
-
-            // ביצוע הניווט
-            await Application.Current.MainPage.Navigation.PushAsync(registerPage);
+            await Shell.Current.GoToAsync("//RegisterPage");
         }
 
-
-        // private bool isValid;
-        //public LoginPage()
-        //{
-        //    InitializeComponent();
-        //    EntryPrivateName.Text = "";
-        //    EntryPassword.Text = "";
-        //}
-        //private void ResetErrors()
-        //{
-        //    EntryPrivateName.Text = "";
-        //    LblErrorPassword.Text = "";
-        //}
-        //private void ButtonRegister_Clicked(object sender, EventArgs e)
-        //{
-        //    ResetErrors();
-        //    isValid = true;
-
-        //    if (EntryPrivateName.Text.Length < 5)
-        //    {
-        //        LblErrorPrivateName.Text = "Too short must be above 5 chars";
-        //        isValid = false;
-        //    }
-
-        //    string pattern = @"^(?=.*[A-Z])(?=.*@).{8,}$";
-        //    bool isPasswordOk = Regex.IsMatch(EntryPassword.Text, pattern);
-
-        //    if (!isPasswordOk)
-        //    {
-        //        LblErrorPassword.Text = "Password must be at least 8 chars, contain an uppercase letter and a special char (@)";
-        //        isValid = false;
-        //    }
-
-        //}
     }
 }

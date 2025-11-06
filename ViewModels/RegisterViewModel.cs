@@ -58,8 +58,9 @@ namespace benProj.ViewModels
 				if (value != null)
 				{ 
                    
-					lblErrorPrivateName = value; 
-					OnPropertyChanged(); }
+					lblErrorPrivateName = value;
+                    HandleButtonRegister();
+                    OnPropertyChanged(); }
 			}
 		}
         /// <summary>
@@ -100,6 +101,7 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     lblErrorFamilyName = value;
+                    HandleButtonRegister();
                     OnPropertyChanged();
                 }
             }
@@ -138,7 +140,9 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
-                    lblErrorUserName = value; OnPropertyChanged();
+                    lblErrorUserName = value;
+                    HandleButtonRegister(); 
+                    OnPropertyChanged();
                 }
             }
         }
@@ -182,6 +186,7 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     OnPropertyChanged();
+                    HandleButtonRegister();
                 }
             }
         }
@@ -249,7 +254,9 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
-                    errorPassword = value; OnPropertyChanged();
+                    errorPassword = value;
+                    HandleButtonRegister();
+                        OnPropertyChanged();
                 }
             }
         }
@@ -287,7 +294,6 @@ namespace benProj.ViewModels
                         ErrorPassword = "";
                     }
                     HandleButtonRegister();
-
                     OnPropertyChanged();
                 }
             }
@@ -342,29 +348,34 @@ namespace benProj.ViewModels
         // constructor
         public RegisterViewModel()
         {
-            GotoLoginCommand = new Command(async () => await GoToLogin());
+           
             ResetCommand = new Command(ResetField);
-            IsRegisterEnable = false;
+            GotoLoginCommand = new Command(async () => await GoToLogin());
+
+            IsRegisterEnable = true;
 
 
         }
 
         public async Task GoToLogin()
         {
-            // יצירת מופע של המסך הבא והעברת הנתונים בבנאי שלו
-            var loginPage = new LoginPage();
-
-            // ביצוע הניווט
-            await Application.Current.MainPage.Navigation.PushAsync(loginPage);
+            await Shell.Current.GoToAsync("//LoginPage");
         }
         private void ResetField()
         {
             EntryPrivateName = "";
+            LblErrorPrivateName = "";
+            
             EntryFamilyName = "";
+            LblErrorFamilyName = "";
             EntryUserName = "";
+            LblErrorUserName = "";
             EntryEmail = "";
+            LblErrorEmail = "";
             EntryPassword = "";
+            errorPassword = "";
             ReTypePass = "";
+            errorReTypePass="";
             //TODO try to fix
             //EntryBirthDate.Date = new DateTime(2018, 6, 21);
      
