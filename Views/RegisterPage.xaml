@@ -67,17 +67,19 @@
                     <Grid ColumnDefinitions="*,Auto">
                         <Entry
                             Grid.Column="0"
-                            IsPassword="True"
                             Placeholder="Your Password"
-                            Text="{Binding EntryPassword}" />
+                            Text="{Binding EntryPassword}" 
+                            IsPassword="{Binding HidePass}"/>
 
 
-                        <Button x:Name="ShowPass"
+                        <Button 
                             Grid.Column="1" 
-                            WidthRequest="30" 
-                            TextColor="White"
+                            WidthRequest="30"
+                            IsEnabled="True"
                             BackgroundColor="{StaticResource BenPrimary}" 
-                            ImageSource="eye.png" />
+                            ImageSource="eye.png" 
+                            Command="{Binding ShowPassCommand}"/>
+                        
                         <!--Clicked="OnShowPassButtonClicked"-->
 
                     </Grid>
@@ -99,18 +101,14 @@
           
             Grid.Row="3"
             ColumnSpacing="5"
-           
             ColumnDefinitions="*,*" 
             RowDefinitions="*,*"
-            
             >
-            
-
             <Button
+                
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="0"
-                TextColor="White"
                 Background="{StaticResource BenPrimary}"
                 CornerRadius="20"
                 HorizontalOptions="Fill"

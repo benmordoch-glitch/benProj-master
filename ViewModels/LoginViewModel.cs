@@ -19,7 +19,7 @@ namespace benProj.ViewModels
             get { return isLoginEnable; }
             set
             {
-                isLoginEnable = value;
+                isLoginEnable =! value;
                 OnPropertyChanged();
             }
         }
@@ -91,7 +91,6 @@ namespace benProj.ViewModels
         }
 
         private string passwordError;
-
         public string PasswordError
         {
             get { return passwordError; }
