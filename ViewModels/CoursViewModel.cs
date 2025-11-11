@@ -1,4 +1,5 @@
 ﻿using benProj.Models;
+using benProj.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,7 @@ namespace benProj.ViewModels
 
         public CoursViewModel()
         {
-            Courses = new List<Cours>()
-            {
-                 new Cours { Id = "1", CourseName = ":ריצה בים", Difficulty = 3, Distance = 5 },
-                 new Cours { Id = "2", CourseName = ":ריצה בטיילת", Difficulty = 2, Distance = 4 }
-            };
+            courses = AppService.GetInstance().GetCours();
         }
     }
 }

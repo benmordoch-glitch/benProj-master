@@ -3,30 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using benProj.Models;
 
 namespace benProj.Service
 {
     internal class AppService
     {
-        public static AppService serviceRegister = new AppService();
+        public static AppService serviceRegister;
 
-        public string Name { get; set; }
-        public string FamilyName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public DateOnly BirthDate { get; set; }
+        private User user;
+        private List<Cours> cours;
+        
 
-        private AppService()
-        {
-            Name = string.Empty;
-            FamilyName = string.Empty;
-            UserName = string.Empty;
-            Password = string.Empty;
-            BirthDate = new DateOnly(2000,1,1);
-        }
         public static AppService GetInstance()
         {
+            if (serviceRegister == null) { 
+                serviceRegister = new AppService();
+                serviceRegister.CreateFakeData();
+            }
             return serviceRegister;
         }
+
+        public void  AddRegisteredUser(User u)
+        {
+            user = u;
+        }
+        public User GetUser()
+        {
+            return user;
+        }
+        private void CreateFakeData()
+        {
+            cours = new List<Cours>()
+            {
+                 new Cours { Id = "1", CourseName = ":ריצה בים", Difficulty = 3, Distance = 5 },
+                 new Cours { Id = "2", CourseName = ":ריצה בטיילת", Difficulty = 2, Distance = 4 },
+                 new Cours { Id = "3", CourseName = ":ריצה dsfsdf", Difficulty = 1, Distance = 4 }
+            };
+        }
+        public List<Cours> GetCours()
+        {
+            return cours;
+        }
+
     }
 }

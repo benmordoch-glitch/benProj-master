@@ -88,6 +88,7 @@
                         IsPassword="True"
                         Placeholder="RetypePassword"
                         Text="{Binding ReTypePass}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorReTypePass}" />
 
                     <!--  End password Grid  -->
                 </VerticalStackLayout>
@@ -115,7 +116,7 @@
                 VerticalOptions="Center"
                 Text="הרשמה"
                 IsEnabled="{Binding IsRegisterEnable}"
-                Command="{Binding EnterAppCommand}"
+                Command="{Binding TryRegisterCommand}"
                     />
 
             <Button

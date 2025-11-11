@@ -1,4 +1,5 @@
-﻿using benProj.Views;
+﻿using benProj.Service;
+using benProj.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,6 +129,7 @@ namespace benProj.ViewModels
         #region command declaration
         public ICommand GoToRegisterCommand { get; set; }
         public ICommand ResetCommand { get; set; }
+        public ICommand EnterAppCommand { get; set; }
         #endregion
         //// הצבת הנתונים שהתקבלו ב-Label
         //WelcomeLabel.Text = $"ברוך הבא, {userName}!";
@@ -161,6 +163,7 @@ namespace benProj.ViewModels
             IsValid = false;
             GoToRegisterCommand = new Command(async () => await GoToRegister());
             ResetCommand = new Command(ResetField);
+            EnterAppCommand = new Command(TryLogin);
             IsLoginEnable = true;
         }
        
@@ -168,6 +171,16 @@ namespace benProj.ViewModels
         public async Task GoToRegister()
         {
             await Shell.Current.GoToAsync("//RegisterPage");
+        }
+        private void TryLogin()
+        {
+            if (EntryUserName == AppService.GetInstance().GetUser().UserName && EntryPassword==AppService.GetInstance().GetUser().Password)
+            {
+                LblErrorUserName = "It works";
+            } else
+            {
+                LblErrorUserName = "zibi";
+            }
         }
 
     }

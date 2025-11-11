@@ -17,10 +17,11 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Cours">
                     <Border StrokeThickness="10" >
-                        <StackLayout Padding="10" BackgroundColor="LightGray" >
+                        <StackLayout Margin="5" BackgroundColor="Aquamarine" >
                             <Label HorizontalTextAlignment="End" FontAttributes="Bold" Text="{Binding CourseName}" TextDecorations="Underline"  />
-                            <Label Text="{Binding Distance}" HorizontalTextAlignment="End" 
-                                   TextColor="blue"/>
+                            <Label Text="רמת קושי" HorizontalTextAlignment="End"/>
+                            <Label Text="{Binding Distance}" HorizontalTextAlignment="End" TextColor="blue"/>
+                            <Label Text="מרחק בק''מ" HorizontalTextAlignment="End"/>
                             <Grid ColumnDefinitions="*,*,*">
                                 <Ellipse
                                     Grid.Column="3"

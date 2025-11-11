@@ -1,4 +1,5 @@
 ﻿using benProj.Views;
+using benProj.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using benProj.Service;
+
 
 namespace benProj.ViewModels
 {
@@ -164,7 +166,7 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     entryEmail = value;
-
+                   
                     string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
                     bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
                     if (!isPasswordOk)
@@ -175,6 +177,7 @@ namespace benProj.ViewModels
                     {
                         LblErrorEmail = "";
                     }
+                   
                     HandleButtonRegister();
                     OnPropertyChanged();
                 }
@@ -189,8 +192,8 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
+                    lblErrorEmail = value;
                     OnPropertyChanged();
-                    HandleButtonRegister();
                 }
             }
         }
@@ -232,21 +235,22 @@ namespace benProj.ViewModels
             get { return entryPassword; }
             set
             {
-                //if (value != null)
-                //{
-                //    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
-                //    bool isPasswordOk = Regex.IsMatch(entryPassword, pattern);
-                //    if (!isPasswordOk)
-                //    {
-                //        ErrorPassword = "Password not valid!";
-                //    }
-                //    else
-                //    {
-                //        ErrorPassword = "";
-                //    }
-                //    HandleButtonRegister();
-                //    OnPropertyChanged();
-                //}
+                if (value != null)
+                {
+                    entryPassword = value;
+                    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
+                    bool isPasswordOk = Regex.IsMatch(value, pattern);
+                    if (!isPasswordOk)
+                    {
+                        ErrorPassword = "Password not valid!";
+                    }
+                    else
+                    {
+                        ErrorPassword = "";
+                    }
+                    HandleButtonRegister();
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -290,10 +294,10 @@ namespace benProj.ViewModels
                 {
                     reTypePass = value;
                     if (reTypePass != entryPassword)
-                        ErrorReTypePass = "Password not currect!";
+                        ErrorReTypePass = "Password not identical!";
                     else
                     {
-                        ErrorPassword = "";
+                        ErrorReTypePass = "";
                     }
                     HandleButtonRegister();
                     OnPropertyChanged();
@@ -308,7 +312,12 @@ namespace benProj.ViewModels
             get { return errorReTypePass; }
             set
             {
-                errorReTypePass = value;
+                if (value != null)
+                {
+                    errorReTypePass = value;
+                    OnPropertyChanged();
+                }
+                
             }
         }
 
@@ -347,6 +356,7 @@ namespace benProj.ViewModels
 
         public ICommand ResetCommand { get; set; }
         public ICommand GoToLoginCommand { get; set; }
+        public ICommand TryRegisterCommand { get; set; }
 
         public ICommand ShowPassCommand { get; set; }
 
@@ -356,6 +366,7 @@ namespace benProj.ViewModels
         {
             GoToLoginCommand = new Command(async () => await GoToLogin());
             ResetCommand = new Command(ResetField);
+            TryRegisterCommand = new Command(TryRegister);
             ShowPassCommand = new Command(() =>
             {
                 HidePass = !HidePass;
@@ -401,7 +412,15 @@ namespace benProj.ViewModels
             }
         }
 
-
+        private void TryRegister()
+        {
+            if (IsRegisterEnable)
+            {
+                User u = new User() { UserName = EntryUserName, Password = EntryPassword };
+                AppService.GetInstance().AddRegisteredUser(u);
+            }
+            
+        }
 
         //private void OnSaveButtonClicked(object sender, EventArgs e)
         //{
