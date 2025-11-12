@@ -29,7 +29,8 @@ namespace benProj.ViewModels
         public string EntryUserName
         {
             get { return entryUserName; }
-            set {
+            set
+            {
                 if (value != null)
                 {
 
@@ -52,10 +53,11 @@ namespace benProj.ViewModels
         public string LblErrorUserName
         {
             get { return lblErrorUserName; }
-            set {
+            set
+            {
                 if (value != null)
                 {
-                   
+
                     lblErrorUserName = value;
                     HandleButtonLogin();
                     OnPropertyChanged();
@@ -95,9 +97,10 @@ namespace benProj.ViewModels
         public string PasswordError
         {
             get { return passwordError; }
-            set { 
-                if(value != null)   
-                passwordError = value;
+            set
+            {
+                if (value != null)
+                    passwordError = value;
                 HandleButtonLogin();
                 OnPropertyChanged();
             }
@@ -108,10 +111,12 @@ namespace benProj.ViewModels
         public bool ShowPassword
         {
             get { return showPassword; }
-            set {             
+            set
+            {
                 showPassword = value;
+                HandleButtonLogin();
                 OnPropertyChanged();
-                }
+            }
         }
 
 
@@ -119,7 +124,8 @@ namespace benProj.ViewModels
         public bool IsValid
         {
             get { return isValid; }
-            set {
+            set
+            {
                 isValid = value;
 
                 OnPropertyChanged();
@@ -130,12 +136,28 @@ namespace benProj.ViewModels
         public ICommand GoToRegisterCommand { get; set; }
         public ICommand ResetCommand { get; set; }
         public ICommand EnterAppCommand { get; set; }
+        public ICommand ViewPassCommand { get; set; }
+
         #endregion
         //// הצבת הנתונים שהתקבלו ב-Label
         //WelcomeLabel.Text = $"ברוך הבא, {userName}!";
         // constructor
-       
-        
+
+
+        public LoginViewModel()
+        {
+            ShowPassword = false;
+            IsValid = false;
+            GoToRegisterCommand = new Command(async () => await GoToRegister());
+            ResetCommand = new Command(ResetField);
+            EnterAppCommand = new Command(TryLogin);
+            ViewPassCommand = new Command(() =>
+                {
+                    ShowPassword = !ShowPassword;
+                });
+            IsLoginEnable = true;
+            ShowPassword = true;
+        }
 
         private void ResetField()
         {
@@ -145,10 +167,10 @@ namespace benProj.ViewModels
             PasswordError = "";
 
 
-        } 
+        }
         private void HandleButtonLogin()
         {
-            if (EntryUserName != "" || EntryPassword !="" || LblErrorUserName != "" || PasswordError != "" )
+            if (EntryUserName != "" || EntryPassword != "" || LblErrorUserName != "" || PasswordError != "")
             {
                 IsLoginEnable = false;
             }
@@ -157,16 +179,7 @@ namespace benProj.ViewModels
                 IsLoginEnable = true;
             }
         }
-        public LoginViewModel()
-        {
-            ShowPassword = false;
-            IsValid = false;
-            GoToRegisterCommand = new Command(async () => await GoToRegister());
-            ResetCommand = new Command(ResetField);
-            EnterAppCommand = new Command(TryLogin);
-            IsLoginEnable = true;
-        }
-       
+
 
         public async Task GoToRegister()
         {
@@ -174,10 +187,11 @@ namespace benProj.ViewModels
         }
         private void TryLogin()
         {
-            if (EntryUserName == AppService.GetInstance().GetUser().UserName && EntryPassword==AppService.GetInstance().GetUser().Password)
+            if (EntryUserName == AppService.GetInstance().GetUser().UserName && EntryPassword == AppService.GetInstance().GetUser().Password)
             {
                 LblErrorUserName = "It works";
-            } else
+            }
+            else
             {
                 LblErrorUserName = "zibi";
             }

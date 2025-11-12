@@ -44,7 +44,13 @@
                                         IsPassword="True"
                                         Placeholder="Enter Password"
                                         Text="{Binding PasswordEntry}" />
-                        <Button Grid.Column="1"  WidthRequest="30" ImageSource="eye.png" BackgroundColor="{StaticResource BenPrimary}"/>
+                        
+                        <Button Grid.Column="1" 
+                                WidthRequest="30" 
+                                ImageSource="eye.png" 
+                                IsEnabled="True"
+                                BackgroundColor="{StaticResource BenPrimary}"
+                                Command="{Binding ViewPassCommand}"/>
                     </Grid>
 
                     <Label
