@@ -61,6 +61,8 @@
 
                     <DatePicker Date="{Binding EntryBirthDate}" Style="{StaticResource errorDatePicker}" />
                     <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorBirthDate}" />
+                        
+                    
 
 
                     <!--  Start password Grid  -->

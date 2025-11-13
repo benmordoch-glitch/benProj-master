@@ -10,16 +10,24 @@
 
     <ShellContent
         
-        Title="Register"
+        Title="הרשמה"
         ContentTemplate="{DataTemplate views:RegisterPage}"
         Route="RegisterPage" />
     <ShellContent
-        Title="Login"
+        Title="התחברות"
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
     <ShellContent
-         Title="Cours"
+         Title="מסלולים"
          ContentTemplate="{DataTemplate views:CoursPage}"
          Route="CoursePage"/>
+    <ShellContent
+       Title="מידע על המשתמש"
+       ContentTemplate="{DataTemplate views:UserInfo}"
+       Route="UserInfo"/>
+    <ShellContent
+    Title="מסולים אחרונים"
+    ContentTemplate="{DataTemplate views:LatestPaths}"
+    Route="LatestPaths"/>
 
 </Shell>

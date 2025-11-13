@@ -11,7 +11,7 @@
             VerticalOptions="Center" />
         <CollectionView ItemsSource="{Binding Courses}">
             <CollectionView.EmptyView>
-                <Label HorizontalTextAlignment="Center" Text="אין מסלולים." />
+                <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
             </CollectionView.EmptyView>
             
             <CollectionView.ItemTemplate>

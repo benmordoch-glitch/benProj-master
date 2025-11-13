@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="benProj.Views.LatestPaths"
+             xmlns:models="clr-namespace:benProj.Models"
+             Title="LatestPaths">
+    <VerticalStackLayout>
+        <Label
+         HorizontalOptions="Center"
+         Text="עמוד מסלולים"
+         VerticalOptions="Center" />
+        <CollectionView ItemsSource="{Binding Paths}">
+            <CollectionView.EmptyView>
+                <Label HorizontalTextAlignment="Center" Text="אין מסלולים." />
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Path">
+                    <Border StrokeThickness="10" >
+                        <StackLayout Margin="5" BackgroundColor="Aquamarine" >
+                            <Label HorizontalTextAlignment="End" FontAttributes="Bold" Text="{Binding PathName}" TextDecorations="Underline"  />
+                            <Label Text="רמת קושי" HorizontalTextAlignment="End"/>
+                            <Label Text="{Binding Distance}" HorizontalTextAlignment="End" TextColor="blue"/>
+                            <Label Text="מרחק בק''מ" HorizontalTextAlignment="End"/>
+                            <Grid ColumnDefinitions="*,*,*">
+                                <Ellipse
+                                 Grid.Column="3"
+                                 Fill="{StaticResource BenPrimary }"
+                                 HeightRequest="40"
+                                 VerticalOptions="Center"
+                                 WidthRequest="40" />
+                            </Grid>
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
