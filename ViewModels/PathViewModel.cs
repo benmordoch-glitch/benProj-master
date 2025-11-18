@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace benProj.ViewModels
 {
-    internal class LatestsPathsViewModel
+    class PathViewModel
     {
     }
 }

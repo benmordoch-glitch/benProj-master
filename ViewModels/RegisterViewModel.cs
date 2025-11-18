@@ -30,7 +30,7 @@ namespace benProj.ViewModels
         /// RegisterField
         /// </summary>
 
-        private string entryPrivateName;
+        private string entryPrivateName = string.Empty;
         public string EntryPrivateName
         {
             get { return entryPrivateName; }
@@ -53,7 +53,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string lblErrorPrivateName;
+        private string lblErrorPrivateName = string.Empty;
         public string LblErrorPrivateName
         {
             get { return lblErrorPrivateName; }
@@ -73,7 +73,7 @@ namespace benProj.ViewModels
         /// </summary>
 
 
-        private string entryFamilyName;
+        private string entryFamilyName = string.Empty;
         public string EntryFamilyName
         {
             get { return entryFamilyName; }
@@ -97,7 +97,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string lblErrorFamilyName;
+        private string lblErrorFamilyName = string.Empty;
         public string LblErrorFamilyName
         {
             get { return lblErrorFamilyName; }
@@ -115,7 +115,7 @@ namespace benProj.ViewModels
         /// FamilyNameField
         /// </summary>
 
-        private string entryUserName;
+        private string entryUserName = string.Empty;
         public string EntryUserName
         {
             get { return entryUserName; }
@@ -138,7 +138,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string lblErrorUserName;
+        private string lblErrorUserName = string.Empty;
         public string LblErrorUserName
         {
             get { return lblErrorUserName; }
@@ -157,7 +157,7 @@ namespace benProj.ViewModels
         /// </summary>
 
 
-        private string entryEmail;
+        private string entryEmail = string.Empty;
         public string EntryEmail
         {
             get { return entryEmail; }
@@ -175,7 +175,7 @@ namespace benProj.ViewModels
                     }
                     else
                     {
-                        LblErrorEmail = "";
+                        LblErrorEmail = string.Empty;
                     }
                    
                     HandleButtonRegister();
@@ -184,7 +184,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string lblErrorEmail;
+        private string lblErrorEmail = string.Empty;
         public string LblErrorEmail
         {
             get { return lblErrorEmail; }
@@ -229,7 +229,7 @@ namespace benProj.ViewModels
         /// </summary>
 
 
-        private string entryPassword;
+        private string entryPassword = string.Empty;
         public string EntryPassword
         {
             get { return entryPassword; }
@@ -254,7 +254,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string errorPassword;
+        private string errorPassword = string.Empty;
         public string ErrorPassword
         {
             get { return errorPassword; }
@@ -284,7 +284,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string reTypePass;
+        private string reTypePass = string.Empty;
         public string ReTypePass
         {
             get { return reTypePass; }
@@ -305,7 +305,7 @@ namespace benProj.ViewModels
             }
         }
 
-        private string errorReTypePass;
+        private string errorReTypePass = string.Empty;
 
         public string ErrorReTypePass
         {
@@ -382,27 +382,34 @@ namespace benProj.ViewModels
         }
         private void ResetField()
         {
-            EntryPrivateName = "";
-            LblErrorPrivateName = "";
-
-            EntryFamilyName = "";
-            LblErrorFamilyName = "";
-            EntryUserName = "";
-            LblErrorUserName = "";
-            EntryEmail = "";
-            LblErrorEmail = "";
-            EntryPassword = "";
-            errorPassword = "";
-            ReTypePass = "";
-            errorReTypePass = "";
+            EntryPrivateName = string.Empty;
+            LblErrorPrivateName = string.Empty;
+            EntryFamilyName = string.Empty;
+            LblErrorFamilyName = string.Empty;
+            EntryUserName = string.Empty;
+            LblErrorUserName = string.Empty;
+            EntryEmail = string.Empty;
+            LblErrorEmail = string.Empty;
+            EntryPassword = string.Empty;
+            errorPassword = string.Empty;
+            ReTypePass = string.Empty;
+            errorReTypePass = string.Empty;
             //TODO try to fix
             //EntryBirthDate.Date = new DateTime(2018, 6, 21);
 
         }
 
+        /// <summary>
+        /// check if can Register
+        /// </summary>
         private void HandleButtonRegister()
         {
-            if (LblErrorPrivateName != "" || LblErrorFamilyName != "" || LblErrorUserName != "" || LblErrorEmail != "" || ErrorPassword != "" || ErrorReTypePass != "")
+            if (string.Empty.Equals(LblErrorPrivateName) &&
+                string.Empty.Equals(LblErrorFamilyName) &&
+                string.Empty.Equals(LblErrorUserName )&&
+                string.Empty.Equals(LblErrorEmail)&&
+                string.Empty.Equals(ErrorPassword)&&  
+                string.Empty.Equals(ErrorReTypePass ) )
             {
                 IsRegisterEnable = false;
             }
