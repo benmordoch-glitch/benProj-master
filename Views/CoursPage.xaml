@@ -7,7 +7,7 @@
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
-            Text="עמוד מסלולים"
+            Text="עמוד אימונים"
             VerticalOptions="Center" />
         <CollectionView ItemsSource="{Binding Courses}">
             <CollectionView.EmptyView>
@@ -17,25 +17,36 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Cours">
                     <Border StrokeThickness="10" >
-                        <StackLayout Margin="5" BackgroundColor="Aquamarine" >
-                            <Label HorizontalTextAlignment="End" FontAttributes="Bold" Text="{Binding CourseName}" TextDecorations="Underline"  />
-                            <Label Text="רמת קושי" HorizontalTextAlignment="End"/>
-                            <Label Text="{Binding Distance}" HorizontalTextAlignment="End" TextColor="blue"/>
-                            <Label Text="מרחק בק''מ" HorizontalTextAlignment="End"/>
-                            <Grid ColumnDefinitions="*,*,*">
+                        <StackLayout Margin="5" BackgroundColor="White">
+                            <Label
+                                
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold" 
+                                Text="{Binding CourseName}" 
+                                TextDecorations="Underline"  />
+                            
+                           
+                            <Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>
+                            <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
+                            <Grid ColumnDefinitions="*,*,*,*"
+                                  RowDefinitions="*,*,*">
                                 <Ellipse
-                                    Grid.Column="3"
+                                    Grid.Column="0"
                                     Fill="{StaticResource BenPrimary }"
                                     HeightRequest="40"
                                     VerticalOptions="Center"
                                     WidthRequest="40" />
                                 <Label
-                                    Grid.Column="3"
-                                    FontSize="12"
+                                    FontSize="20"
                                     HorizontalOptions="Center"
+                                    VerticalOptions="Center"
                                     Text="{Binding Difficulty}"
                                     TextColor="White"
-                                    VerticalOptions="Center" />
+                                     />
+                                <Label 
+                                    Text="רמת קושי=>" 
+                                    HorizontalTextAlignment="End"
+                                                             />
                             </Grid>
                         </StackLayout>
                     </Border>
