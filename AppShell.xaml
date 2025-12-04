@@ -19,7 +19,7 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
     <ShellContent
-         Title="אימונים"
+         Title="מסלולים אחרונים"
          ContentTemplate="{DataTemplate views:CoursPage}"
          Route="CoursePage"/>
     <ShellContent
@@ -27,7 +27,7 @@
        ContentTemplate="{DataTemplate views:UserInfo}"
        Route="UserInfo"/>
     <ShellContent
-    Title="מסלולים אחרונים"
+    Title="אימונים"
     ContentTemplate="{DataTemplate views:Paths}"
     Route="Paths"/>
 

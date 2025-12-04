@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="benProj.Views.CoursPage"
              xmlns:models="clr-namespace:benProj.Models"
+             xmlns:viewmodels="clr-namespace:benProj.ViewModels"
+             
              Title="CoursPage">
     <VerticalStackLayout>
         <Label
@@ -48,11 +50,29 @@
                                     HorizontalTextAlignment="End"
                                                              />
                             </Grid>
+
+                            <Button
+                                BackgroundColor="Red"
+                                Command="{Binding DeleteItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:CoursViewModel}, Mode=FindAncestorBindingContext}}"
+                                CommandParameter="{Binding .}"
+                                HorizontalOptions="Start"
+                                Text="מחיקת הריצה"
+                                TextColor="White"
+                                WidthRequest="200" />
                         </StackLayout>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+                            <Entry Placeholder="שם ריצה" Text="{Binding NewSender}" />
+                            <Entry Placeholder="מרחק" Text="{Binding NewMessage}" />
+                            <Button
+                                BackgroundColor="Green"
+                                Command="{Binding AddMessageCommand}"
+                                HorizontalOptions="Center"
+                                Text="הוספת ריצה"
+                                TextColor="White"
+                                WidthRequest="200" />
 
     </VerticalStackLayout>
 </ContentPage>

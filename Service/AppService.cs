@@ -12,7 +12,7 @@ namespace benProj.Service
         public static AppService serviceRegister;
 
         private User user;
-        private List<Cours> cours;
+        private List<Cours> courses;
         //private List<Path> paths;
         
 
@@ -35,7 +35,7 @@ namespace benProj.Service
         }
         private void CreateFakeData()
         {
-            cours = new List<Cours>()
+            courses = new List<Cours>()
             {
                  new Cours { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
                  new Cours { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
@@ -48,10 +48,21 @@ namespace benProj.Service
             //     new Path { Id = "3", PathName = "מרוץ אייל 25", Distance = 15 }
             //};
         }
-        public List<Cours> GetCours()
+        public List<Cours> Getcourses()
         {
-            return cours;
+            return courses;
         }
+        public void AddCourse(Cours cours)
+        {
+            // Will add in DB
+            courses.Add(cours);
+        }
+        public bool DeleteCourse(Cours cours)
+        {
+            courses.Remove(cours);
+            return true;
+        }
+        
 
     }
 }
