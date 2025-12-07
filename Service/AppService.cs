@@ -52,10 +52,11 @@ namespace benProj.Service
         {
             return courses;
         }
-        public void AddCourse(Cours cours)
+        public bool AddCourse(Cours cours)
         {
             // Will add in DB
             courses.Add(cours);
+            return true;
         }
         public bool DeleteCourse(Cours cours)
         {

@@ -11,6 +11,6 @@ namespace benProj.Models
         public string Id { get; set; }
         public string CourseName { get; set; }
         public int Difficulty { get; set; }
-        public int Distance { get; set; }
+        public double Distance { get; set; }
     }
 }

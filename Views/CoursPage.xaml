@@ -11,47 +11,51 @@
             HorizontalOptions="Center"
             Text="עמוד אימונים"
             VerticalOptions="Center" />
-        <CollectionView ItemsSource="{Binding Courses}">
-            <CollectionView.EmptyView>
-                <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
-            </CollectionView.EmptyView>
-            
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Cours">
-                    <Border StrokeThickness="10" >
-                        <StackLayout Margin="5" BackgroundColor="White">
-                            <Label
+        
+    <CollectionView ItemsSource="{Binding Courses}">
+            <CollectionView.ItemsLayout>
+                
+            </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Cours">
+                        <Border StrokeThickness="1" >
+                            <StackLayout Margin="5" BackgroundColor="White">
+                                <Label
                                 
                                 HorizontalTextAlignment="Center"
                                 FontAttributes="Bold" 
                                 Text="{Binding CourseName}" 
                                 TextDecorations="Underline"  />
-                            
-                           
-                            <Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>
-                            <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
-                            <Grid ColumnDefinitions="*,*,*,*"
+
+
+                                <Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>
+                                <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
+                                <Grid ColumnDefinitions="*,*,*,*"
                                   RowDefinitions="*,*,*">
-                                <Ellipse
+                                    <Ellipse
                                     Grid.Column="0"
                                     Fill="{StaticResource BenPrimary }"
                                     HeightRequest="40"
                                     VerticalOptions="Center"
                                     WidthRequest="40" />
-                                <Label
+                                    <Label
                                     FontSize="20"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     Text="{Binding Difficulty}"
                                     TextColor="White"
                                      />
-                                <Label 
+                                    <Label 
                                     Text="רמת קושי=>" 
                                     HorizontalTextAlignment="End"
                                                              />
-                            </Grid>
+                                </Grid>
 
-                            <Button
+                                <Button
                                 BackgroundColor="Red"
                                 Command="{Binding DeleteItemCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:CoursViewModel}, Mode=FindAncestorBindingContext}}"
                                 CommandParameter="{Binding .}"
@@ -59,16 +63,19 @@
                                 Text="מחיקת הריצה"
                                 TextColor="White"
                                 WidthRequest="200" />
-                        </StackLayout>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-                            <Entry Placeholder="שם ריצה" Text="{Binding NewSender}" />
-                            <Entry Placeholder="מרחק" Text="{Binding NewMessage}" />
-                            <Button
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        
+
+        <Entry Placeholder="שם ריצה" Text="{Binding PathName}"/>
+        <Entry Placeholder="מרחק" Text="{Binding PathDistance}" />
+        <Entry Placeholder="רמת קושי" Text="{Binding PathDifficulty}" />
+        <Button
                                 BackgroundColor="Green"
-                                Command="{Binding AddMessageCommand}"
+                                Command="{Binding AddCourseCommand}"
                                 HorizontalOptions="Center"
                                 Text="הוספת ריצה"
                                 TextColor="White"
