@@ -65,29 +65,26 @@ namespace benProj.ViewModels
             }
         }
 
-        private string entryPassword;
-        public string EntryPassword
+        private string passwordEntry = string.Empty;
+        public string PasswordEntry
         {
-            get { return entryPassword; }
+            get { return passwordEntry; }
             set
             {
                 if (value != null)
                 {
-                    bool isOk = true;
-                    entryPassword = value;
-                    if (entryPassword.Length < 5)
+                    passwordEntry = value;
+                    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
+                    bool isPasswordOk = Regex.IsMatch(value, pattern);
+                    if (!isPasswordOk)
                     {
-                        PasswordError = "Too Short";
-                        isOk = false;
+                        passwordEntry = "Password not valid!";
                     }
                     else
                     {
-                        isOk = true;
-                        PasswordError = "";
+                        passwordEntry = "";
                     }
-                    IsValid = isOk;
                     HandleButtonLogin();
-
                     OnPropertyChanged();
                 }
             }
@@ -146,8 +143,6 @@ namespace benProj.ViewModels
 
         public LoginViewModel()
         {
-            ShowPassword = false;
-            IsValid = false;
             GoToRegisterCommand = new Command(async () => await GoToRegister());
             ResetCommand = new Command(ResetField);
             EnterAppCommand = new Command(TryLogin);
@@ -161,16 +156,17 @@ namespace benProj.ViewModels
 
         private void ResetField()
         {
-            EntryUserName = "";
-            EntryPassword = "";
-            LblErrorUserName = "";
-            PasswordError = "";
+            EntryUserName = string.Empty;
+            PasswordEntry = string.Empty;
+            LblErrorUserName = string.Empty;
+            PasswordError = string.Empty;
 
 
         }
         private void HandleButtonLogin()
         {
-            if (EntryUserName != "" || EntryPassword != "" || LblErrorUserName != "" || PasswordError != "")
+            if (string.Empty.Equals(LblErrorUserName) &&
+                string.Empty.Equals(PasswordError) )
             {
                 IsLoginEnable = false;
             }
@@ -187,7 +183,7 @@ namespace benProj.ViewModels
         }
         private void TryLogin()
         {
-            if (EntryUserName == AppService.GetInstance().GetUser().UserName && EntryPassword == AppService.GetInstance().GetUser().Password)
+            if (EntryUserName == AppService.GetInstance().GetUser().UserName && PasswordEntry == AppService.GetInstance().GetUser().Password)
             {
                 LblErrorUserName = "It works";
             }

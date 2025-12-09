@@ -40,23 +40,24 @@
                     <!--  שדה שני  -->
                     <Grid ColumnDefinitions="*,auto">
                         <Entry
-                                        Grid.Row="1"
-                                        IsPassword="True"
-                                        Placeholder="Enter Password"
-                                        Text="{Binding PasswordEntry}" />
-                        
-                        <Button Grid.Column="1" 
-                                WidthRequest="30" 
-                                ImageSource="eye.png" 
-                                IsEnabled="True"
-                                BackgroundColor="{StaticResource BenPrimary}"
-                                Command="{Binding ViewPassCommand}"/>
-                    </Grid>
+                        Grid.Row="1"
+                        Placeholder="Enter Password"
+                        IsPassword="{Binding ShowPassword}"
+                        Text="{Binding PasswordEntry}" />
 
+                        <Button Grid.Column="1" 
+                        WidthRequest="30" 
+                        ImageSource="eye.png" 
+                        IsEnabled="True"
+                        BackgroundColor="{StaticResource BenPrimary}"
+                        Command="{Binding ViewPassCommand}"/>
+                    </Grid>
+                    
                     <Label
-                                    FontSize="10"
-                                    Text="{Binding PasswordError}"
-                                    TextColor="Red" />
+                        FontSize="10"
+                        Style="{Binding errorLabel}"
+                        Text="{Binding PasswordError}"
+                         TextColor="Red" />
                     <!--  שדה שני  -->
 
                     <!--  FOOTER  -->
@@ -73,8 +74,8 @@
     
              ColumnDefinitions="*,*" 
              RowDefinitions="*,*" >
-     
-     
+
+
 
 
             <Button
@@ -89,7 +90,7 @@
              Text="הרשמה"
              IsEnabled="{Binding IsLoginEnable}"
              Command="{Binding EnterAppCommand}" />
-       
+
             <Button
              Grid.Column="0" 
              Grid.Row="1"

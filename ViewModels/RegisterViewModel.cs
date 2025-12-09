@@ -337,20 +337,6 @@ namespace benProj.ViewModels
                 }
             }
         }
-        // get and set for MessageForBen
-        private string messageForBen;
-        public string MessageForBen
-        {
-            get { return messageForBen; }
-            set
-            {
-                if (value != null)
-                {
-                    messageForBen = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
 
         #endregion
 

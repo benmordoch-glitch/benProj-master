@@ -13,9 +13,7 @@
             VerticalOptions="Center" />
         
     <CollectionView ItemsSource="{Binding Courses}">
-            <CollectionView.ItemsLayout>
-                
-            </CollectionView.ItemsLayout>
+          
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
                 </CollectionView.EmptyView>
@@ -23,7 +21,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Cours">
                         <Border StrokeThickness="1" >
-                            <StackLayout Margin="5" BackgroundColor="White">
+                            <StackLayout Margin="2" BackgroundColor="White">
                                 <Label
                                 
                                 HorizontalTextAlignment="Center"
