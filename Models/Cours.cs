@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace benProj.Models
 {
-    internal class Cours
+     class Cours : Path
     {
-        public string Id { get; set; }
         public string CourseName { get; set; }
+        public string Id { get; set; }
         public int Difficulty { get; set; }
         public double Distance { get; set; }
     }

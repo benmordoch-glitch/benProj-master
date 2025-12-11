@@ -30,28 +30,23 @@
                                 TextDecorations="Underline"  />
 
 
-                                <Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>
-                                <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
+                            <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
                                 <Grid ColumnDefinitions="*,*,*,*"
-                                  RowDefinitions="*,*,*">
+                                      RowDefinitions="*,*,*">
                                     <Ellipse
                                     Grid.Column="0"
                                     Fill="{StaticResource BenPrimary }"
                                     HeightRequest="40"
                                     VerticalOptions="Center"
                                     WidthRequest="40" />
-                                    <Label
+                                <Label
                                     FontSize="20"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     Text="{Binding Difficulty}"
                                     TextColor="White"
                                      />
-                                    <Label 
-                                    Text="רמת קושי=>" 
-                                    HorizontalTextAlignment="End"
-                                                             />
-                                </Grid>
+                            </Grid>
 
                                 <Button
                                 BackgroundColor="Red"
@@ -66,18 +61,17 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        
 
-        <Entry Placeholder="שם ריצה" Text="{Binding PathName}"/>
-        <Entry Placeholder="מרחק" Text="{Binding PathDistance}" />
-        <Entry Placeholder="רמת קושי" Text="{Binding PathDifficulty}" />
+        <Entry Placeholder="שם ריצה" Text="{Binding CourseName}" />
+        <Entry Placeholder="מרחק" Text="{Binding CourseDistance}" />
+        <Entry Placeholder="רמת קושי" Text="{Binding CourseDifficulty}" />
         <Button
-                                BackgroundColor="Green"
-                                Command="{Binding AddCourseCommand}"
-                                HorizontalOptions="Center"
-                                Text="הוספת ריצה"
-                                TextColor="White"
-                                WidthRequest="200" />
+        BackgroundColor="Green"
+        Command="{Binding AddCourseCommand}"
+        HorizontalOptions="Center"
+        Text="הוספת ריצה"
+        TextColor="White"
+        WidthRequest="200" />
 
     </VerticalStackLayout>
 </ContentPage>

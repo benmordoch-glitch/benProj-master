@@ -7,10 +7,10 @@ using benProj.Models;
 
 namespace benProj.Models
 {
-    internal class Path
+    class Path
     {
         public string Id { get; set; }
-        public string PathName { get; set; }
-        public int Distance { get; set; }
+        public int Difficulty { get; set; }
+        public double Distance { get; set; }
     }
 }

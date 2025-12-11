@@ -78,11 +78,11 @@ namespace benProj.ViewModels
                     bool isPasswordOk = Regex.IsMatch(value, pattern);
                     if (!isPasswordOk)
                     {
-                        passwordEntry = "Password not valid!";
+                        PasswordError = "Password not valid!";
                     }
                     else
                     {
-                        passwordEntry = "";
+                        PasswordError = "";
                     }
                     HandleButtonLogin();
                     OnPropertyChanged();

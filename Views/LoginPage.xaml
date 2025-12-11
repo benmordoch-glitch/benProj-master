@@ -53,11 +53,7 @@
                         Command="{Binding ViewPassCommand}"/>
                     </Grid>
                     
-                    <Label
-                        FontSize="10"
-                        Style="{Binding errorLabel}"
-                        Text="{Binding PasswordError}"
-                         TextColor="Red" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding PasswordError}" TextColor="Red" />
                     <!--  שדה שני  -->
 
                     <!--  FOOTER  -->

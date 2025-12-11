@@ -19,16 +19,20 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
     <ShellContent
-         Title="מסלולים אחרונים"
+         Title="ריצות ממוינות לפי שם"
          ContentTemplate="{DataTemplate views:CoursPage}"
          Route="CoursePage"/>
     <ShellContent
+         Title="מידע כולל על הריצה"
+         ContentTemplate="{DataTemplate views:TrainingListPage}"
+         Route="TriningListPage"/>
+   
+    <ShellContent
+    Title="ריצות מעודכנות"
+    ContentTemplate="{DataTemplate views:Paths}"
+    Route="Paths"/>
+ <ShellContent
        Title="מידע על המשתמש"
        ContentTemplate="{DataTemplate views:UserInfo}"
        Route="UserInfo"/>
-    <ShellContent
-    Title="אימונים"
-    ContentTemplate="{DataTemplate views:Paths}"
-    Route="Paths"/>
-
 </Shell>

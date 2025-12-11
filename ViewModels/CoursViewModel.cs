@@ -13,8 +13,8 @@ namespace benProj.ViewModels
 {
     class CoursViewModel : ViewModelBase
     {
+        #region Get&Set
         private ObservableCollection<Cours> courses;
-
         public ObservableCollection<Cours> Courses
         {
             get { return courses; }
@@ -25,57 +25,47 @@ namespace benProj.ViewModels
             }
         }
 
-        private string pathName;
-
-        public string PathName
+        private string courseName;
+        public string CourseName
         {
-            get { return pathName; }
+            get { return courseName; }
             set {
-                pathName = value;
-                OnPropertyChanged(nameof(PathName));
+                courseName = value;
+                OnPropertyChanged(nameof(courseName));
             }
         }
 
-        private double pathDistance;
-
-        public double PathDistance
+        private double courseDistance;
+        public double CourseDistance
         {
-            get { return pathDistance; }
+            get { return courseDistance; }
             set {
-                pathDistance = value;
-                OnPropertyChanged(nameof(PathDistance));
+                courseDistance = value;
+                OnPropertyChanged(nameof(courseDistance));
             }
         }
-
-        private int pathDifficulty;
-
-        public int PathDifficulty
+        private int courseDifficulty;
+        public int CourseDifficulty
         {
-            get { return pathDifficulty; }
+            get { return courseDifficulty; }
             set {
-                pathDifficulty = value;
-                OnPropertyChanged(nameof(PathDifficulty));
+                courseDifficulty = value;
+                OnPropertyChanged(nameof(courseDifficulty));
             }
         }
-
-
-
+        #endregion
         #region commands
         public ICommand DeleteItemCommand { get; set; }
         public ICommand AddCourseCommand { get; set; }
 
         //  public ICommand AddMessageCommand { get; set; }
         #endregion
-
         public CoursViewModel()
         {
-
             Courses = new ObservableCollection<Cours>(AppService.GetInstance().Getcourses());
-
             DeleteItemCommand = new Command((item) => DeleteItem(item)); // Currently this is a sync function , we will change it to async later
             AddCourseCommand = new Command(AddItem); // Currently this is a sync function , we will change it to async later
         }
-
         #region Functions
         public void DeleteItem(object obgMsg)
         {
@@ -88,21 +78,22 @@ namespace benProj.ViewModels
         }
         public void AddItem()
         {
+
             Cours c = new Cours()
             {
-                Distance = PathDistance,
-                CourseName = PathName,
-                Difficulty= PathDifficulty
+                CourseName = CourseName,
+                Distance = CourseDistance,
+                Difficulty= CourseDifficulty
             };
             bool tf = AppService.GetInstance().AddCourse(c);
             if (tf)
             {
                 Courses.Add(c);
+                
             }
+            
         }
-
         #endregion
-
         // In a common app this function would be called from a dedicated page
 
     }
