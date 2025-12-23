@@ -41,7 +41,8 @@ namespace benProj.ViewModels
             get { return courseDistance; }
             set {
                 courseDistance = value;
-                OnPropertyChanged(nameof(courseDistance));
+                if(courseDistance != 0)
+                    OnPropertyChanged(nameof(courseDistance));
             }
         }
         private int courseDifficulty;
@@ -50,7 +51,11 @@ namespace benProj.ViewModels
             get { return courseDifficulty; }
             set {
                 courseDifficulty = value;
-                OnPropertyChanged(nameof(courseDifficulty));
+                if (courseDifficulty != 0)
+                    OnPropertyChanged(nameof(courseDifficulty));
+                else
+                    courseDifficulty = 0;
+
             }
         }
         #endregion
@@ -62,11 +67,14 @@ namespace benProj.ViewModels
         #endregion
         public CoursViewModel()
         {
-            Courses = new ObservableCollection<Cours>(AppService.GetInstance().Getcourses());
             DeleteItemCommand = new Command((item) => DeleteItem(item)); // Currently this is a sync function , we will change it to async later
             AddCourseCommand = new Command(AddItem); // Currently this is a sync function , we will change it to async later
         }
         #region Functions
+        public async Task InitAsyncMethods()
+        {
+            Courses = new ObservableCollection<Cours>(await AppService.GetInstance().GetCourses());
+        }
         public void DeleteItem(object obgMsg)
         {
             Cours c = (Cours)obgMsg;

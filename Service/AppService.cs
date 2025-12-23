@@ -7,25 +7,25 @@ using benProj.Models;
 
 namespace benProj.Service
 {
-    internal class AppService
+    class AppService
     {
         public static AppService serviceRegister;
-
         private User user;
         private List<Cours> courses;
         //private List<Path> paths;
-        
+
 
         public static AppService GetInstance()
         {
-            if (serviceRegister == null) { 
+            if (serviceRegister == null)
+            {
                 serviceRegister = new AppService();
                 serviceRegister.CreateFakeData();
             }
             return serviceRegister;
         }
 
-        public void  AddRegisteredUser(User u)
+        public void AddRegisteredUser(User u)
         {
             user = u;
         }
@@ -48,9 +48,9 @@ namespace benProj.Service
             //     new Path { Id = "3", PathName = "מרוץ אייל 25", Distance = 15 }
             //};
         }
-        public List<Cours> Getcourses()
+        public async Task<List<Cours>> GetCourses()
         {
-            return courses;
+            return new Task( await courses);
         }
         public bool AddCourse(Cours cours)
         {
@@ -63,7 +63,7 @@ namespace benProj.Service
             courses.Remove(cours);
             return true;
         }
-        
+
 
     }
 }

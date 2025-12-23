@@ -1,0 +1,14 @@
+{
+    "courses": {
+        "1": {
+            "CourseName": "blasflafl",
+            "Difficulty": "Hard",
+            "Distance": 100
+        },
+        "2": {
+            "CourseName": "pppowerpowepro",
+            "Difficulty": "Easy",
+            "Distance": 20
+        }
+    }
+}
