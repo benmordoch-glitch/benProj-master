@@ -68,7 +68,8 @@ namespace benProj.ViewModels
         public CoursViewModel()
         {
             DeleteItemCommand = new Command((item) => DeleteItem(item)); // Currently this is a sync function , we will change it to async later
-            AddCourseCommand = new Command(AddItem); // Currently this is a sync function , we will change it to async later
+           /* AddCourseCommand = new Command(AddItem);*/ // Currently this is a sync function , we will change it to async later
+            InitAsyncMethods();
         }
         #region Functions
         public async Task InitAsyncMethods()
@@ -84,23 +85,23 @@ namespace benProj.ViewModels
                 Courses.Remove(c);
             }
         }
-        public void AddItem()
-        {
+        //public void AddItem()
+        //{
 
-            Cours c = new Cours()
-            {
-                CourseName = CourseName,
-                Distance = CourseDistance,
-                Difficulty= CourseDifficulty
-            };
-            bool tf = AppService.GetInstance().AddCourse(c);
-            if (tf)
-            {
-                Courses.Add(c);
+        //    Cours c = new Cours()
+        //    {
+        //        CourseName = CourseName,
+        //        Distance = CourseDistance,
+        //        Difficulty= CourseDifficulty
+        //    };
+        //    bool tf = AppService.GetInstance().AddCourse(c);
+        //    if (tf)
+        //    {
+        //        Courses.Add(c);
                 
-            }
+        //    }
             
-        }
+        //}
         #endregion
         // In a common app this function would be called from a dedicated page
 

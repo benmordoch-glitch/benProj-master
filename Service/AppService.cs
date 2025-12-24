@@ -1,9 +1,19 @@
-﻿using System;
+﻿using Firebase.Auth;
+using Firebase.Auth.Providers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using benProj.Models;
+using Firebase.Auth.Repository;
+using Firebase.Database;
+using Firebase.Database.Query;
+using benProj.Views;
+
+// name collision
+using FirebaseUser = Firebase.Auth.User;
+using User = benProj.Models.User;
 
 namespace benProj.Service
 {
@@ -12,7 +22,35 @@ namespace benProj.Service
         public static AppService serviceRegister;
         private User user;
         private List<Cours> courses;
+        private List<Models.Path> paths;
         //private List<Path> paths;
+
+
+        static FirebaseAuthClient? auth;
+        static FirebaseClient? client;
+        static public AuthCredential? loginAuthUser;
+
+        public void InitAuth()
+        {
+            var config = new FirebaseAuthConfig()
+            {
+                ApiKey = "AIzaSyASL79815CVSL3kouvG0oIJkFp2cFPuFqk", //  אייפיאיי שלי ורק שליייייייייייייייייייי
+                AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
+                Providers = new FirebaseAuthProvider[] //רשימת אפשריות להתחבר
+              {
+          new EmailProvider() //אנחנו נשתמש בשירות חינמי של התחברות עם מייל
+              },
+                UserRepository = new FileUserRepository("appUserData") //לא חובה, שם של קובץ בטלפון הפרטי שאפשר לשמור בו את מזהה ההתחברות כדי לא הכניס כל פעם את הסיסמא 
+            };
+            auth = new FirebaseAuthClient(config); //ההתחברות
+
+            client =
+              new FirebaseClient(@"https://benproject26-57e58-default-rtdb.europe-west1.firebasedatabase.app/", //כתובת מסד הנתונים
+              new FirebaseOptions
+              {
+                  AuthTokenAsyncFactory = () => Task.FromResult(auth.User.Credential.IdToken)// מזהה ההתחברות של המשתמש עם השרת, הנתון נשמר במכשיר
+              });
+        }
 
 
         public static AppService GetInstance()
@@ -20,7 +58,8 @@ namespace benProj.Service
             if (serviceRegister == null)
             {
                 serviceRegister = new AppService();
-                serviceRegister.CreateFakeData();
+                serviceRegister.InitAuth();
+                //serviceRegister.CreateFakeData();
             }
             return serviceRegister;
         }
@@ -50,7 +89,7 @@ namespace benProj.Service
         }
         public async Task<List<Cours>> GetCourses()
         {
-            return new Task( await courses);
+            return courses;
         }
         public bool AddCourse(Cours cours)
         {
