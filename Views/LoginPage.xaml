@@ -84,7 +84,7 @@
              HorizontalOptions="Fill"
              VerticalOptions="Center"
              Text="הרשמה"
-             IsEnabled="{Binding IsLoginEnable}"
+      
              Command="{Binding EnterAppCommand}" />
 
             <Button

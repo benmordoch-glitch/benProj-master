@@ -29,13 +29,36 @@ namespace benProj.Service
         static FirebaseAuthClient? auth;
         static FirebaseClient? client;
         static public AuthCredential? loginAuthUser;
+        /*
+         
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDAIwCb7vp-MBOrhIFW0EiXLLqo0tx5iCI",
+          authDomain: "benproject26-57e58.firebaseapp.com",
+          databaseURL: "https://benproject26-57e58-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "benproject26-57e58",
+          storageBucket: "benproject26-57e58.firebasestorage.app",
+          messagingSenderId: "1064153240992",
+          appId: "1:1064153240992:web:4980bdcf74a0a0ab5840c5"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+         
+         */
         public void InitAuth()
         {
             var config = new FirebaseAuthConfig()
             {
-                ApiKey = "AIzaSyASL79815CVSL3kouvG0oIJkFp2cFPuFqk", //  אייפיאיי שלי ורק שליייייייייייייייייייי
+                //ApiKey = "AIzaSyASL79815CVSL3kouvG0oIJkFp2cFPuFqk", //  אייפיאיי שלי ורק שליייייייייייייייייייי
+                ApiKey = "AIzaSyDAIwCb7vp-MBOrhIFW0EiXLLqo0tx5iCI", //  אייפיאיי שלי ורק שליייייייייייייייייייי
                 AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
+                //AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
                 Providers = new FirebaseAuthProvider[] //רשימת אפשריות להתחבר
               {
           new EmailProvider() //אנחנו נשתמש בשירות חינמי של התחברות עם מייל
@@ -87,6 +110,14 @@ namespace benProj.Service
             //     new Path { Id = "3", PathName = "מרוץ אייל 25", Distance = 15 }
             //};
         }
+
+        class FirebaseCours
+        {
+            public string? CourseName { get; set; }
+            public string? Difficulty { get; set; }
+            public double? Distance { get; set; }
+        }
+
         public async Task<List<Cours>> GetCourses()
         {
             return courses;
@@ -96,11 +127,40 @@ namespace benProj.Service
             // Will add in DB
             courses.Add(cours);
             return true;
+
         }
         public bool DeleteCourse(Cours cours)
         {
             courses.Remove(cours);
             return true;
+        }
+
+        public async Task<bool> TryLoginAsync(string userNameString, string passwordString)
+        {
+            if (userNameString == null || passwordString == null)
+            {
+                return false;
+            }
+            try
+            {
+                var authUser = await auth.SignInWithEmailAndPasswordAsync(userNameString, passwordString);
+                loginAuthUser = authUser.AuthCredential;
+                // Authentication successful 
+                // We keep the token or Credential in loginAuthUser, so we can erase it later in logout
+                // You can access the authenticated user's details via authUser.User
+                // you should create a new user or person
+                // Person person = new Person(){Email=authUser.User.info.Email, ...
+                // Don't put the password in the Person :)
+
+                // ((App)Application.Current).SetAuthenticatedShell();
+
+                return true;
+            }
+            catch (FirebaseAuthException ex)
+            {
+                // Authentication failed
+                return false;
+            }
         }
 
 

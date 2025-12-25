@@ -143,9 +143,10 @@ namespace benProj.ViewModels
 
         public LoginViewModel()
         {
+
             GoToRegisterCommand = new Command(async () => await GoToRegister());
             ResetCommand = new Command(ResetField);
-            EnterAppCommand = new Command(TryLogin);
+            EnterAppCommand = new Command(async () => await TryLogin());
             ViewPassCommand = new Command(() =>
                 {
                     ShowPassword = !ShowPassword;
@@ -165,15 +166,16 @@ namespace benProj.ViewModels
         }
         private void HandleButtonLogin()
         {
-            if (string.Empty.Equals(LblErrorUserName) &&
-                string.Empty.Equals(PasswordError) )
-            {
-                IsLoginEnable = false;
-            }
-            else
-            {
-                IsLoginEnable = true;
-            }
+            IsLoginEnable = true;
+            //if (string.Empty.Equals(LblErrorUserName) &&
+            //    string.Empty.Equals(PasswordError) )
+            //{
+            //    IsLoginEnable = false;
+            //}
+            //else
+            //{
+            //    IsLoginEnable = true;
+            //}
         }
 
 
@@ -181,11 +183,13 @@ namespace benProj.ViewModels
         {
             await Shell.Current.GoToAsync("//RegisterPage");
         }
-        private void TryLogin()
+        private async Task TryLogin()
         {
-            if (EntryUserName == AppService.GetInstance().GetUser().UserName && PasswordEntry == AppService.GetInstance().GetUser().Password)
+            Console.WriteLine(  333);
+            if (await AppService.GetInstance().TryLoginAsync(EntryUserName, PasswordEntry))
             {
                 LblErrorUserName = "It works";
+                await Shell.Current.GoToAsync("//CoursePage");
             }
             else
             {
