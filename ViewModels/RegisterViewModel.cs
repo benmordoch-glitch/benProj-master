@@ -169,7 +169,7 @@ namespace benProj.ViewModels
                    
                     string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
                     bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
-                    if (!isPasswordOk)
+                    if (!(isPasswordOk || value == string.Empty))
                     {
                         LblErrorEmail = "Email not valid!";
                     }
@@ -239,8 +239,8 @@ namespace benProj.ViewModels
                 {
                     entryPassword = value;
                     string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
-                    bool isPasswordOk = Regex.IsMatch(value, pattern);
-                    if (!isPasswordOk)
+                    bool isPasswordOk = Regex.IsMatch(value, pattern) ;
+                    if (!(isPasswordOk || value == string.Empty) )
                     {
                         ErrorPassword = "Password not valid!";
                     }
@@ -395,7 +395,7 @@ namespace benProj.ViewModels
                 string.Empty.Equals(LblErrorUserName )&&
                 string.Empty.Equals(LblErrorEmail)&&
                 string.Empty.Equals(ErrorPassword)&&  
-                string.Empty.Equals(ErrorReTypePass ) )
+                string.Empty.Equals(ErrorReTypePass))
             {
                 IsRegisterEnable = false;
             }

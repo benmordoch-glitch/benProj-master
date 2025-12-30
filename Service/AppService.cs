@@ -51,6 +51,17 @@ namespace benProj.Service
         const app = initializeApp(firebaseConfig);
          
          */
+
+        public static AppService GetInstance()
+        {
+            if (serviceRegister == null)
+            {
+                serviceRegister = new AppService();
+                serviceRegister.InitAuth();
+                //serviceRegister.CreateFakeData();
+            }
+            return serviceRegister;
+        }
         public void InitAuth()
         {
             var config = new FirebaseAuthConfig()
@@ -75,42 +86,6 @@ namespace benProj.Service
               });
         }
 
-
-        public static AppService GetInstance()
-        {
-            if (serviceRegister == null)
-            {
-                serviceRegister = new AppService();
-                serviceRegister.InitAuth();
-                //serviceRegister.CreateFakeData();
-            }
-            return serviceRegister;
-        }
-
-        public void AddRegisteredUser(User u)
-        {
-            user = u;
-        }
-        public User GetUser()
-        {
-            return user;
-        }
-        private void CreateFakeData()
-        {
-            courses = new List<Cours>()
-            {
-                 new Cours { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
-                 new Cours { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
-                 new Cours { Id = "3", CourseName = "מרוץ אייל 25", Difficulty = 5, Distance = 15 }
-            };
-            //cours = new List<Path>()
-            //{
-            //     new Path { Id = "1", PathName = "ריצה בים" ,Distance = 8 },
-            //     new Path { Id = "2", PathName = "ריצה בטיילת" ,Distance = 5 },
-            //     new Path { Id = "3", PathName = "מרוץ אייל 25", Distance = 15 }
-            //};
-        }
-
         class FirebaseCours
         {
             public string? CourseName { get; set; }
@@ -118,23 +93,31 @@ namespace benProj.Service
             public double? Distance { get; set; }
         }
 
-        public async Task<List<Cours>> GetCourses()
+        /// <summary>
+        /// Try Registerrrr 
+        /// </summary>
+        /// <param name="userNameString"></param>
+        /// <param name="passwordString"></param>
+        /// <returns></returns>
+        public async Task<bool> TryRegister(string userNameString, string passwordString)
         {
-            return courses;
+            try
+            {
+                var respond = await auth.CreateUserWithEmailAndPasswordAsync(userNameString, passwordString);
+                // User is signed up and logged in
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
-        public bool AddCourse(Cours cours)
-        {
-            // Will add in DB
-            courses.Add(cours);
-            return true;
-
-        }
-        public bool DeleteCourse(Cours cours)
-        {
-            courses.Remove(cours);
-            return true;
-        }
-
+        /// <summary>
+        /// Try login
+        /// </summary>
+        /// <param name="userNameString"></param>
+        /// <param name="passwordString"></param>
+        /// <returns></returns>
         public async Task<bool> TryLoginAsync(string userNameString, string passwordString)
         {
             if (userNameString == null || passwordString == null)
@@ -162,6 +145,49 @@ namespace benProj.Service
                 return false;
             }
         }
+        public void AddRegisteredUser(User u)
+        {
+            user = u;
+        }
+        public User GetUser()
+        {
+            return user;
+        }
+        private void CreateFakeData()
+        {
+            courses = new List<Cours>()
+            {
+                 new Cours { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
+                 new Cours { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
+                 new Cours { Id = "3", CourseName = "מרוץ אייל 25", Difficulty = 5, Distance = 15 }
+            };
+            //cours = new List<Path>()
+            //{
+            //     new Path { Id = "1", PathName = "ריצה בים" ,Distance = 8 },
+            //     new Path { Id = "2", PathName = "ריצה בטיילת" ,Distance = 5 },
+            //     new Path { Id = "3", PathName = "מרוץ אייל 25", Distance = 15 }
+            //};
+        }
+
+
+
+        public async Task<List<Cours>> GetCourses()
+        {
+            return courses;
+        }
+        //public bool AddCourse(Cours cours)
+        //{
+        //    // Will add in DB
+        //    courses.Add(cours);
+        //    return true;
+
+        //}
+        //public bool DeleteCourse(Cours cours)
+        //{
+        //    courses.Remove(cours);
+        //    return true;
+        //}
+        
 
 
     }

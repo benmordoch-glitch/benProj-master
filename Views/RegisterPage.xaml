@@ -114,12 +114,12 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="0"
+                TextColor="White"
                 Background="{StaticResource BenPrimary}"
                 CornerRadius="20"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"
                 Text="הרשמה"
-                IsEnabled="{Binding IsRegisterEnable}"
                 Command="{Binding TryRegisterCommand}"
                     />
 

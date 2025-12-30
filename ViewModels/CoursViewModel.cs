@@ -67,7 +67,7 @@ namespace benProj.ViewModels
         #endregion
         public CoursViewModel()
         {
-            DeleteItemCommand = new Command((item) => DeleteItem(item)); // Currently this is a sync function , we will change it to async later
+            /*DeleteItemCommand = new Command((item) => DeleteItem(item)); */// Currently this is a sync function , we will change it to async later
            /* AddCourseCommand = new Command(AddItem);*/ // Currently this is a sync function , we will change it to async later
             InitAsyncMethods();
         }
@@ -76,15 +76,15 @@ namespace benProj.ViewModels
         {
             Courses = new ObservableCollection<Cours>(await AppService.GetInstance().GetCourses());
         }
-        public void DeleteItem(object obgMsg)
-        {
-            Cours c = (Cours)obgMsg;
-            bool tf = AppService.GetInstance().DeleteCourse(c);
-            if (tf)
-            {
-                Courses.Remove(c);
-            }
-        }
+        //public void DeleteItem(object obgMsg)
+        //{
+        //    Cours c = (Cours)obgMsg;
+        //    bool tf = AppService.GetInstance().DeleteCourse(c);
+        //    if (tf)
+        //    {
+        //        Courses.Remove(c);
+        //    }
+        //}
         //public void AddItem()
         //{
 
