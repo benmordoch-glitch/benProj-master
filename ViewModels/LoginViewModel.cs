@@ -103,7 +103,6 @@ namespace benProj.ViewModels
             }
         }
 
-
         private bool showPassword;
         public bool ShowPassword
         {
@@ -129,21 +128,16 @@ namespace benProj.ViewModels
             }
         }
         #endregion
-        #region command declaration
+        #region Commands Section
         public ICommand GoToRegisterCommand { get; set; }
         public ICommand ResetCommand { get; set; }
         public ICommand EnterAppCommand { get; set; }
         public ICommand ViewPassCommand { get; set; }
 
         #endregion
-        //// הצבת הנתונים שהתקבלו ב-Label
-        //WelcomeLabel.Text = $"ברוך הבא, {userName}!";
         // constructor
-
-
         public LoginViewModel()
         {
-
             GoToRegisterCommand = new Command(async () => await GoToRegister());
             ResetCommand = new Command(ResetField);
             EnterAppCommand = new Command(async () => await TryLogin());
@@ -161,8 +155,6 @@ namespace benProj.ViewModels
             PasswordEntry = string.Empty;
             LblErrorUserName = string.Empty;
             PasswordError = string.Empty;
-
-
         }
         private void HandleButtonLogin()
         {

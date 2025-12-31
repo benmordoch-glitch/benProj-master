@@ -1,14 +1,66 @@
 {
-    "courses": {
+  "users": {
+    "uidEldan": {
+      "courses": {
         "sgdjbjkhudfhdfSJHSDA": {
-            "CourseName": "blasflafl",
-            "Difficulty": "Hard",
-            "Distance": 100
+          "CourseName": "ריצה בחוף",
+          "Difficulty": 5,
+          "Distance": 10000
         },
         "asfhjFHASFJASHFJSA": {
-            "CourseName": "pppowerpowepro",
-            "Difficulty": "Easy",
-            "Distance": 20
+          "CourseName": "סובב יער לימונים",
+          "Difficulty": 1,
+          "Distance": 2350
         }
+      },
+      "trainings": {
+        "uidTrainingU1": {
+          "CourseID": "sgdjbjkhudfhdfSJHSDA",
+          "StartDate": "21.298283",
+          "Duration": "7200"
+        },
+        "uidTrainingU2": {
+          "CourseID": "sdsfgr45e",
+          "StartDate": 3453453,
+          "Duration": "3496"
+        },
+        "uidTrainingU3": {
+          "CourseID": "dhsdfsfdfs",
+          "StartDate": 3453453,
+          "Duration": "4888"
+        }
+      }
+    },
+    "uidBen": {
+      "courses": {
+        "svdasdsdasdasd": {
+          "CourseName": "ריצה בטיילת",
+          "Difficulty": 3,
+          "Distance": 7500
+        },
+        "DHSDhdsjnghvd": {
+          "CourseName": "מרתון ירושלים",
+          "Difficulty": 5,
+          "Distance": 2350
+        },
+        "trainings": {
+          "uidTrainingU1": {
+            "CourseID": "sdadsdasddd",
+            "StartDate": "21.298283",
+            "Duration": "2000"
+          },
+          "uidTrainingU2": {
+            "CourseID": "sdsfgr45e",
+            "StartDate": 3453453,
+            "Duration": "5434"
+          },
+          "uidTrainingU3": {
+            "CourseID": "dhsdfsfdfs",
+            "StartDate": 3453453,
+            "Duration": "4888"
+          }
+        }
+      }
     }
+  }
 }

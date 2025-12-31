@@ -145,6 +145,22 @@ namespace benProj.Service
                 return false;
             }
         }
+        public bool Logout()
+        {
+            try
+            {
+                auth.SignOut();
+                loginAuthUser = null;
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
         public void AddRegisteredUser(User u)
         {
             user = u;
