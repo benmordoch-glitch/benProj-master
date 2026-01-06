@@ -13,7 +13,7 @@
           "Distance": 2350
         }
       },
-      "trainings": {
+        "trainings": {
         "uidTrainingU1": {
           "CourseID": "sgdjbjkhudfhdfSJHSDA",
           "StartDate": "21.298283",
@@ -42,23 +42,23 @@
           "CourseName": "מרתון ירושלים",
           "Difficulty": 5,
           "Distance": 2350
+        }
+      },
+      "trainings": {
+        "uidTrainingU1": {
+          "CourseID": "sdadsdasddd",
+          "StartDate": "21.298283",
+          "Duration": "2000"
         },
-        "trainings": {
-          "uidTrainingU1": {
-            "CourseID": "sdadsdasddd",
-            "StartDate": "21.298283",
-            "Duration": "2000"
-          },
-          "uidTrainingU2": {
-            "CourseID": "sdsfgr45e",
-            "StartDate": 3453453,
-            "Duration": "5434"
-          },
-          "uidTrainingU3": {
-            "CourseID": "dhsdfsfdfs",
-            "StartDate": 3453453,
-            "Duration": "4888"
-          }
+        "uidTrainingU2": {
+          "CourseID": "sdsfgr45e",
+          "StartDate": 3453453,
+          "Duration": "5434"
+        },
+        "uidTrainingU3": {
+          "CourseID": "dhsdfsfdfs",
+          "StartDate": 3453453,
+          "Duration": "4888"
         }
       }
     }
