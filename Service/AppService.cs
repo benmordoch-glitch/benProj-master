@@ -66,15 +66,13 @@ namespace benProj.Service
         {
             var config = new FirebaseAuthConfig()
             {
-                //ApiKey = "AIzaSyASL79815CVSL3kouvG0oIJkFp2cFPuFqk", //  אייפיאיי שלי ורק שליייייייייייייייייייי
                 ApiKey = "AIzaSyDAIwCb7vp-MBOrhIFW0EiXLLqo0tx5iCI", //  אייפיאיי שלי ורק שליייייייייייייייייייי
                 AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
-                //AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
                 Providers = new FirebaseAuthProvider[] //רשימת אפשריות להתחבר
                 {
                     new EmailProvider() //אנחנו נשתמש בשירות חינמי של התחברות עם מייל
                 },
-                UserRepository = new FileUserRepository("appUserData") //לא חובה, שם של קובץ בטלפון הפרטי שאפשר לשמור בו את מזהה ההתחברות כדי לא הכניס כל פעם את הסיסמא 
+                //UserRepository = new FileUserRepository("appUserData") //לא חובה, שם של קובץ בטלפון הפרטי שאפשר לשמור בו את מזהה ההתחברות כדי לא הכניס כל פעם את הסיסמא 
             };
             auth = new FirebaseAuthClient(config); //ההתחברות
 
@@ -194,6 +192,10 @@ namespace benProj.Service
 
         public async Task<bool> GetCoursesFromFirebaseAsync()
         {
+            if (auth.User == null)
+            {
+                return false;
+            }
             try
             {
                 var fbCourses = await client.Child("users").Child(auth.User.Uid).Child("courses").OnceAsync<FirebaseCourse>();

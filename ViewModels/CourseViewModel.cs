@@ -59,18 +59,12 @@ namespace benProj.ViewModels
             }
         }
         #endregion
-        #region commands
-        public ICommand DeleteItemCommand { get; set; }
-        public ICommand AddCourseCommand { get; set; }
 
-        //  public ICommand AddMessageCommand { get; set; }
-        #endregion
         public CourseViewModel()
         {
-            /*DeleteItemCommand = new Command((item) => DeleteItem(item)); */// Currently this is a sync function , we will change it to async later
-           /* AddCourseCommand = new Command(AddItem);*/ // Currently this is a sync function , we will change it to async later
             InitAsyncMethods();
         }
+
         #region Functions
         public async Task InitAsyncMethods()
         {
@@ -78,36 +72,11 @@ namespace benProj.ViewModels
             if (!success)
             {
                 // TODO: handle error
+                // ErrLabelMsg.Text = errMsg
                 return;
             }
             Courses = new ObservableCollection<Course>(AppService.GetInstance().GetCourses());
         }
-        //public void DeleteItem(object obgMsg)
-        //{
-        //    Cours c = (Cours)obgMsg;
-        //    bool tf = AppService.GetInstance().DeleteCourse(c);
-        //    if (tf)
-        //    {
-        //        Courses.Remove(c);
-        //    }
-        //}
-        //public void AddItem()
-        //{
-
-        //    Cours c = new Cours()
-        //    {
-        //        CourseName = CourseName,
-        //        Distance = CourseDistance,
-        //        Difficulty= CourseDifficulty
-        //    };
-        //    bool tf = AppService.GetInstance().AddCourse(c);
-        //    if (tf)
-        //    {
-        //        Courses.Add(c);
-                
-        //    }
-            
-        //}
         #endregion
         // In a common app this function would be called from a dedicated page
 

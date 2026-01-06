@@ -44,16 +44,6 @@
                                     TextColor="White"
                                      />
                             </Grid>
-
-                            <Button
-                                BackgroundColor="Red"
-                                Command="{Binding DeleteItemCommand,
-                                Source={x:RelativeSource AncestorType={x:Type viewmodels:CourseViewModel}, Mode=FindAncestorBindingContext}}"
-                                CommandParameter="{Binding .}"
-                                HorizontalOptions="Start"
-                                Text="מחיקת הריצה"
-                                TextColor="White"
-                                WidthRequest="200" />
                         </StackLayout>
                     </Border>
                 </DataTemplate>
