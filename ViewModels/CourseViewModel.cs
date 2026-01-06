@@ -74,7 +74,13 @@ namespace benProj.ViewModels
         #region Functions
         public async Task InitAsyncMethods()
         {
-            Courses = new ObservableCollection<Course>(await AppService.GetInstance().GetCourses());
+            bool success = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
+            if (!success)
+            {
+                // TODO: handle error
+                return;
+            }
+            Courses = new ObservableCollection<Course>(AppService.GetInstance().GetCourses());
         }
         //public void DeleteItem(object obgMsg)
         //{

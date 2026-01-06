@@ -21,7 +21,7 @@ namespace benProj.Service
     {
         public static AppService serviceRegister;
         private User user;
-        private List<Course> courses;
+        private List<Course> CoursesFromFirebase;
         private List<Models.Path> paths;
         //private List<Path> paths;
 
@@ -71,9 +71,9 @@ namespace benProj.Service
                 AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
                 //AuthDomain = "benproject26-57e58.firebaseapp.com", //כתובת התחברות
                 Providers = new FirebaseAuthProvider[] //רשימת אפשריות להתחבר
-              {
-          new EmailProvider() //אנחנו נשתמש בשירות חינמי של התחברות עם מייל
-              },
+                {
+                    new EmailProvider() //אנחנו נשתמש בשירות חינמי של התחברות עם מייל
+                },
                 UserRepository = new FileUserRepository("appUserData") //לא חובה, שם של קובץ בטלפון הפרטי שאפשר לשמור בו את מזהה ההתחברות כדי לא הכניס כל פעם את הסיסמא 
             };
             auth = new FirebaseAuthClient(config); //ההתחברות
@@ -84,13 +84,6 @@ namespace benProj.Service
               {
                   AuthTokenAsyncFactory = () => Task.FromResult(auth.User.Credential.IdToken)// מזהה ההתחברות של המשתמש עם השרת, הנתון נשמר במכשיר
               });
-        }
-
-        class FirebaseCourse
-        {
-            public string? CourseName { get; set; }
-            public string? Difficulty { get; set; }
-            public double? Distance { get; set; }
         }
 
         /// <summary>
@@ -151,7 +144,7 @@ namespace benProj.Service
             {
                 auth.SignOut();
                 loginAuthUser = null;
-                
+
                 return true;
             }
             catch
@@ -171,7 +164,7 @@ namespace benProj.Service
         }
         private void CreateFakeData()
         {
-            courses = new List<Course>()
+            CoursesFromFirebase = new List<Course>()
             {
                  new Course { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
                  new Course { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
@@ -187,24 +180,56 @@ namespace benProj.Service
 
 
 
-        public async Task<List<Course>> GetCourses()
+        public List<Course> GetCourses()
         {
-            return courses;
+            return CoursesFromFirebase;
         }
+
+        class FirebaseCourse
+        {
+            public string CourseName { get; set; }
+            public int Difficulty { get; set; }
+            public double Distance { get; set; }
+        }
+
+        public async Task<bool> GetCoursesFromFirebaseAsync()
+        {
+            try
+            {
+                var fbCourses = await client.Child("users").Child(auth.User.Uid).Child("courses").OnceAsync<FirebaseCourse>();
+
+                List<Course> parsedCourses = new();
+                foreach (var fbCourse in fbCourses)
+                {
+                    Course course = new Course
+                    {
+                        Id = fbCourse.Key,
+                        CourseName = fbCourse.Object.CourseName,
+                        Difficulty = fbCourse.Object.Difficulty,
+                        Distance = fbCourse.Object.Distance,
+                    };
+                    parsedCourses.Add(course);
+                }
+                CoursesFromFirebase = parsedCourses;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
         //public bool AddCourse(Cours cours)
         //{
         //    // Will add in DB
         //    courses.Add(cours);
         //    return true;
-
         //}
+
         //public bool DeleteCourse(Cours cours)
         //{
         //    courses.Remove(cours);
         //    return true;
         //}
-        
-
-
     }
 }
