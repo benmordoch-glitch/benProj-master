@@ -11,11 +11,11 @@ using System.Windows.Input;
 
 namespace benProj.ViewModels
 {
-    class CoursViewModel : ViewModelBase
+    class CourseViewModel : ViewModelBase
     {
         #region Get&Set
-        private ObservableCollection<Cours> courses;
-        public ObservableCollection<Cours> Courses
+        private ObservableCollection<Course> courses;
+        public ObservableCollection<Course> Courses
         {
             get { return courses; }
             set
@@ -65,7 +65,7 @@ namespace benProj.ViewModels
 
         //  public ICommand AddMessageCommand { get; set; }
         #endregion
-        public CoursViewModel()
+        public CourseViewModel()
         {
             /*DeleteItemCommand = new Command((item) => DeleteItem(item)); */// Currently this is a sync function , we will change it to async later
            /* AddCourseCommand = new Command(AddItem);*/ // Currently this is a sync function , we will change it to async later
@@ -74,7 +74,7 @@ namespace benProj.ViewModels
         #region Functions
         public async Task InitAsyncMethods()
         {
-            Courses = new ObservableCollection<Cours>(await AppService.GetInstance().GetCourses());
+            Courses = new ObservableCollection<Course>(await AppService.GetInstance().GetCourses());
         }
         //public void DeleteItem(object obgMsg)
         //{

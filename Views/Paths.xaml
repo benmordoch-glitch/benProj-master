@@ -15,7 +15,7 @@
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Cours">
+                <DataTemplate x:DataType="models:Course">
                     <Border StrokeThickness="10" >
                         <StackLayout Margin="5" BackgroundColor="White">
                             <Label

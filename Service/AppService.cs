@@ -21,7 +21,7 @@ namespace benProj.Service
     {
         public static AppService serviceRegister;
         private User user;
-        private List<Cours> courses;
+        private List<Course> courses;
         private List<Models.Path> paths;
         //private List<Path> paths;
 
@@ -86,7 +86,7 @@ namespace benProj.Service
               });
         }
 
-        class FirebaseCours
+        class FirebaseCourse
         {
             public string? CourseName { get; set; }
             public string? Difficulty { get; set; }
@@ -171,11 +171,11 @@ namespace benProj.Service
         }
         private void CreateFakeData()
         {
-            courses = new List<Cours>()
+            courses = new List<Course>()
             {
-                 new Cours { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
-                 new Cours { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
-                 new Cours { Id = "3", CourseName = "מרוץ אייל 25", Difficulty = 5, Distance = 15 }
+                 new Course { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
+                 new Course { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
+                 new Course { Id = "3", CourseName = "מרוץ אייל 25", Difficulty = 5, Distance = 15 }
             };
             //cours = new List<Path>()
             //{
@@ -187,7 +187,7 @@ namespace benProj.Service
 
 
 
-        public async Task<List<Cours>> GetCourses()
+        public async Task<List<Course>> GetCourses()
         {
             return courses;
         }

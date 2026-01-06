@@ -9,7 +9,7 @@ namespace benProj.Models
 {
     class Training
     {
-        Cours course;
+        Course course;
         DateTime date;
         TimeSpan timeSpan;
 

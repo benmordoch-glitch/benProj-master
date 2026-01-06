@@ -20,7 +20,7 @@
         Route="LoginPage" />
     <ShellContent
         Title="סוגי ריצות"
-        ContentTemplate="{DataTemplate views:CoursPage}"
+        ContentTemplate="{DataTemplate views:CoursePage}"
         Route="CoursePage"/>
     <ShellContent
         Title="ריצות ממוינות לפי שם"

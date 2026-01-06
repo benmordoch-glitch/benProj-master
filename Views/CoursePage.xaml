@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.CoursPage"
+             x:Class="benProj.Views.CoursePage"
              xmlns:models="clr-namespace:benProj.Models"
              xmlns:viewmodels="clr-namespace:benProj.ViewModels"
              
-             Title="CoursPage">
+             Title="CoursePage">
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
@@ -19,7 +19,7 @@
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Cours">
+                <DataTemplate x:DataType="models:Course">
                     <Border StrokeThickness="1" >
                         <StackLayout Margin="2" BackgroundColor="White">
                             <Label
@@ -48,7 +48,7 @@
                             <Button
                                 BackgroundColor="Red"
                                 Command="{Binding DeleteItemCommand,
-                                Source={x:RelativeSource AncestorType={x:Type viewmodels:CoursViewModel}, Mode=FindAncestorBindingContext}}"
+                                Source={x:RelativeSource AncestorType={x:Type viewmodels:CourseViewModel}, Mode=FindAncestorBindingContext}}"
                                 CommandParameter="{Binding .}"
                                 HorizontalOptions="Start"
                                 Text="מחיקת הריצה"
