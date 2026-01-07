@@ -44,6 +44,7 @@
                 <Setter Property="TextColor" Value="DarkCyan" />
             </Style>
             <!--  LoginPage  -->
+           
         </ResourceDictionary>
     </Application.Resources>
 </Application>

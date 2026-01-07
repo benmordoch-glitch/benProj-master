@@ -19,7 +19,7 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
     <ShellContent
-        Title="סוגי ריצות"
+        Title="עמוד הריצות שלך"
         ContentTemplate="{DataTemplate views:CoursePage}"
         Route="CoursePage"/>
     <ShellContent
@@ -34,4 +34,8 @@
         Title="מידע על המשתמש"
         ContentTemplate="{DataTemplate views:UserInfo}"
         Route="UserInfo"/>
+    <!--<ShellContent
+         Title="התנתקות"
+         ContentTemplate="{DataTemplate views:LogOut}"
+         Route="LogOut"/>-->
 </Shell>

@@ -142,7 +142,6 @@ namespace benProj.Service
             {
                 auth.SignOut();
                 loginAuthUser = null;
-
                 return true;
             }
             catch

@@ -60,9 +60,11 @@ namespace benProj.ViewModels
         }
         #endregion
 
+        public ICommand GoToPathCommand { get; set; }
         public CourseViewModel()
         {
             InitAsyncMethods();
+            //GoToPathCommand = new Command(async () => await GoToPathPage());
         }
 
         #region Functions
@@ -77,6 +79,10 @@ namespace benProj.ViewModels
             }
             Courses = new ObservableCollection<Course>(AppService.GetInstance().GetCourses());
         }
+        //public async Task GoToPathPage()
+        //{
+        //    await Shell.Current.GoToAsync("//Paths");
+        //}
         #endregion
         // In a common app this function would be called from a dedicated page
 

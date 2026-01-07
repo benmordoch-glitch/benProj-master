@@ -74,16 +74,16 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     passwordEntry = value;
-                    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
-                    bool isPasswordOk = Regex.IsMatch(value, pattern);
-                    if (!isPasswordOk)
-                    {
-                        PasswordError = "Password not valid!";
-                    }
-                    else
-                    {
-                        PasswordError = "";
-                    }
+                    //string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";    ///// לטפל בזה בעתיד 
+                    //bool isPasswordOk = Regex.IsMatch(value, pattern);
+                    //if (!isPasswordOk)
+                    //{
+                    //    PasswordError = "Password not valid!";
+                    //}
+                    //else
+                    //{
+                    //    PasswordError = "";
+                    //}
                     HandleButtonLogin();
                     OnPropertyChanged();
                 }

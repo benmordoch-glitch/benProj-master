@@ -26,8 +26,11 @@
                              TextDecorations="Underline"  />
 
 
-                            <Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>
+                            <!--<Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>-->
                             <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
+                            
+                            
+                            
                             <Grid ColumnDefinitions="*,*,*,*"
                                RowDefinitions="*,*,*">
                                 <Ellipse
