@@ -11,25 +11,25 @@
         
     </ToolbarItem>-->
     <ShellContent
+     Title="התחברות"
+     ContentTemplate="{DataTemplate views:LoginPage}"
+     Route="LoginPage" />
+    
+    <ShellContent
         Title="הרשמה"
         ContentTemplate="{DataTemplate views:RegisterPage}"
         Route="RegisterPage" />
+   
     <ShellContent
-        Title="התחברות"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage" />
-    <ShellContent
-        Title="עמוד הריצות שלך"
+        Title="מסלולים"
         ContentTemplate="{DataTemplate views:CoursePage}"
         Route="CoursePage"/>
+    
     <ShellContent
-        Title="ריצות ממוינות לפי שם"
-        ContentTemplate="{DataTemplate views:Paths}"
-        Route="Paths"/>
-    <ShellContent
-        Title="מידע כולל על הריצה"
+        Title="אימונים"
         ContentTemplate="{DataTemplate views:TrainingListPage}"
         Route="TriningListPage"/>
+       
     <ShellContent
         Title="מידע על המשתמש"
         ContentTemplate="{DataTemplate views:UserInfo}"

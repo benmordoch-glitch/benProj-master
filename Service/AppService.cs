@@ -22,6 +22,7 @@ namespace benProj.Service
         public static AppService serviceRegister;
         private User user;
         private List<Course> CoursesFromFirebase;
+        private List<Training> Trainings;
         private List<Models.Path> paths;
         //private List<Path> paths;
 
@@ -29,28 +30,6 @@ namespace benProj.Service
         static FirebaseAuthClient? auth;
         static FirebaseClient? client;
         static public AuthCredential? loginAuthUser;
-        /*
-         
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "firebase/app";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyDAIwCb7vp-MBOrhIFW0EiXLLqo0tx5iCI",
-          authDomain: "benproject26-57e58.firebaseapp.com",
-          databaseURL: "https://benproject26-57e58-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "benproject26-57e58",
-          storageBucket: "benproject26-57e58.firebasestorage.app",
-          messagingSenderId: "1064153240992",
-          appId: "1:1064153240992:web:4980bdcf74a0a0ab5840c5"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-         
-         */
 
         public static AppService GetInstance()
         {
@@ -159,28 +138,10 @@ namespace benProj.Service
         {
             return user;
         }
-        private void CreateFakeData()
-        {
-            CoursesFromFirebase = new List<Course>()
-            {
-                 new Course { Id = "1", CourseName = "ריצה בים", Difficulty = 3, Distance = 8 },
-                 new Course { Id = "2", CourseName = "ריצה בטיילת", Difficulty = 2, Distance = 5 },
-                 new Course { Id = "3", CourseName = "מרוץ אייל 25", Difficulty = 5, Distance = 15 }
-            };
-            //cours = new List<Path>()
-            //{
-            //     new Path { Id = "1", PathName = "ריצה בים" ,Distance = 8 },
-            //     new Path { Id = "2", PathName = "ריצה בטיילת" ,Distance = 5 },
-            //     new Path { Id = "3", PathName = "מרוץ אייל 25", Distance = 15 }
-            //};
-        }
 
 
 
-        public List<Course> GetCourses()
-        {
-            return CoursesFromFirebase;
-        }
+       
 
         class FirebaseCourse
         {
@@ -189,12 +150,8 @@ namespace benProj.Service
             public double Distance { get; set; }
         }
 
-        public async Task<bool> GetCoursesFromFirebaseAsync()
+        public async Task<List<Course>> GetCoursesFromFirebaseAsync()
         {
-            if (auth.User == null)
-            {
-                return false;
-            }
             try
             {
                 var fbCourses = await client.Child("users").Child(auth.User.Uid).Child("courses").OnceAsync<FirebaseCourse>();
@@ -212,14 +169,63 @@ namespace benProj.Service
                     parsedCourses.Add(course);
                 }
                 CoursesFromFirebase = parsedCourses;
+                return CoursesFromFirebase;
             }
             catch (Exception e)
             {
-                return false;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    e.Message,
+                    "OK"
+                );
+                return new List<Course>();
             }
-            return true;
         }
 
+        class FirebaseTraining
+        {
+            public string CourseID { get; set; }
+            public int StartDate { get; set; }
+            public int Duration { get; set; }
+        }
+        private Course GetCourseNameAccordingCourseID(string courseID)
+        {
+            return new Course();
+        }
+        public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
+        {
+            try
+            {
+                var result = await client.Child("users").Child(auth.User.Uid).Child("trainings").OnceAsync<FirebaseTraining>();
+                Trainings =  new List<Training>();
+                foreach (var t in result)
+                {
+                    Training training = new Training()
+                    {
+                        Id = t.Key,
+                        CourseRef = GetCourseNameAccordingCourseID(t.Object.CourseID), // we get uid of Course (t.Object.CourseID) and we have to find the Course class
+                        StartDate = DateTimeOffset.FromUnixTimeSeconds(t.Object.StartDate).DateTime,
+                        Duration =  TimeSpan.FromSeconds(t.Object.Duration)
+
+                    };
+                    Trainings.Add(training);
+                }
+
+                return Trainings;
+            }
+            catch (Exception e)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    e.Message,
+                    "OK"
+                );
+                return new List<Training>();
+            }
+    
+        }
+
+        
         //public bool AddCourse(Cours cours)
         //{
         //    // Will add in DB

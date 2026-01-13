@@ -9,13 +9,13 @@
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
-            Text="עמוד הריצות שלך"
+            Text="מסלולים"
             VerticalOptions="Center" />
 
         <CollectionView ItemsSource="{Binding Courses}">
 
             <CollectionView.EmptyView>
-                <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
+                <Label HorizontalTextAlignment="Center" Text="אין מסלולים." />
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>

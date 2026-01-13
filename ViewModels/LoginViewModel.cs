@@ -147,6 +147,9 @@ namespace benProj.ViewModels
                 });
             IsLoginEnable = true;
             ShowPassword = true;
+
+            EntryUserName = "ben@gmail.com";
+            PasswordEntry = "123456";
         }
 
         private void ResetField()

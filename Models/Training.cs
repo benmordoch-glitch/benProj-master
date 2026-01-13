@@ -9,9 +9,10 @@ namespace benProj.Models
 {
     class Training
     {
-        Course course;
-        DateTime date;
-        TimeSpan timeSpan;
+        public String Id { get; set; }
+        public Course CourseRef { get; set; } // ריצה בטיילת
+        public DateTime StartDate { get; set; } // יום ראשון ה5 למרס שעה 7:35
+        public TimeSpan Duration { get; set; } // שעתיים
 
 
     }

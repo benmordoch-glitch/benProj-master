@@ -25,6 +25,8 @@ namespace benProj.ViewModels
             }
         }
 
+        public List<Coordinate> path;
+
         private string courseName;
         public string CourseName
         {
@@ -58,9 +60,11 @@ namespace benProj.ViewModels
 
             }
         }
+
+
         #endregion
 
-        public ICommand GoToPathCommand { get; set; }
+        public ICommand GoToTrainingCommand { get; set; }
         public CourseViewModel()
         {
             InitAsyncMethods();
@@ -70,14 +74,8 @@ namespace benProj.ViewModels
         #region Functions
         public async Task InitAsyncMethods()
         {
-            bool success = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
-            if (!success)
-            {
-                // TODO: handle error
-                // ErrLabelMsg.Text = errMsg
-                return;
-            }
-            Courses = new ObservableCollection<Course>(AppService.GetInstance().GetCourses());
+            List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
+            Courses = new ObservableCollection<Course>(c);
         }
         //public async Task GoToPathPage()
         //{
