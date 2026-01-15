@@ -188,9 +188,19 @@ namespace benProj.Service
             public int StartDate { get; set; }
             public int Duration { get; set; }
         }
-        private Course GetCourseNameAccordingCourseID(string courseID)
+        private Course GetCourseNameAccordingCourseID(string courseIDFromJson)
         {
-            return new Course();
+            // look in CoursesFromFirebase for a class Course with the uid of courseID
+  
+            foreach (Course c in CoursesFromFirebase)
+            {
+                if (c.Id == courseIDFromJson)
+                {
+                    return c;
+                }
+            }
+
+            return null;
         }
         public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
         {

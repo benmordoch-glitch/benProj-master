@@ -8,36 +8,51 @@
              Title="TrainingListPage">
     <VerticalStackLayout>
         <Label
-    HorizontalOptions="Center"
-    Text="עמוד הריצות שלך"
-    VerticalOptions="Center" />
+            HorizontalOptions="Center"
+            Text="אימונים"
+            VerticalOptions="Center" 
+            FontSize="25"
+                    />
 
         <CollectionView ItemsSource="{Binding Trainings}">
 
             <CollectionView.EmptyView>
-                <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
+                <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Training">
                     <Border StrokeThickness="1" >
                         <StackLayout Margin="2" BackgroundColor="White">
-                            <Label Text="{Binding StartDate}" HorizontalTextAlignment="Start" TextColor="blue"/>
-                            <Grid ColumnDefinitions="*,*,*,*"
-                              RowDefinitions="*,*,*">
-                                <Ellipse
-                            Grid.Column="0"
-                            Fill="{StaticResource BenPrimary }"
-                            HeightRequest="40"
-                            VerticalOptions="Center"
-                            WidthRequest="40" />
+                            <Label
+                                Text="{Binding StartDate}"
+                                HorizontalTextAlignment="End" 
+                                TextColor="blue"/>
+                            <Label
+                                 Text="{Binding CourseRef.CourseName}"
+                                 HorizontalTextAlignment="Center" 
+                                FontSize="20"
+                                 />
+                            <Label
+                                Text="Time in hours"
+                                HorizontalTextAlignment="Start" 
+                                TextColor="blue"/>
+                            <Grid 
+                                ColumnDefinitions="*,*,*,*"
+                                RowDefinitions="*,*,*">
+                                <Rectangle
+                                Grid.Column="0"
+                                Fill="{StaticResource BenPrimary }"
+                                HeightRequest="35"
+                                VerticalOptions="Center"
+                                WidthRequest="100"
+                                Margin="1"/>
                                 <Label
-                            FontSize="20"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Text="{Binding Duration}"
-                            TextColor="White"
-                             />
+                                FontSize="20"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Text="{Binding Duration}"
+                                TextColor="White" />
                             </Grid>
                         </StackLayout>
                     </Border>

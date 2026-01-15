@@ -10,7 +10,8 @@
         <Label
             HorizontalOptions="Center"
             Text="מסלולים"
-            VerticalOptions="Center" />
+            VerticalOptions="Center" 
+            FontSize="25"/>
 
         <CollectionView ItemsSource="{Binding Courses}">
 

@@ -2,12 +2,12 @@
   "users": {
     "yIKYJwEvpAdt5NMFPhn7s674EJr2": {
       "courses": {
-        "sgdjbjkhudfhdfSJHSDA": {
+        "uidHof": {
           "CourseName": "ריצה בחוף",
           "Difficulty": 5,
           "Distance": 10000
         },
-        "asfhjFHASFJASHFJSA": {
+        "uidLimon": {
           "CourseName": "סובב יער לימונים",
           "Difficulty": 1,
           "Distance": 2350
@@ -15,17 +15,17 @@
       },
       "trainings": {
         "uidTrainingU1": {
-          "CourseID": "sgdjbjkhudfhdfSJHSDA",
+          "CourseID": "uidLimon",
           "StartDate": 2156546,
           "Duration": 7200
         },
         "uidTrainingU2": {
-          "CourseID": "sdsfgr45e",
+          "CourseID": "uidLimon",
           "StartDate": 3453453,
           "Duration": 3496
         },
         "uidTrainingU3": {
-          "CourseID": "dhsdfsfdfs",
+          "CourseID": "uidLimon",
           "StartDate": 3453453,
           "Duration": 4888
         }
@@ -33,34 +33,39 @@
     },
     "46ubfWdPXXVeoarQI121h1eNwmZ2": {
       "courses": {
-        "svdasdsdasdasd": {
+        "uidTayelet": {
           "CourseName": "ריצה בטיילת",
           "Difficulty": 3,
           "Distance": 7500
         },
-        "DHSDhdsjnghvd": {
+        "uidMarathonJ": {
           "CourseName": "מרתון ירושלים",
           "Difficulty": 5,
           "Distance": 2350
+        },
+        "uidMarathonTLV": {
+          "CourseName": "מרתון תל אביב",
+          "Difficulty": 3,
+          "Distance": 4200
         }
       },
       "trainings": {
         "uidTrainingU1": {
-          "CourseID": "sdadsdasddd",
+          "CourseID": "uidTayelet",
           "StartDate": 298283,
           "Duration": 2000
         },
         "uidTrainingU2": {
-          "CourseID": "sdsfgr45e",
+          "CourseID": "uidMarathonJ",
           "StartDate": 3453453,
           "Duration": 5434
         },
         "uidTrainingU3": {
-          "CourseID": "dhsdfsfdfs",
+          "CourseID": "uidMarathonTLV",
           "StartDate": 3453453,
           "Duration": 4888
-        }
+        }                                                                         
       }
     }
   }
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
