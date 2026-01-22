@@ -13,51 +13,55 @@
             VerticalOptions="Center" 
             FontSize="25"
                     />
+        <ScrollView>
+            <VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Trainings}">
 
-        <CollectionView ItemsSource="{Binding Trainings}">
-
-            <CollectionView.EmptyView>
-                <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
-            </CollectionView.EmptyView>
-
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Training">
-                    <Border StrokeThickness="1" >
-                        <StackLayout Margin="2" BackgroundColor="White">
-                            <Label
-                                Text="{Binding StartDate}"
-                                HorizontalTextAlignment="End" 
-                                TextColor="blue"/>
-                            <Label
-                                 Text="{Binding CourseRef.CourseName}"
-                                 HorizontalTextAlignment="Center" 
-                                FontSize="20"
-                                 />
-                            <Label
-                                Text="Time in hours"
-                                HorizontalTextAlignment="Start" 
-                                TextColor="blue"/>
-                            <Grid 
-                                ColumnDefinitions="*,*,*,*"
-                                RowDefinitions="*,*,*">
-                                <Rectangle
-                                Grid.Column="0"
-                                Fill="{StaticResource BenPrimary }"
-                                HeightRequest="35"
-                                VerticalOptions="Center"
-                                WidthRequest="100"
-                                Margin="1"/>
-                                <Label
-                                FontSize="20"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                Text="{Binding Duration}"
-                                TextColor="White" />
-                            </Grid>
-                        </StackLayout>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    <CollectionView.EmptyView>
+                        <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
+                    </CollectionView.EmptyView>
+            
+            
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Training">
+                            <Border StrokeThickness="1" >
+                                <StackLayout Margin="2" BackgroundColor="White">
+                                    <Label
+                                        Text="{Binding StartDate}"
+                                        HorizontalTextAlignment="End" 
+                                        TextColor="blue"/>
+                                    <Label
+                                         Text="{Binding CourseRef.CourseName}"
+                                         HorizontalTextAlignment="Center" 
+                                        FontSize="20"
+                                         />
+                                    <Label
+                                        Text="Time in hours"
+                                        HorizontalTextAlignment="Start" 
+                                        TextColor="blue"/>
+                                    <Grid 
+                                        ColumnDefinitions="*,*,*,*"
+                                        RowDefinitions="*,*,*">
+                                        <Rectangle
+                                        Grid.Column="0"
+                                        Fill="{StaticResource BenPrimary }"
+                                        HeightRequest="35"
+                                        VerticalOptions="Center"
+                                        WidthRequest="100"
+                                        Margin="1"/>
+                                        <Label
+                                        FontSize="20"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Text="{Binding Duration}"
+                                        TextColor="White" />
+                                    </Grid>
+                                </StackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+      </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

@@ -24,7 +24,7 @@
                 FontSize="13"
                 HorizontalOptions="Center"
                TextColor="White"
-                Text="ברוכים הבאים לימוד הכניסה"
+                Text="ברוכים הבאים "
                 VerticalOptions="Center" />
         <!--  End title  -->
 
@@ -84,7 +84,6 @@
              HorizontalOptions="Fill"
              VerticalOptions="Center"
              Text="הרשמה"
-      
              Command="{Binding EnterAppCommand}" />
 
             <Button

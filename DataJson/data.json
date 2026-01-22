@@ -64,8 +64,23 @@
           "CourseID": "uidMarathonTLV",
           "StartDate": 3453453,
           "Duration": 4888
-        }                                                                         
+        },
+        "uidTrainingU4": {
+          "CourseID": "uidTayelet",
+          "StartDate": 30000,
+          "Duration": 2345
+        },
+        "uidTrainingU5": {
+          "CourseID": "uidMarathonJ",
+          "StartDate": 12345,
+          "Duration": 7654
+        },
+        "uidTrainingU6": {
+          "CourseID": "uidMarathonJ",
+          "StartDate": 9384,
+          "Duration": 2376
+        }
       }
     }
   }
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+} 

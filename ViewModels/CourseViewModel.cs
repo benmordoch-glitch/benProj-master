@@ -68,7 +68,7 @@ namespace benProj.ViewModels
         public CourseViewModel()
         {
             InitAsyncMethods();
-            //GoToPathCommand = new Command(async () => await GoToPathPage());
+            GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
         }
 
         #region Functions
@@ -77,10 +77,10 @@ namespace benProj.ViewModels
             List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
             Courses = new ObservableCollection<Course>(c);
         }
-        //public async Task GoToPathPage()
-        //{
-        //    await Shell.Current.GoToAsync("//Paths");
-        //}
+        public async Task GoToTrainingListPageAsync()
+        {
+            await Shell.Current.GoToAsync("//TrainingListPage");
+        }
         #endregion
         // In a common app this function would be called from a dedicated page
 

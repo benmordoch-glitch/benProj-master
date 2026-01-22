@@ -28,7 +28,7 @@
     <ShellContent
         Title="אימונים"
         ContentTemplate="{DataTemplate views:TrainingListPage}"
-        Route="TriningListPage"/>
+        Route="TrainingListPage"/>
        
     <ShellContent
         Title="מידע על המשתמש"

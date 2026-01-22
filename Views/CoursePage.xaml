@@ -26,30 +26,58 @@
                             <Label
                                 HorizontalTextAlignment="Center"
                                 FontAttributes="Bold" 
+                                FontSize="15"
                                 Text="{Binding CourseName}" 
                                 TextDecorations="Underline"  />
-                            <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
-                            <Grid ColumnDefinitions="*,*,*,*"
-                                      RowDefinitions="*,*,*">
+                            <HorizontalStackLayout>
+                            <Label 
+                                Text="{Binding Distance}" 
+                                HorizontalTextAlignment="Start" 
+                                TextColor="blue"/>
+                                <Label 
+                                Text="מרחק במטרים=>" 
+                                HorizontalTextAlignment="Start" 
+                                TextColor="blue"/>
+
+                            </HorizontalStackLayout>
+                            <Grid 
+                                ColumnDefinitions="*,*,*"
+                                RowDefinitions="*,*,*">
                                 <Ellipse
-                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Grid.Column="3"
                                     Fill="{StaticResource BenPrimary }"
                                     HeightRequest="40"
-                                    VerticalOptions="Center"
                                     WidthRequest="40" />
                                 <Label
+                                    Grid.Row="1"
+                                    Grid.Column="3"
                                     FontSize="20"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     Text="{Binding Difficulty}"
                                     TextColor="White"
                                      />
+                                <Label 
+                                     Grid.Column="3"
+                                    Text="רמת קושי" 
+                                    HorizontalTextAlignment="Center" 
+                                    TextColor="blue"/>
                             </Grid>
                         </StackLayout>
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+       <Button
+           IsEnabled="True"
+           FontSize="20"
+           Background="Transparent"
+           TextColor="{StaticResource BenPrimary}"
+           HorizontalOptions="Fill"
+           Text="להמשך מידע" 
+           Command="{Binding GoToTrainingCommand}"/>
 
     </VerticalStackLayout>
 </ContentPage>
