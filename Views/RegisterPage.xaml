@@ -31,36 +31,38 @@
   
                
             <ScrollView   >
-            
-                    <VerticalStackLayout Spacing="15" >
-                 
 
-
-                    <Entry Placeholder="Private Name" Text="{Binding EntryPrivateName}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorPrivateName}" />
-
-
-
-                    <Entry Placeholder="Family Name" Text="{Binding EntryFamilyName}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorFamilyName}" />
-
-
-
-
-                    <Entry Placeholder="User Name" Text="{Binding EntryUserName}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
-
-
-
-
-                    <Entry Placeholder="Email" Text="{Binding EntryEmail}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorEmail}" />
-
-
-
-
-                    <DatePicker Date="{Binding EntryBirthDate}" Style="{StaticResource errorDatePicker}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorBirthDate}" />
+                <VerticalStackLayout Spacing="15" >
+                    <Entry 
+                        Placeholder="Private Name" 
+                        Text="{Binding EntryPrivateName}" />
+                    <Label 
+                        Style="{StaticResource errorLabel}" 
+                        Text="{Binding LblErrorPrivateName}" />
+                    <Entry 
+                        Placeholder="Family Name" 
+                        Text="{Binding EntryFamilyName}" />
+                    <Label
+                        Style="{StaticResource errorLabel}" 
+                        Text="{Binding LblErrorFamilyName}" />
+                    <Entry 
+                        Placeholder="User Name" 
+                        Text="{Binding EntryUserName}" />
+                    <Label 
+                        Style="{StaticResource errorLabel}" 
+                        Text="{Binding LblErrorUserName}" />
+                    <Entry 
+                        Placeholder="Email" 
+                        Text="{Binding EntryEmail}" />
+                    <Label 
+                        Style="{StaticResource errorLabel}" 
+                        Text="{Binding LblErrorEmail}" />
+                    <DatePicker 
+                        Date="{Binding EntryBirthDate}" 
+                        Style="{StaticResource errorDatePicker}" />
+                    <Label 
+                        Style="{StaticResource errorLabel}" 
+                        Text="{Binding ErrorBirthDate}" />
                         
                     
 
@@ -85,10 +87,7 @@
                         <!--Clicked="OnShowPassButtonClicked"-->
                     </Grid>
                     <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorPassword}" />
-                        
-                        
-                    
-                    <Entry
+                      <Entry
                         IsPassword="True"
                         Placeholder="RetypePassword"
                         Text="{Binding ReTypePass}" />

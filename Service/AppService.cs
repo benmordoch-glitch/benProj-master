@@ -69,25 +69,55 @@ namespace benProj.Service
         /// <param name="userNameString"></param>
         /// <param name="passwordString"></param>
         /// <returns></returns>
-        public async Task<bool> TryRegister(string userNameString, string passwordString)
-        {
-            try
-            {
-                var respond = await auth.CreateUserWithEmailAndPasswordAsync(userNameString, passwordString);
-                // User is signed up and logged in
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+        //public async Task<bool> TryRegister(string userNameString, string passwordString, string privateName,string familyName)
+        //{
+        //    try
+        //    {
+        //        // 1: Create a user in Firebase with an Email and Password.
+        //        var respond = await auth.CreateUserWithEmailAndPasswordAsync(userNameString, passwordString);
+        //        // 2: User was created and also user is also Logged in
+        //        // 3: We Store the Uid of the user
+        //        fullDetaillsLoggedInUser = new AuthUser()
+        //        {
+        //            Email = respond.User.Info.Email,
+        //            Id = respond.User.Uid,
+        //            FullName = fullName
+        //        };
+        //        // 3: We can continue and add more details about the user but this time in the firebase Database
+        //        // Example: saving the full name
+        //        await client
+        //            .Child("users")
+        //            .Child(fullDetaillsLoggedInUser.Id)
+        //            .PutAsync(new
+        //            {
+        //                fullName = fullName
+        //            });
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await Application.Current.MainPage.DisplayAlert(
+        //            "Error",
+        //            ex.Message,
+        //            "OK"
+        //        );
+
+        //        return false;
+        //    }
+        //}
         /// <summary>
         /// Try login
         /// </summary>
         /// <param name="userNameString"></param>
         /// <param name="passwordString"></param>
         /// <returns></returns>
+        /// 
+        class FirebasePrivateData()
+        {
+            public string? privateName {  get; set; }
+            public string? familyName {  get; set; }
+        }
         public async Task<bool> TryLoginAsync(string userNameString, string passwordString)
         {
             if (userNameString == null || passwordString == null)
@@ -98,6 +128,10 @@ namespace benProj.Service
             {
                 var authUser = await auth.SignInWithEmailAndPasswordAsync(userNameString, passwordString);
                 loginAuthUser = authUser.AuthCredential;
+                string uid = authUser.User.Uid;
+
+                //var userData = await client.Child("users").Child(uid).Child("privateData").OnceAsync<FirebasePrivateData>();
+                var userData = await client.Child("users").Child(uid).Child("privateData").OnceSingleAsync<FirebasePrivateData>();
                 // Authentication successful 
                 // We keep the token or Credential in loginAuthUser, so we can erase it later in logout
                 // You can access the authenticated user's details via authUser.User
@@ -109,9 +143,13 @@ namespace benProj.Service
 
                 return true;
             }
-            catch (FirebaseAuthException ex)
+            catch (FirebaseAuthException e)
             {
-                // Authentication failed
+                await Application.Current.MainPage.DisplayAlert(
+                   "Error",
+                   e.Message,
+                   "OK"
+               );
                 return false;
             }
         }
@@ -149,7 +187,7 @@ namespace benProj.Service
             public int Difficulty { get; set; }
             public double Distance { get; set; }
         }
-
+        
         public async Task<List<Course>> GetCoursesFromFirebaseAsync()
         {
             try
