@@ -62,7 +62,11 @@ namespace benProj.Service
                   AuthTokenAsyncFactory = () => Task.FromResult(auth.User.Credential.IdToken)// מזהה ההתחברות של המשתמש עם השרת, הנתון נשמר במכשיר
               });
         }
-
+        class FirebasePrivateData()
+        {
+            public string? privateName { get; set; }
+            public string? familyName { get; set; }
+        }
         /// <summary>
         /// Try Registerrrr 
         /// </summary>
@@ -113,11 +117,7 @@ namespace benProj.Service
         /// <param name="passwordString"></param>
         /// <returns></returns>
         /// 
-        class FirebasePrivateData()
-        {
-            public string? privateName {  get; set; }
-            public string? familyName {  get; set; }
-        }
+
         public async Task<bool> TryLoginAsync(string userNameString, string passwordString)
         {
             if (userNameString == null || passwordString == null)
@@ -166,8 +166,6 @@ namespace benProj.Service
                 return false;
             }
         }
-
-
         public void AddRegisteredUser(User u)
         {
             user = u;
@@ -176,11 +174,6 @@ namespace benProj.Service
         {
             return user;
         }
-
-
-
-       
-
         class FirebaseCourse
         {
             public string CourseName { get; set; }

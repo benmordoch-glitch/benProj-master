@@ -20,8 +20,6 @@
                     <CollectionView.EmptyView>
                         <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
                     </CollectionView.EmptyView>
-            
-            
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Training">
                             <Border StrokeThickness="1" >
@@ -43,18 +41,18 @@
                                         ColumnDefinitions="*,*,*,*"
                                         RowDefinitions="*,*,*">
                                         <Rectangle
-                                        Grid.Column="0"
-                                        Fill="{StaticResource BenPrimary }"
-                                        HeightRequest="35"
-                                        VerticalOptions="Center"
-                                        WidthRequest="100"
-                                        Margin="1"/>
+                                            Grid.Column="0"
+                                            Fill="{StaticResource BenPrimary }"
+                                            HeightRequest="35"
+                                            VerticalOptions="Center"
+                                            WidthRequest="100"
+                                            Margin="1"/>
                                         <Label
-                                        FontSize="20"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        Text="{Binding Duration}"
-                                        TextColor="White" />
+                                            FontSize="20"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Text="{Binding Duration}"
+                                            TextColor="White" />
                                     </Grid>
                                 </StackLayout>
                             </Border>
@@ -62,6 +60,6 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
-      </ScrollView>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

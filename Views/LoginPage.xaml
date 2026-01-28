@@ -83,7 +83,7 @@
              CornerRadius="20"
              HorizontalOptions="Fill"
              VerticalOptions="Center"
-             Text="הרשמה"
+             Text="היכנס"
              Command="{Binding EnterAppCommand}" />
 
             <Button
