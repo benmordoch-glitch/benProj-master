@@ -51,12 +51,7 @@
                     <Label 
                         Style="{StaticResource errorLabel}" 
                         Text="{Binding LblErrorUserName}" />
-                    <Entry 
-                        Placeholder="Email" 
-                        Text="{Binding EntryEmail}" />
-                    <Label 
-                        Style="{StaticResource errorLabel}" 
-                        Text="{Binding LblErrorEmail}" />
+                    
                     <DatePicker 
                         Date="{Binding EntryBirthDate}" 
                         Style="{StaticResource errorDatePicker}" />
@@ -117,6 +112,7 @@
                 Background="{StaticResource BenPrimary}"
                 CornerRadius="20"
                 HorizontalOptions="Fill"
+                IsEnabled="True"
                 VerticalOptions="Center"
                 Text="הרשמה"
                 Command="{Binding TryRegisterCommand}"

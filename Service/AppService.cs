@@ -30,6 +30,7 @@ namespace benProj.Service
         static FirebaseAuthClient? auth;
         static FirebaseClient? client;
         static public AuthCredential? loginAuthUser;
+        public User fullDetaillsLoggedInUser;
 
         public static AppService GetInstance()
         {
@@ -73,43 +74,61 @@ namespace benProj.Service
         /// <param name="userNameString"></param>
         /// <param name="passwordString"></param>
         /// <returns></returns>
-        //public async Task<bool> TryRegister(string userNameString, string passwordString, string privateName,string familyName)
-        //{
-        //    try
-        //    {
-        //        // 1: Create a user in Firebase with an Email and Password.
-        //        var respond = await auth.CreateUserWithEmailAndPasswordAsync(userNameString, passwordString);
-        //        // 2: User was created and also user is also Logged in
-        //        // 3: We Store the Uid of the user
-        //        fullDetaillsLoggedInUser = new AuthUser()
-        //        {
-        //            Email = respond.User.Info.Email,
-        //            Id = respond.User.Uid,
-        //            FullName = fullName
-        //        };
-        //        // 3: We can continue and add more details about the user but this time in the firebase Database
-        //        // Example: saving the full name
-        //        await client
-        //            .Child("users")
-        //            .Child(fullDetaillsLoggedInUser.Id)
-        //            .PutAsync(new
-        //            {
-        //                fullName = fullName
-        //            });
+        
+        public async Task<bool> TryRegisterAsync(string userNameString, string passwordString, string privateName, string familyName)
+        {
+            try
+            {
+                // 1: Create a user in Firebase with an Email and Password.
+                var respond = await auth.CreateUserWithEmailAndPasswordAsync(userNameString, passwordString);
+                // 2: User was created and also user is also Logged in
+                // 3: We Store the Uid of the user
+                if (respond != null)
+                {
+                   
+                    // 3: We can continue and add more details about the user but this time in the firebase Database
+                    // Example: saving the full name
+                    await client
+                        .Child("users")
+                        .Child(respond.User.Uid)
+                        .PutAsync(new
+                        {
+                            privateName = privateName,
+                            familyName = familyName
+                        });
 
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await Application.Current.MainPage.DisplayAlert(
-        //            "Error",
-        //            ex.Message,
-        //            "OK"
-        //        );
+                    fullDetaillsLoggedInUser = new User()
+                    {
+                        UserName = respond.User.Info.Email,
+                        Id = respond.User.Uid,
+                        PrivateName = privateName,
+                        FamilyName = familyName,
+                    };
+                    await Application.Current.MainPage.DisplayAlert(
+                   "Success",
+                   "Register Succeeded",
+                   "OK"
+               );
+                    return true;
+                }
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Register Failed",
+                    "OK"
+                );
+                return false;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    ex.Message,
+                    "OK"
+                );
 
-        //        return false;
-        //    }
-        //}
+                return false;
+            }
+        }
         /// <summary>
         /// Try login
         /// </summary>
@@ -129,7 +148,6 @@ namespace benProj.Service
                 var authUser = await auth.SignInWithEmailAndPasswordAsync(userNameString, passwordString);
                 loginAuthUser = authUser.AuthCredential;
                 string uid = authUser.User.Uid;
-
                 //var userData = await client.Child("users").Child(uid).Child("privateData").OnceAsync<FirebasePrivateData>();
                 var userData = await client.Child("users").Child(uid).Child("privateData").OnceSingleAsync<FirebasePrivateData>();
                 // Authentication successful 
@@ -166,14 +184,12 @@ namespace benProj.Service
                 return false;
             }
         }
-        public void AddRegisteredUser(User u)
-        {
-            user = u;
-        }
+
         public User GetUser()
         {
             return user;
         }
+
         class FirebaseCourse
         {
             public string CourseName { get; set; }

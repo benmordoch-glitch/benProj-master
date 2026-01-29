@@ -8,14 +8,13 @@
          ColumnSpacing="10"
          RowSpacing="10"
          RowDefinitions="auto,*,auto" >
-                    
+
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="{StaticResource BenPrimary}" Offset="0.0" />
                 <GradientStop Color="White" Offset="0.5" />
             </LinearGradientBrush>
         </Grid.Background>
-
         <Frame  BackgroundColor="#FFFFFF" Grid.Row="1">
             <ScrollView   >
                 <VerticalStackLayout Spacing="15" >
@@ -38,18 +37,17 @@
              RowDefinitions="*,*"
                                     >
             <Button
-         
-         Grid.Column="0"
-         Grid.ColumnSpan="2"
-         Grid.Row="0"
-         Background="{StaticResource BenPrimary}"
-         CornerRadius="20"
-         HorizontalOptions="Fill"
-         VerticalOptions="Center"
-         Text="הכנס בבקשה"
-         IsEnabled="{Binding IsRegisterEnable}"
-         Command="{Binding TryRegisterCommand}"
-             />
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="0"
+                 Background="{StaticResource BenPrimary}"
+                 CornerRadius="20"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Center"
+                 Text="הכנס בבקשה"
+                 IsEnabled="True"
+                 Command="{Binding GoToStartPageCommand}"
+            />
 
        
 

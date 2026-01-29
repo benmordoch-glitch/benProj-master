@@ -22,7 +22,7 @@ namespace benProj.ViewModels
             get { return isRegisterEnable; }
             set
             {
-                isRegisterEnable =! value;
+                isRegisterEnable = value;
                 OnPropertyChanged();
             }
         }
@@ -352,22 +352,21 @@ namespace benProj.ViewModels
         {
             GoToLoginCommand = new Command(async () => await GoToLogin());
             ResetCommand = new Command(ResetField);
-            TryRegisterCommand = new Command(TryRegister);
+            TryRegisterCommand = new Command(async () => await TryRegister());
             ShowPassCommand = new Command(() =>
             {
                 HidePass = !HidePass;
             });
-            IsRegisterEnable = true;
+            ResetField();
+            
 
             HidePass = true;
         }
 
-        public async Task GoToLogin()
-        {
-            await Shell.Current.GoToAsync("//LoginPage");
-        }
+       
         private void ResetField()
         {
+            IsRegisterEnable = false;
             EntryPrivateName = string.Empty;
             LblErrorPrivateName = string.Empty;
             EntryFamilyName = string.Empty;
@@ -390,31 +389,41 @@ namespace benProj.ViewModels
         /// </summary>
         private void HandleButtonRegister()
         {
-            if (string.Empty.Equals(LblErrorPrivateName) &&
-                string.Empty.Equals(LblErrorFamilyName) &&
-                string.Empty.Equals(LblErrorUserName )&&
-                string.Empty.Equals(LblErrorEmail)&&
-                string.Empty.Equals(ErrorPassword)&&  
-                string.Empty.Equals(ErrorReTypePass))
+            IsRegisterEnable = true;
+            //if (string.Empty.Equals(LblErrorPrivateName) &&
+            //    string.Empty.Equals(LblErrorFamilyName) &&
+            //    string.Empty.Equals(LblErrorUserName )&&
+            //    string.Empty.Equals(LblErrorEmail)&&
+            //    string.Empty.Equals(ErrorPassword)&&  
+            //    string.Empty.Equals(ErrorReTypePass))
+            //{
+            //    IsRegisterEnable = false;
+            //}
+            //else
+            //{
+            //    IsRegisterEnable = true;
+            //}
+        }
+
+        private async Task TryRegister()
+        {
+            if (isRegisterEnable)
             {
-                IsRegisterEnable = false;
+                AppService.GetInstance().TryRegisterAsync(EntryUserName, EntryPassword, EntryPrivateName, EntryFamilyName);
+               // await Shell.Current.GoToAsync("//TrainingListPage");
+               
+
             }
             else
             {
-                IsRegisterEnable = true;
+                LblErrorUserName = "zibi";
             }
-        }
 
-        private void TryRegister()
+        }
+        public async Task GoToLogin()
         {
-            if (IsRegisterEnable)
-            {
-                User u = new User() { UserName = EntryUserName, Password = EntryPassword };
-                AppService.GetInstance().AddRegisteredUser(u);
-            }
-            
+            await Shell.Current.GoToAsync("//LoginPage");
         }
-
 
         //    if (EntryUserName.Text.Length < 5)
         //    {
@@ -432,23 +441,6 @@ namespace benProj.ViewModels
         //    }
 
         //}
-        //private void Button_TogglePassword_Clicked(object sender, EventArgs e)
-        //{
-        //    EntryPassword.IsPassword = !EntryPassword.IsPassword;
-        //}
-        //// Button_GoToLogin_Clicked
-        //private void Button_GoToLogin_Clicked(object sender, EventArgs e)
-        //{
-        //    AppService sr = AppService.GetInstance();
-        //    sr.Name = EntryUserName.Text;
-        //    sr.FamilyName = EntryFamilyName.Text;
-        //    sr.UserName = EntryUserName.Text;
-        //    sr.Password = EntryPassword.Text;
-        //    sr.BirthDate = new DateOnly(EntryBirthDate.Date.Year, EntryBirthDate.Date.Month, EntryBirthDate.Date.Day);
-        //}
-        //private async void ButtonlinkToLogin_Clicked(object sender, EventArgs e)
-        //{
-        //    await Navigation.PushAsync(new LoginPage());
-        //}
+       
     }
 }
