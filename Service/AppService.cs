@@ -20,7 +20,6 @@ namespace benProj.Service
     class AppService
     {
         public static AppService serviceRegister;
-        private User user;
         private List<Course> CoursesFromFirebase;
         private List<Training> Trainings;
         private List<Models.Path> paths;
@@ -101,8 +100,8 @@ namespace benProj.Service
                     {
                         UserName = respond.User.Info.Email,
                         Id = respond.User.Uid,
-                        PrivateName = privateName,
-                        FamilyName = familyName,
+                        privateName = privateName,
+                        familyName = familyName,
                     };
                     await Application.Current.MainPage.DisplayAlert(
                    "Success",
@@ -150,6 +149,13 @@ namespace benProj.Service
                 string uid = authUser.User.Uid;
                 //var userData = await client.Child("users").Child(uid).Child("privateData").OnceAsync<FirebasePrivateData>();
                 var userData = await client.Child("users").Child(uid).Child("privateData").OnceSingleAsync<FirebasePrivateData>();
+                fullDetaillsLoggedInUser = new User()
+                {
+                    UserName = userNameString,
+                    Id = uid,
+                    privateName = userData.privateName,
+                    familyName = userData.familyName,
+                };
                 // Authentication successful 
                 // We keep the token or Credential in loginAuthUser, so we can erase it later in logout
                 // You can access the authenticated user's details via authUser.User
@@ -185,10 +191,7 @@ namespace benProj.Service
             }
         }
 
-        public User GetUser()
-        {
-            return user;
-        }
+
 
         class FirebaseCourse
         {
@@ -196,7 +199,6 @@ namespace benProj.Service
             public int Difficulty { get; set; }
             public double Distance { get; set; }
         }
-        
         public async Task<List<Course>> GetCoursesFromFirebaseAsync()
         {
             try
@@ -249,6 +251,8 @@ namespace benProj.Service
 
             return null;
         }
+
+
         public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
         {
             try

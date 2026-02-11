@@ -29,13 +29,18 @@
         Title="אימונים"
         ContentTemplate="{DataTemplate views:TrainingListPage}"
         Route="TrainingListPage"/>
-       
+
     <ShellContent
         Title="מידע על המשתמש"
         ContentTemplate="{DataTemplate views:UserInfo}"
         Route="UserInfo"/>
-    <!--<ShellContent
-         Title="התנתקות"
-         ContentTemplate="{DataTemplate views:LogOut}"
-         Route="LogOut"/>-->
+
+    <!--<ShellContent Title="קורסים" ContentTemplate="{DataTemplate views:CoursePage}">
+        <Shell.TitleView>
+            <Label Text="ברוכים הבאים לקורס" 
+               FontSize="20" 
+               TextColor="White" 
+               VerticalOptions="Center" />
+        </Shell.TitleView>
+    </ShellContent>-->
 </Shell>

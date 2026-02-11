@@ -58,10 +58,7 @@
                     <Label 
                         Style="{StaticResource errorLabel}" 
                         Text="{Binding ErrorBirthDate}" />
-                        
                     
-
-
                     <!--  Start password Grid  -->
                     <Grid ColumnDefinitions="*,Auto">
                         <Entry

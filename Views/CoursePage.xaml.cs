@@ -8,6 +8,6 @@ public partial class CoursePage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = new CourseViewModel();
-
+		//this.Title = "айоерйннн";    
     }
 }

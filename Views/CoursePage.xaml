@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:benProj.Models"
              xmlns:viewmodels="clr-namespace:benProj.ViewModels"
              
-             Title="CoursePage">
+             Title="מסלולים">
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
