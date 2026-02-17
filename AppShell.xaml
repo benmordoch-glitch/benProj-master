@@ -11,36 +11,28 @@
         
     </ToolbarItem>-->
     <ShellContent
-     Title="התחברות"
-     ContentTemplate="{DataTemplate views:LoginPage}"
-     Route="LoginPage" />
+         Title="התחברות"
+         ContentTemplate="{DataTemplate views:LoginPage}"
+         Route="LoginPage" />
     
     <ShellContent
-        Title="הרשמה"
-        ContentTemplate="{DataTemplate views:RegisterPage}"
-        Route="RegisterPage" />
-   
+         Title="הרשמה"
+         ContentTemplate="{DataTemplate views:RegisterPage}"
+         Route="RegisterPage" />
+
     <ShellContent
-        Title="מסלולים"
-        ContentTemplate="{DataTemplate views:CoursePage}"
-        Route="CoursePage"/>
-    
+         Title="מסלולים"
+         ContentTemplate="{DataTemplate views:CoursePage}"
+         Route="CoursePage"/>
+
     <ShellContent
-        Title="אימונים"
-        ContentTemplate="{DataTemplate views:TrainingListPage}"
-        Route="TrainingListPage"/>
+         Title="אימונים"
+         ContentTemplate="{DataTemplate views:TrainingListPage}"
+         Route="TrainingListPage"/>
 
     <ShellContent
         Title="מידע על המשתמש"
         ContentTemplate="{DataTemplate views:UserInfo}"
         Route="UserInfo"/>
 
-    <!--<ShellContent Title="קורסים" ContentTemplate="{DataTemplate views:CoursePage}">
-        <Shell.TitleView>
-            <Label Text="ברוכים הבאים לקורס" 
-               FontSize="20" 
-               TextColor="White" 
-               VerticalOptions="Center" />
-        </Shell.TitleView>
-    </ShellContent>-->
 </Shell>

@@ -40,17 +40,20 @@
                     <!--  שדה שני  -->
                     <Grid ColumnDefinitions="*,auto">
                         <Entry
-                        Grid.Row="1"
+                            Grid.Column="0"
                         Placeholder="Enter Password"
                         IsPassword="{Binding ShowPassword}"
                         Text="{Binding PasswordEntry}" />
 
-                        <Button Grid.Column="1" 
-                        WidthRequest="30" 
-                        ImageSource="eye.png" 
-                        IsEnabled="True"
-                        BackgroundColor="{StaticResource BenPrimary}"
-                        Command="{Binding ViewPassCommand}"/>
+                        <Button  
+                            Grid.Column="1" 
+                            HeightRequest="35"  
+                            WidthRequest="40" 
+                            
+                            ImageSource="eye.png" 
+                            IsEnabled="True"
+                            BackgroundColor="{StaticResource BenPrimary}"
+                            Command="{Binding ViewPassCommand}"/>
                     </Grid>
                     
                     <Label Style="{StaticResource errorLabel}" Text="{Binding PasswordError}" TextColor="Red" />
