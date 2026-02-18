@@ -73,7 +73,7 @@ namespace benProj.Service
         /// <param name="userNameString"></param>
         /// <param name="passwordString"></param>
         /// <returns></returns>
-        
+
         public async Task<bool> TryRegisterAsync(string userNameString, string passwordString, string privateName, string familyName)
         {
             try
@@ -84,7 +84,7 @@ namespace benProj.Service
                 // 3: We Store the Uid of the user
                 if (respond != null)
                 {
-                   
+
                     // 3: We can continue and add more details about the user but this time in the firebase Database
                     // Example: saving the full name
                     await client
@@ -240,7 +240,7 @@ namespace benProj.Service
         private Course GetCourseNameAccordingCourseID(string courseIDFromJson)
         {
             // look in CoursesFromFirebase for a class Course with the uid of courseID
-  
+
             foreach (Course c in CoursesFromFirebase)
             {
                 if (c.Id == courseIDFromJson)
@@ -258,7 +258,7 @@ namespace benProj.Service
             try
             {
                 var result = await client.Child("users").Child(auth.User.Uid).Child("trainings").OnceAsync<FirebaseTraining>();
-                Trainings =  new List<Training>();
+                Trainings = new List<Training>();
                 foreach (var t in result)
                 {
                     Training training = new Training()
@@ -266,7 +266,7 @@ namespace benProj.Service
                         Id = t.Key,
                         CourseRef = GetCourseNameAccordingCourseID(t.Object.CourseID), // we get uid of Course (t.Object.CourseID) and we have to find the Course class
                         StartDate = DateTimeOffset.FromUnixTimeSeconds(t.Object.StartDate).DateTime,
-                        Duration =  TimeSpan.FromSeconds(t.Object.Duration)
+                        Duration = TimeSpan.FromSeconds(t.Object.Duration)
 
                     };
                     Trainings.Add(training);
@@ -283,10 +283,38 @@ namespace benProj.Service
                 );
                 return new List<Training>();
             }
-    
+
         }
 
-        
+        public async Task<bool> SetPersonalGoal(PersonalGoalInfo personalGoal)
+        {
+            try
+            {
+                await client.Child("users").Child(auth.User.Uid).Child("personalGoal").PutAsync<PersonalGoalInfo>(personalGoal);
+                return true;
+            }
+            catch (Exception e)
+            {
+                // TODO: Display an Alert
+                return false;
+            }
+        }
+
+        public async Task<PersonalGoalInfo> GetPersonalGoal()
+        {
+            try
+            {
+                var goal = await client.Child("users").Child(auth.User.Uid).Child("personalGoal").OnceSingleAsync<PersonalGoalInfo>();
+                return goal;
+            }
+            catch (Exception e)
+            {
+                // TODO: Display an Alert
+                return null;
+            }
+        }
+
+
         //public bool AddCourse(Cours cours)
         //{
         //    // Will add in DB

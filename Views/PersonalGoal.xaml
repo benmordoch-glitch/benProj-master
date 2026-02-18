@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.UserInfo"
+             x:Class="benProj.Views.PersonalGoal"
              xmlns:models="clr-namespace:benProj.Models"
-             Title="UserInfo">
+             Title="{Binding FullName}">
     <Grid
          Padding="20,0,20,0" 
          ColumnSpacing="10"
@@ -16,23 +16,19 @@
                 <GradientStop Color="White" Offset="0.5" />
             </LinearGradientBrush>
         </Grid.Background>
-        
-        <Label
-              HorizontalTextAlignment="Center"
-              FontAttributes="Bold" 
-              FontSize="15"
-          
-            TextColor="Wheat"
-              Text="{Binding FullName}" 
-              TextDecorations="Underline"  />
+
         <Frame  BackgroundColor="#FFFFFF" Grid.Row="1">
             <ScrollView   >
                 <VerticalStackLayout Spacing="15" >
-                    <Entry Placeholder="כמה זמן את/ה בתחום הריצה?" Text="{Binding EntryTimeRunning}" HorizontalTextAlignment="End" />
+                    <!--<Entry Placeholder="כמה זמן את/ה בתחום הריצה?" Text="{Binding EntryTimeRunning}" HorizontalTextAlignment="End" />
                     <Entry Placeholder="?מה המטרה שאת/ה מנסה להשיג" Text="{Binding EntryGoal}" HorizontalTextAlignment="End" />
                     <Entry Placeholder="מה המשקל שלך?" Text="{Binding EntryStartWeight}" HorizontalTextAlignment="End"/>
-                    <Entry Placeholder="איזה דברים בריצה אתה לא מצליח ?" Text="{Binding EntryEmail}" HorizontalTextAlignment="End"/>
-                    <Entry Placeholder="איך הגעת אלינו?" Text="{Binding EntryHowKnowUs}" HorizontalTextAlignment="End"/>
+                    <Entry Placeholder="איזה דברים בריצה אתה לא מצליח ?" Text="{Binding EntryRunFailes}" HorizontalTextAlignment="End"/>
+                    <Entry Placeholder="איך הגעת אלינו?" Text="{Binding EntryHowKnowUs}" HorizontalTextAlignment="End"/>-->
+
+                    <Entry Placeholder="מה המטרה שאני רוצה להשיג?" Text="{Binding EntryGoal}" HorizontalTextAlignment="End" />
+                    <Entry Placeholder="מה המשקל שלך?" Text="{Binding EntryWeight}" HorizontalTextAlignment="End"/>
+                    <Entry Placeholder="איזה דבר אני משפר כרגע?" Text="{Binding EntryImprovingWhat}" HorizontalTextAlignment="End"/>
 
                 </VerticalStackLayout>
             </ScrollView>
@@ -53,9 +49,9 @@
                  CornerRadius="20"
                  HorizontalOptions="Fill"
                  VerticalOptions="Center"
-                 Text="הכנס בבקשה"
+                 Text="שלח"
                  IsEnabled="True"
-                 Command="{Binding GoToStartPageCommand}"
+                 Command="{Binding SendCmd}"
             />
 
        

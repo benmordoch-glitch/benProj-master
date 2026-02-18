@@ -79,6 +79,9 @@
 	  <Compile Update="Views\CoursePage.xaml.cs">
 	    <DependentUpon>CoursePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\PersonalGoal.xaml.cs">
+	    <DependentUpon>PersonalGoal.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -112,7 +115,7 @@
 	  <MauiXaml Update="Views\TrainingListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\UserInfo.xaml">
+	  <MauiXaml Update="Views\PersonalGoal.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

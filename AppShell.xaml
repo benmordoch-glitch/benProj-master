@@ -31,8 +31,8 @@
          Route="TrainingListPage"/>
 
     <ShellContent
-        Title="מידע על המשתמש"
-        ContentTemplate="{DataTemplate views:UserInfo}"
-        Route="UserInfo"/>
+        Title="מטרה אישית"
+        ContentTemplate="{DataTemplate views:PersonalGoal}"
+        Route="PersonalGoal"/>
 
 </Shell>
