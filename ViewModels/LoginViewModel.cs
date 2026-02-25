@@ -184,11 +184,11 @@ namespace benProj.ViewModels
             if (await AppService.GetInstance().TryLoginAsync(EntryUserName, PasswordEntry))
             {
                 LblErrorUserName = "It works";
-                await Shell.Current.GoToAsync("//CoursePage");
+                await Shell.Current.GoToAsync("//CreatingPath");
             }
             else
             {
-                LblErrorUserName = "zibi";
+                LblErrorUserName = "GET OUT";
             }
         }
 

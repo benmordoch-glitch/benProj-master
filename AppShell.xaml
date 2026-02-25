@@ -14,12 +14,17 @@
          Title="התחברות"
          ContentTemplate="{DataTemplate views:LoginPage}"
          Route="LoginPage" />
-    
+
     <ShellContent
          Title="הרשמה"
          ContentTemplate="{DataTemplate views:RegisterPage}"
          Route="RegisterPage" />
 
+    <ShellContent
+    Title="בניית מסלול"
+    ContentTemplate="{DataTemplate views:CreatingPath}"
+    Route="CreatingPath"/>
+    
     <ShellContent
          Title="מסלולים"
          ContentTemplate="{DataTemplate views:CoursePage}"
@@ -34,5 +39,7 @@
         Title="מטרה אישית"
         ContentTemplate="{DataTemplate views:PersonalGoal}"
         Route="PersonalGoal"/>
+
+
 
 </Shell>
