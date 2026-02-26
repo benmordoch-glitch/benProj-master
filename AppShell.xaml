@@ -21,9 +21,9 @@
          Route="RegisterPage" />
 
     <ShellContent
-    Title="בניית מסלול"
-    ContentTemplate="{DataTemplate views:CreatingPath}"
-    Route="CreatingPath"/>
+        Title="בניית מסלול"
+        ContentTemplate="{DataTemplate views:CreatingPath}"
+        Route="CreatingPath"/>
     
     <ShellContent
          Title="מסלולים"

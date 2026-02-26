@@ -10,7 +10,7 @@
              FontAttributes="Bold"
              FontSize="18"
              HorizontalOptions="Center"
-             Text="Location Path Drawing Sample" />
+             Text="התחלת אימון" />
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                 <Button
                  x:Name="butStartPause"

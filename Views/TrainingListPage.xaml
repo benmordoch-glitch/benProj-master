@@ -14,9 +14,8 @@
                 Text="אימונים"
                 VerticalOptions="Center" 
                 FontSize="25"
-        />
+                              />
             <CollectionView ItemsSource="{Binding Trainings}">
-
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
                 </CollectionView.EmptyView>
@@ -61,4 +60,19 @@
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
+   
+    <Button
+   IsEnabled="True"
+   Background="Transparent"
+   TextColor="{StaticResource BenPrimary}"
+   HorizontalOptions="Fill"
+   Text="ריצה חדשה" 
+   Command="{Binding AlertNewCourseCommand}"/>
+
+    <Button
+ 
+  HorizontalOptions="Center"
+  Text="Show Notification 2"
+  VerticalOptions="Center" />
+
 </ContentPage>
