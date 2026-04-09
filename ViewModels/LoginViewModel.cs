@@ -180,11 +180,11 @@ namespace benProj.ViewModels
         }
         private async Task TryLogin()
         {
-            Console.WriteLine(  333);
             if (await AppService.GetInstance().TryLoginAsync(EntryUserName, PasswordEntry))
             {
                 LblErrorUserName = "It works";
-                await Shell.Current.GoToAsync("//CreatingPath");
+                ((App)Application.Current).SetAuthenticatedShell();
+                //await Shell.Current.GoToAsync("//CreatingPath");
             }
             else
             {

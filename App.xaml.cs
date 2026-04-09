@@ -8,14 +8,17 @@ namespace benProj
         public App()
         {
             InitializeComponent();
-
-            MainPage = new AppShell();
-            //MainPage = new AboutMe();
-            //MainPage = new PlayGround();
-            //MainPage = new RegisterPage();
-            //MainPage = new LoginPage();
-
-
+            // default is unauthenticated shell
+            MainPage = new AppShellNotAuth();
         }
-    }
+        public void SetAuthenticatedShell()
+        {
+            MainPage = new AppShellAuth();
+        }
+
+        public void SetUnauthenticatedShell()
+        {
+            MainPage = new AppShellNotAuth(); ;
+        }
+    }   
 }
