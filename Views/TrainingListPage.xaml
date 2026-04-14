@@ -59,20 +59,21 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
-    </ScrollView>
    
-    <Button
+       </ScrollView>
+    <!--<Button
    IsEnabled="True"
    Background="Transparent"
    TextColor="{StaticResource BenPrimary}"
    HorizontalOptions="Fill"
    Text="ריצה חדשה" 
-   Command="{Binding AlertNewCourseCommand}"/>
+   Command="{Binding AlertNewCourseCommand}"/>-->
 
-    <Button
+
+    <!--<Button
  
   HorizontalOptions="Center"
   Text="Show Notification 2"
-  VerticalOptions="Center" />
+  VerticalOptions="Center" />-->
 
 </ContentPage>

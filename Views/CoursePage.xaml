@@ -23,6 +23,7 @@
                 <DataTemplate x:DataType="models:Course">
                     <Border StrokeThickness="1" >
                         <StackLayout Margin="2" BackgroundColor="White">
+                            
                             <Label
                                 HorizontalTextAlignment="Center"
                                 FontAttributes="Bold" 

@@ -201,6 +201,7 @@ namespace benProj.Service
         }
         public async Task<List<Course>> GetCoursesFromFirebaseAsync()
         {
+            //if list of Courses is empty, get it from the Firebase
             try
             {
                 var fbCourses = await client.Child("users").Child(auth.User.Uid).Child("courses").OnceAsync<FirebaseCourse>();
@@ -234,8 +235,8 @@ namespace benProj.Service
         class FirebaseTraining
         {
             public string CourseID { get; set; }
-            public int StartDate { get; set; }
-            public int Duration { get; set; }
+            public long StartDate { get; set; }
+            public double Duration { get; set; }
         }
         private Course GetCourseNameAccordingCourseID(string courseIDFromJson)
         {
@@ -257,6 +258,13 @@ namespace benProj.Service
         {
             try
             {
+                var sss = await client
+      .Child("users")
+      .Child(auth.User.Uid)
+      .Child("trainings")
+      .OnceAsync<Dictionary<string, object>>();
+
+
                 var result = await client.Child("users").Child(auth.User.Uid).Child("trainings").OnceAsync<FirebaseTraining>();
                 Trainings = new List<Training>();
                 foreach (var t in result)
@@ -265,8 +273,8 @@ namespace benProj.Service
                     {
                         Id = t.Key,
                         CourseRef = GetCourseNameAccordingCourseID(t.Object.CourseID), // we get uid of Course (t.Object.CourseID) and we have to find the Course class
-                        StartDate = DateTimeOffset.FromUnixTimeSeconds(t.Object.StartDate).DateTime,
-                        Duration = TimeSpan.FromSeconds(t.Object.Duration)
+                       // StartDate = DateTimeOffset.FromUnixTimeSeconds(t.Object.StartDate).DateTime,
+                       // Duration = TimeSpan.FromSeconds(t.Object.Duration)
 
                     };
                     Trainings.Add(training);
