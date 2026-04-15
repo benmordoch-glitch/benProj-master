@@ -33,7 +33,7 @@
                                         FontSize="20"
                                          />
                                 <Label
-                                        Text="Time in hours"
+                                        Text="זמן בדקות"
                                         HorizontalTextAlignment="Start" 
                                         TextColor="blue"/>
                                 <Grid 
