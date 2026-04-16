@@ -252,48 +252,38 @@ namespace benProj.Service
 
             return null;
         }
+        public List<Training> GetFilteredTraining(string courseName)
+        {
+            List<Training> filteredTrainings = new List<Training>();
+            foreach (Training tr in Trainings)
+            {
+                if (tr.CourseRef.CourseName == courseName)
+                {
+                    filteredTrainings.Add(tr);
+                }
+            }
+            return filteredTrainings;
+
+        }
 
         public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
         {
             try
             {
-                var result = await client
-                    .Child("users")
-                    .Child(auth.User.Uid)
-                    .Child("trainings")
-                    .OnceAsync<FirebaseTraining>();
-
+                var result = await client.Child("users").Child(auth.User.Uid).Child("trainings").OnceAsync<FirebaseTraining>();
                 Trainings = new List<Training>();
 
                 foreach (var t in result)
                 {
-                    var val = t.Object.StartDate;
-
-                    // הגנה מפני ערכים לא תקינים
-                    DateTime startDate;
-
-                    if (val.ToString().Length > 10)
-                    {
-                        // מילישניות
-                        startDate = DateTimeOffset
-                            .FromUnixTimeMilliseconds(val)
-                            .LocalDateTime;
-                    }
-                    else
-                    {
-                        // שניות
-                        startDate = DateTimeOffset
-                            .FromUnixTimeSeconds(val)
-                            .LocalDateTime;
-                    }
-
                     Training training = new Training()
                     {
                         Id = t.Key,
-                        CourseRef = GetCourseNameAccordingCourseID(t.Object.CourseID),
-                        StartDate = startDate
-                    };
 
+                        CourseRef = GetCourseNameAccordingCourseID(t.Object.CourseID), // we get uid of Course (t.Object.CourseID) and we have to find the Course class
+                        StartDate = DateTimeOffset.FromUnixTimeMilliseconds(t.Object.StartDate).DateTime,
+                        Duration = TimeSpan.FromSeconds(t.Object.Duration)
+
+                    };
                     Trainings.Add(training);
                 }
 
@@ -306,54 +296,10 @@ namespace benProj.Service
                     e.Message,
                     "OK"
                 );
-
                 return new List<Training>();
             }
+
         }
-
-        //public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
-        //{
-        //    try
-        //    {
-        //        var sss = await client
-        //          .Child("users")
-        //          .Child(auth.User.Uid)
-        //          .Child("trainings")
-        //          .OnceAsync<Dictionary<string, object>>();
-
-
-        //        var result = await client.Child("users").Child(auth.User.Uid).Child("trainings").OnceAsync<FirebaseTraining>();
-        //        Trainings = new List<Training>();
-
-        //        foreach (var t in result)
-        //        {
-        //            Training training = new Training()
-        //            {
-        //                Id = t.Key,
-
-        //                CourseRef = GetCourseNameAccordingCourseID(t.Object.CourseID), // we get uid of Course (t.Object.CourseID) and we have to find the Course class
-        //                StartDate = DateTimeOffset.FromUnixTimeSeconds(t.Object.StartDate).DateTime,
-
-        //                //StartDate = DateTimeOffset.FromUnixTimeSeconds(t.Object.StartDate).LocalDateTime,
-        //                //Duration = TimeSpan.FromSeconds(t.Object.Duration)
-
-        //            };
-        //            Trainings.Add(training);
-        //        }
-
-        //        return Trainings;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        await Application.Current.MainPage.DisplayAlert(
-        //            "Error",
-        //            e.Message,
-        //            "OK"
-        //        );
-        //        return new List<Training>();
-        //    }
-
-        //}
 
         public async Task<bool> SetPersonalGoal(PersonalGoalInfo personalGoal)
         {
@@ -383,6 +329,7 @@ namespace benProj.Service
             }
         }
 
+        
 
         //public bool AddCourse(Cours cours)
         //{

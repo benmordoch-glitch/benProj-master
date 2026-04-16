@@ -37,19 +37,12 @@ namespace benProj.ViewModels
         #region Functions
 
 
-        public async void butNotification2_Clicked(object sender, EventArgs e)
-        {
-          var popup = new CourseSelector();
-         // var result = await this.ShowPopupAsync(popup);
-
-        }
+       
         public async Task InitAsyncMethods()
         {
             List<Training> t = await AppService.GetInstance().GetTrainingsFromFirebaseAsync();
             Trainings = new ObservableCollection<Training>(t);
         }
-    
-
         #endregion
     }
 

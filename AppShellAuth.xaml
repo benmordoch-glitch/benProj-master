@@ -7,17 +7,14 @@
  xmlns:views="clr-namespace:benProj.Views"
  Title="benProj"
      Shell.FlyoutBehavior="Flyout" FlowDirection="LeftToRight" Background="Transparent">
-   
 
     <ShellContent
-    Title="בניית מסלול"
-    ContentTemplate="{DataTemplate views:CreatingPath}"
-    Route="CreatingPath"/>
+ Title="מסלולים"
+ ContentTemplate="{DataTemplate views:CoursePage}"
+ Route="CoursePage"/>
 
-    <ShellContent
-     Title="מסלולים"
-     ContentTemplate="{DataTemplate views:CoursePage}"
-     Route="CoursePage"/>
+
+
 
     <ShellContent
      Title="אימונים"
@@ -28,6 +25,11 @@
     Title="מטרה אישית"
     ContentTemplate="{DataTemplate views:PersonalGoal}"
     Route="PersonalGoal"/>
+
+    <ShellContent
+    Title="בניית מסלול"
+    ContentTemplate="{DataTemplate views:CreatingPath}"
+    Route="CreatingPath" IsVisible="False"/>
 
     <MenuItem Clicked="MenuItem_Logout_Clicked" Text="Logout" />
 </Shell>

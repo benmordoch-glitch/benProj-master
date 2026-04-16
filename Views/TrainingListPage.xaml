@@ -4,6 +4,7 @@
              x:Class="benProj.Views.TrainingListPage"
              xmlns:models="clr-namespace:benProj.Models"
              xmlns:viewmodels="clr-namespace:benProj.ViewModels"
+             xmlns:comp="clr-namespace:benProj.Components"
              
              Title="TrainingListPage">
 
@@ -13,12 +14,15 @@
                 HorizontalOptions="Center"
                 Text="אימונים"
                 VerticalOptions="Center" 
-                FontSize="25"
-                              />
+                FontSize="25" />
+           
+            
             <CollectionView ItemsSource="{Binding Trainings}">
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
                 </CollectionView.EmptyView>
+                
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Training">
                         <Border StrokeThickness="1" >
