@@ -49,6 +49,7 @@
                                 <Label 
                                  Text="רמת קושי=>" 
                                  HorizontalTextAlignment="End"
+                                    FontAttributes=" 44"
                                                           />
                             </Grid>
                         </StackLayout>
