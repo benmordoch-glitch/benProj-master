@@ -15,63 +15,75 @@
                 Text="אימונים"
                 VerticalOptions="Center" 
                 FontSize="25" />
-           
-            
+
+            <Picker ItemsSource="{Binding CoursesOption}"/>
             <CollectionView ItemsSource="{Binding Trainings}">
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
                 </CollectionView.EmptyView>
-                
-                
+
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Training">
                         <Border StrokeThickness="1" >
                             <StackLayout Margin="2" BackgroundColor="White">
-                                <Label
+                                <Grid RowDefinitions="*,*"
+                                      ColumnDefinitions="*,*,*" >
+                                    
+                                    <Label Grid.Column="0"
                                         Text="{Binding StartDate}"
-                                        HorizontalTextAlignment="End" 
-                                        TextColor="blue"/>
-                                <Label
+                                        HorizontalTextAlignment="Start" 
+                                        TextColor="#f44336"/>
+
+                                    <Label Grid.Column="1"
                                          Text="{Binding CourseRef.CourseName}"
                                          HorizontalTextAlignment="Center" 
-                                        FontSize="20"
-                                         />
-                                <Label
+                                         FontSize="20"/>
+                                    
+                                    <Label  Grid.Column="2" Grid.Row="2"
                                         Text="זמן בדקות"
-                                        HorizontalTextAlignment="Start" 
+                                        HorizontalTextAlignment="Center" 
+                                            FontSize="19"
                                         TextColor="blue"/>
+                                </Grid>
                                 <Grid 
                                         ColumnDefinitions="*,*,*,*"
                                         RowDefinitions="*,*,*">
-                                    <Rectangle
-                                            Grid.Column="0"
+                                    <Rectangle Grid.Row="2" 
+                                            Grid.Column="3"
+                                               
                                             Fill="{StaticResource BenPrimary }"
                                             HeightRequest="35"
                                             VerticalOptions="Center"
                                             WidthRequest="100"
                                             Margin="1"/>
                                     <Label
-                                            FontSize="20"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"
-                                            Text="{Binding Duration}"
-                                            TextColor="White" />
+                                        
+                                        Grid.Row="2"
+                                        Grid.Column="3"
+                                        FontSize="20"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Text="{Binding Duration}"
+                                        TextColor="White" />
                                 </Grid>
+                                <Button
+                                    CornerRadius="100"
+                                    BackgroundColor="Beige"
+                                    IsEnabled="True"
+                                    TextColor="Blue"
+                                    Text="הוספת ריצה"
+                               />
+
                             </StackLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
-   
-       </ScrollView>
-    <!--<Button
-   IsEnabled="True"
-   Background="Transparent"
-   TextColor="{StaticResource BenPrimary}"
-   HorizontalOptions="Fill"
-   Text="ריצה חדשה" 
-   Command="{Binding AlertNewCourseCommand}"/>-->
+
+    </ScrollView>
+
 
 
     <!--<Button

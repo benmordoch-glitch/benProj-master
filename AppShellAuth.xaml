@@ -9,12 +9,9 @@
      Shell.FlyoutBehavior="Flyout" FlowDirection="LeftToRight" Background="Transparent">
 
     <ShellContent
- Title="מסלולים"
- ContentTemplate="{DataTemplate views:CoursePage}"
- Route="CoursePage"/>
-
-
-
+     Title="מסלולים"
+     ContentTemplate="{DataTemplate views:CoursePage}"
+     Route="CoursePage"/>
 
     <ShellContent
      Title="אימונים"

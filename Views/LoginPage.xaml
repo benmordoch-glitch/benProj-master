@@ -88,7 +88,7 @@
              VerticalOptions="Center"
              Text="היכנס"
              Command="{Binding EnterAppCommand}" />
-
+                    
             <Button
              Grid.Column="0" 
              Grid.Row="1"

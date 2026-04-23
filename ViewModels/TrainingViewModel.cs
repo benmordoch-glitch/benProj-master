@@ -27,8 +27,19 @@ namespace benProj.ViewModels
                 OnPropertyChanged();
             }
         }
+        private List<string> coursesOption;
 
-       // public ICommand AlertNewCourseCommand { get; set; }
+        public List<string> CoursesOption
+        {
+            get { return 
+                    coursesOption; }
+            set { coursesOption = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        // public ICommand AlertNewCourseCommand { get; set; }
         public TrainingViewModel()
         {
             InitAsyncMethods();
@@ -40,8 +51,10 @@ namespace benProj.ViewModels
        
         public async Task InitAsyncMethods()
         {
-            List<Training> t = await AppService.GetInstance().GetTrainingsFromFirebaseAsync();
+            CoursesOption = AppService.GetInstance().GetCoursesForPicker();
+            List <Training> t = await AppService.GetInstance().GetTrainingsFromFirebaseAsync();
             Trainings = new ObservableCollection<Training>(t);
+
         }
         #endregion
     }

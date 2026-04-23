@@ -329,7 +329,19 @@ namespace benProj.Service
             }
         }
 
-        
+        public List<string> GetCoursesForPicker()
+        {
+
+                List<string> CoursesOption = new List<string>();
+                CoursesOption.Add("All Courses");
+               foreach (Course c in CoursesFromFirebase)
+                {
+                    CoursesOption.Add(c.CourseName);
+                }
+               return CoursesOption;
+
+            
+        }
 
         //public bool AddCourse(Cours cours)
         //{
