@@ -115,28 +115,28 @@ namespace benProj.ViewModels
         /// FamilyNameField
         /// </summary>
 
-        private string entryUserName = string.Empty;
-        public string EntryUserName
-        {
-            get { return entryUserName; }
-            set
-            {
-                if (value != null)
-                {
-                    entryUserName = value;
-                    if (value.Length < 2)
-                    {
-                        LblErrorUserName = "User Name too short";
-                    }
-                    else
-                    {
-                        LblErrorUserName = "";
-                    }
-                    HandleButtonRegister();
-                    OnPropertyChanged();
-                }
-            }
-        }
+        //private string entryUserName = string.Empty;
+        //public string EntryUserName
+        //{
+        //    get { return entryUserName; }
+        //    set
+        //    {
+        //        if (value != null)
+        //        {
+        //            entryUserName = value;
+        //            if (value.Length < 2)
+        //            {
+        //                LblErrorUserName = "User Name too short";
+        //            }
+        //            else
+        //            {
+        //                LblErrorUserName = "";
+        //            }
+        //            HandleButtonRegister();
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
 
         private string lblErrorUserName = string.Empty;
         public string LblErrorUserName
@@ -166,7 +166,7 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     entryEmail = value;
-                   
+
                     string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
                     bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
                     if (!(isPasswordOk || value == string.Empty))
@@ -177,7 +177,7 @@ namespace benProj.ViewModels
                     {
                         LblErrorEmail = string.Empty;
                     }
-                   
+
                     HandleButtonRegister();
                     OnPropertyChanged();
                 }
@@ -239,8 +239,8 @@ namespace benProj.ViewModels
                 {
                     entryPassword = value;
                     string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
-                    bool isPasswordOk = Regex.IsMatch(value, pattern) ;
-                    if (!(isPasswordOk || value == string.Empty) )
+                    bool isPasswordOk = Regex.IsMatch(value, pattern);
+                    if (!(isPasswordOk || value == string.Empty))
                     {
                         ErrorPassword = "Password not valid!";
                     }
@@ -283,6 +283,18 @@ namespace benProj.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool hideRetypePass;
+
+        public bool hideReTypePass
+        {
+            get { return hideRetypePass; }
+            set
+            {
+                hideRetypePass = value;
+                HandleButtonRegister();
+                OnPropertyChanged();
+            }
+        }
 
         private string reTypePass = string.Empty;
         public string ReTypePass
@@ -317,7 +329,7 @@ namespace benProj.ViewModels
                     errorReTypePass = value;
                     OnPropertyChanged();
                 }
-                
+
             }
         }
 
@@ -346,6 +358,8 @@ namespace benProj.ViewModels
 
         public ICommand ShowPassCommand { get; set; }
 
+        public ICommand ShowReTypePassCommand { get; set; }
+
 
         // constructor
         public RegisterViewModel()
@@ -357,13 +371,18 @@ namespace benProj.ViewModels
             {
                 HidePass = !HidePass;
             });
+            ShowReTypePassCommand = new Command(() =>
+            {
+                hideRetypePass = !hideRetypePass;
+            });
             ResetField();
-            
+
 
             HidePass = true;
+            hideRetypePass = true;
         }
 
-       
+
         private void ResetField()
         {
             IsRegisterEnable = false;
@@ -371,7 +390,7 @@ namespace benProj.ViewModels
             LblErrorPrivateName = string.Empty;
             EntryFamilyName = string.Empty;
             LblErrorFamilyName = string.Empty;
-            EntryUserName = string.Empty;
+            //EntryUserName = string.Empty;
             LblErrorUserName = string.Empty;
             EntryEmail = string.Empty;
             LblErrorEmail = string.Empty;
@@ -409,9 +428,9 @@ namespace benProj.ViewModels
         {
             if (isRegisterEnable)
             {
-                AppService.GetInstance().TryRegisterAsync(EntryUserName, EntryPassword, EntryPrivateName, EntryFamilyName);
-               // await Shell.Current.GoToAsync("//TrainingListPage");
-               
+                await AppService.GetInstance().TryRegisterAsync(EntryEmail, EntryPassword, EntryPrivateName, EntryFamilyName);
+                await Shell.Current.GoToAsync("//TrainingListPage");
+
 
             }
             else
@@ -441,6 +460,6 @@ namespace benProj.ViewModels
         //    }
 
         //}
-       
+
     }
 }

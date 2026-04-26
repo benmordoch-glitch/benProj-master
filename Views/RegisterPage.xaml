@@ -39,19 +39,22 @@
                     <Label 
                         Style="{StaticResource errorLabel}" 
                         Text="{Binding LblErrorPrivateName}" />
+                    
                     <Entry 
                         Placeholder="Family Name" 
                         Text="{Binding EntryFamilyName}" />
                     <Label
                         Style="{StaticResource errorLabel}" 
                         Text="{Binding LblErrorFamilyName}" />
+                    
                     <Entry 
-                        Placeholder="User Name" 
-                        Text="{Binding EntryUserName}" />
+                        Placeholder="Email" 
+                        Text="{Binding EntryEmail}" />
                     <Label 
                         Style="{StaticResource errorLabel}" 
-                        Text="{Binding LblErrorUserName}" />
-                    
+                        Text="{Binding LblErrorEmail}" />
+                    <Label
+                        Text="תכתוב תאריך לידה בבקשה"/>
                     <DatePicker 
                         Date="{Binding EntryBirthDate}" 
                         Style="{StaticResource errorDatePicker}" />
@@ -79,11 +82,21 @@
                         <!--Clicked="OnShowPassButtonClicked"-->
                     </Grid>
                     <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorPassword}" />
-                      <Entry
+                    <Grid ColumnDefinitions="*,Auto">
+                         <Entry
                         IsPassword="True"
                         Placeholder="RetypePassword"
                         Text="{Binding ReTypePass}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorReTypePass}" />
+
+                        <Button 
+                             Grid.Column="1" 
+                             WidthRequest="30"
+                             IsEnabled="True"
+                             BackgroundColor="{StaticResource BenPrimary}" 
+                             ImageSource="eye.png" 
+                             Command="{Binding ShowReTypePassCommand}"/>
+                    </Grid>
+                  <Label Style="{StaticResource errorLabel}" Text="{Binding ErrorReTypePass}" />
 
                     <!--  End password Grid  -->
                 </VerticalStackLayout>

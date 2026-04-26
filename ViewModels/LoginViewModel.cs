@@ -25,23 +25,23 @@ namespace benProj.ViewModels
             }
         }
 
-        private string entryUserName;
-        public string EntryUserName
+        private string emailEntry;
+        public string EmailEntry
         {
-            get { return entryUserName; }
+            get { return emailEntry; }
             set
             {
                 if (value != null)
                 {
 
-                    entryUserName = value;
+                    emailEntry = value;
                     if (value.Length < 2)
                     {
-                        LblErrorUserName = "User Name too short";
+                        LblErrorEmail = "Email too short";
                     }
                     else
                     {
-                        LblErrorUserName = "";
+                        LblErrorEmail = "";
                     }
                     HandleButtonLogin();
                     OnPropertyChanged();
@@ -49,16 +49,16 @@ namespace benProj.ViewModels
             }
         }
 
-        private string lblErrorUserName;
-        public string LblErrorUserName
+        private string lblErrorEmail;
+        public string LblErrorEmail
         {
-            get { return lblErrorUserName; }
+            get { return lblErrorEmail; }
             set
             {
                 if (value != null)
                 {
 
-                    lblErrorUserName = value;
+                    lblErrorEmail = value;
                     HandleButtonLogin();
                     OnPropertyChanged();
                 }
@@ -148,15 +148,15 @@ namespace benProj.ViewModels
             IsLoginEnable = true;
             ShowPassword = true;
 
-            EntryUserName = "ben@gmail.com";
+            EmailEntry = "ben@gmail.com";
             PasswordEntry = "123456";
         }
 
         private void ResetField()
         {
-            EntryUserName = string.Empty;
+            EmailEntry = string.Empty;
             PasswordEntry = string.Empty;
-            LblErrorUserName = string.Empty;
+            LblErrorEmail = string.Empty;
             PasswordError = string.Empty;
         }
         private void HandleButtonLogin()
@@ -180,15 +180,15 @@ namespace benProj.ViewModels
         }
         private async Task TryLogin()
         {
-            if (await AppService.GetInstance().TryLoginAsync(EntryUserName, PasswordEntry))
+            if (await AppService.GetInstance().TryLoginAsync(EmailEntry, PasswordEntry))
             {
-                LblErrorUserName = "It works";
+                LblErrorEmail = "It works";
                 ((App)Application.Current).SetAuthenticatedShell();
                 //await Shell.Current.GoToAsync("//CreatingPath");
             }
             else
             {
-                LblErrorUserName = "GET OUT";
+                LblErrorEmail = "GET OUT";
             }
         }
 

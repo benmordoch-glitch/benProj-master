@@ -70,16 +70,16 @@ namespace benProj.Service
         /// <summary>
         /// Try Registerrrr 
         /// </summary>
-        /// <param name="userNameString"></param>
+        /// <param name="emailString"></param>
         /// <param name="passwordString"></param>
         /// <returns></returns>
 
-        public async Task<bool> TryRegisterAsync(string userNameString, string passwordString, string privateName, string familyName)
+        public async Task<bool> TryRegisterAsync(string emailString, string passwordString, string privateName, string familyName)
         {
             try
             {
                 // 1: Create a user in Firebase with an Email and Password.
-                var respond = await auth.CreateUserWithEmailAndPasswordAsync(userNameString, passwordString);
+                var respond = await auth.CreateUserWithEmailAndPasswordAsync(emailString, passwordString);
                 // 2: User was created and also user is also Logged in
                 // 3: We Store the Uid of the user
                 if (respond != null)
@@ -104,10 +104,11 @@ namespace benProj.Service
                         familyName = familyName,
                     };
                     await Application.Current.MainPage.DisplayAlert(
-                   "Success",
-                   "Register Succeeded",
-                   "OK"
-               );
+                       "Success",
+                       "Register Succeeded",
+                       "OK"
+                    );
+                    TryLoginAsync(emailString, passwordString);
                     return true;
                 }
                 await Application.Current.MainPage.DisplayAlert(
@@ -117,11 +118,12 @@ namespace benProj.Service
                 );
                 return false;
             }
-            catch (Exception ex)
+            catch (FirebaseAuthException ex)
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    ex.Message,
+                    //ex.Message,
+                    ex.Reason.ToString(),
                     "OK"
                 );
 
@@ -131,27 +133,27 @@ namespace benProj.Service
         /// <summary>
         /// Try login
         /// </summary>
-        /// <param name="userNameString"></param>
+        /// <param name="emailString"></param>
         /// <param name="passwordString"></param>
         /// <returns></returns>
         /// 
 
-        public async Task<bool> TryLoginAsync(string userNameString, string passwordString)
+        public async Task<bool> TryLoginAsync(string emailString, string passwordString)
         {
-            if (userNameString == null || passwordString == null)
+            if (emailString == null || passwordString == null)
             {
                 return false;
             }
             try
             {
-                var authUser = await auth.SignInWithEmailAndPasswordAsync(userNameString, passwordString);
+                var authUser = await auth.SignInWithEmailAndPasswordAsync(emailString, passwordString);
                 loginAuthUser = authUser.AuthCredential;
                 string uid = authUser.User.Uid;
                 //var userData = await client.Child("users").Child(uid).Child("privateData").OnceAsync<FirebasePrivateData>();
                 var userData = await client.Child("users").Child(uid).Child("privateData").OnceSingleAsync<FirebasePrivateData>();
                 fullDetaillsLoggedInUser = new User()
                 {
-                    UserName = userNameString,
+                    UserName = emailString,
                     Id = uid,
                     privateName = userData.privateName,
                     familyName = userData.familyName,
@@ -332,15 +334,15 @@ namespace benProj.Service
         public List<string> GetCoursesForPicker()
         {
 
-                List<string> CoursesOption = new List<string>();
-                CoursesOption.Add("All Courses");
-               foreach (Course c in CoursesFromFirebase)
-                {
-                    CoursesOption.Add(c.CourseName);
-                }
-               return CoursesOption;
+            List<string> CoursesOption = new List<string>();
+            CoursesOption.Add("All Courses");
+            foreach (Course c in CoursesFromFirebase)
+            {
+                CoursesOption.Add(c.CourseName);
+            }
+            return CoursesOption;
 
-            
+
         }
 
         //public bool AddCourse(Cours cours)

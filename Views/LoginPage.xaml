@@ -34,8 +34,11 @@
                 <VerticalStackLayout Spacing="15" >
 
                     <!--  שדה ראשוןןן  -->
-                    <Entry Placeholder="Enter UserName" Text="{Binding EntryUserName}" />
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorUserName}" />
+                    <Entry Placeholder="Enter Email" Text="{Binding EmailEntry}" />
+                    <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorEmail}" />
+                    
+                    
+                    
                     <!--  שדה ראשוןןן  -->
                     <!--  שדה שני  -->
                     <Grid ColumnDefinitions="*,auto">
