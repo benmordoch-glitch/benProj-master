@@ -1,60 +1,67 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.PersonalGoal"
-             xmlns:models="clr-namespace:benProj.Models"
-             Title="{Binding FullName}">
+<ContentPage
+    x:Class="benProj.Views.PersonalGoal"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:benProj.Models"
+    Title="{Binding FullName}">
     <Grid
-         Padding="20,0,20,0" 
-         ColumnSpacing="10"
-         RowSpacing="10"
-         RowDefinitions="auto,*,auto" >
+        Padding="20,0,20,0"
+        ColumnSpacing="10"
+        RowDefinitions="auto,*,auto"
+        RowSpacing="10">
 
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="{StaticResource BenPrimary}" Offset="0.0" />
-                <GradientStop Color="White" Offset="0.5" />
+                <GradientStop Offset="0.0" Color="{StaticResource BenPrimary}" />
+                <GradientStop Offset="0.5" Color="White" />
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Frame  BackgroundColor="#FFFFFF" Grid.Row="1">
-            <ScrollView   >
-                <VerticalStackLayout Spacing="15" >
+        <Frame Grid.Row="1" BackgroundColor="#FFFFFF">
+            <ScrollView>
+                <VerticalStackLayout Spacing="15">
                     <!--<Entry Placeholder="כמה זמן את/ה בתחום הריצה?" Text="{Binding EntryTimeRunning}" HorizontalTextAlignment="End" />
                     <Entry Placeholder="?מה המטרה שאת/ה מנסה להשיג" Text="{Binding EntryGoal}" HorizontalTextAlignment="End" />
                     <Entry Placeholder="מה המשקל שלך?" Text="{Binding EntryStartWeight}" HorizontalTextAlignment="End"/>
                     <Entry Placeholder="איזה דברים בריצה אתה לא מצליח ?" Text="{Binding EntryRunFailes}" HorizontalTextAlignment="End"/>
                     <Entry Placeholder="איך הגעת אלינו?" Text="{Binding EntryHowKnowUs}" HorizontalTextAlignment="End"/>-->
 
-                    <Entry Placeholder="מה המטרה שאני רוצה להשיג?" Text="{Binding EntryGoal}" HorizontalTextAlignment="End" />
-                    <Entry Placeholder="מה המשקל שלך?" Text="{Binding EntryWeight}" HorizontalTextAlignment="End"/>
-                    <Entry Placeholder="איזה דבר אני משפר כרגע?" Text="{Binding EntryImprovingWhat}" HorizontalTextAlignment="End"/>
+                    <Entry
+                        HorizontalTextAlignment="End"
+                        Placeholder="מה המטרה שאני רוצה להשיג?"
+                        Text="{Binding EntryGoal}" />
+                    <Entry
+                        HorizontalTextAlignment="End"
+                        Placeholder="מה המשקל שלך?"
+                        Text="{Binding EntryWeight}" />
+                    <Entry
+                        HorizontalTextAlignment="End"
+                        Placeholder="איזה דבר אני משפר כרגע?"
+                        Text="{Binding EntryImprovingWhat}" />
 
                 </VerticalStackLayout>
             </ScrollView>
 
         </Frame>
         <Grid
-   
-             Grid.Row="3"
-             ColumnSpacing="5"
-             ColumnDefinitions="*,*" 
-             RowDefinitions="*,*"
-                                    >
+            Grid.Row="3"
+            ColumnDefinitions="*,*"
+            ColumnSpacing="5"
+            RowDefinitions="*,*">
             <Button
-                 Grid.Column="0"
-                 Grid.ColumnSpan="2"
-                 Grid.Row="0"
-                 Background="{StaticResource BenPrimary}"
-                 CornerRadius="20"
-                 HorizontalOptions="Fill"
-                 VerticalOptions="Center"
-                 Text="שלח"
-                 IsEnabled="True"
-                 Command="{Binding SendCmd}"
-            />
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Background="{StaticResource BenPrimary}"
+                Command="{Binding SendCmd}"
+                CornerRadius="20"
+                HorizontalOptions="Fill"
+                IsEnabled="True"
+                Text="שלח"
+                VerticalOptions="Center" />
 
-       
+
 
         </Grid>
 

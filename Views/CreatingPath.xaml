@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.CreatingPath"
-             Title="בניית מסלול">
+<ContentPage
+    x:Class="benProj.Views.CreatingPath"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="בניית מסלול">
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
             <Label
-             x:Name="lblGeo"
-             FontAttributes="Bold"
-             FontSize="18"
-             HorizontalOptions="Center"
-             Text="התחלת אימון" />
+                x:Name="lblGeo"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="התחלת אימון" />
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                 <Button
-                 x:Name="butStartPause"
-                 BackgroundColor="Green"
-                 Clicked="Button_Run"
-                 CornerRadius="50"
-                 HeightRequest="100"
-                 Text="Start"
-                 WidthRequest="100" />
+                    x:Name="butStartPause"
+                    BackgroundColor="Green"
+                    Clicked="Button_Run"
+                    CornerRadius="50"
+                    HeightRequest="100"
+                    Text="Start"
+                    WidthRequest="100" />
 
                 <Button
-                 x:Name="butStop"
-                 Clicked="Button_Stop"
-                 CornerRadius="50"
-                 HeightRequest="100"
-                 IsEnabled="False"
-                 Text="Stop"
-                 TextColor="White"
-                 WidthRequest="100">
+                    x:Name="butStop"
+                    Clicked="Button_Stop"
+                    CornerRadius="50"
+                    HeightRequest="100"
+                    IsEnabled="False"
+                    Text="Stop"
+                    TextColor="White"
+                    WidthRequest="100">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroupList>
                             <VisualStateGroup>
@@ -56,9 +57,9 @@
             </HorizontalStackLayout>
 
             <GraphicsView
-             x:Name="graphicView"
-             HeightRequest="200"
-             WidthRequest="200" />
+                x:Name="graphicView"
+                HeightRequest="200"
+                WidthRequest="200" />
 
         </VerticalStackLayout>
     </ScrollView>

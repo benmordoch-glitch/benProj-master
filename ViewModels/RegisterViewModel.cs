@@ -283,9 +283,9 @@ namespace benProj.ViewModels
                 OnPropertyChanged();
             }
         }
-        private bool hideRetypePass;
 
-        public bool hideReTypePass
+        private bool hideRetypePass;
+        public bool HideReTypePass
         {
             get { return hideRetypePass; }
             set
@@ -350,6 +350,10 @@ namespace benProj.ViewModels
             }
         }
 
+        public DateTime MaximumDate
+        {
+            get { return DateTime.Now.AddYears(-10); }
+        }
         #endregion
 
         public ICommand ResetCommand { get; set; }
@@ -373,13 +377,13 @@ namespace benProj.ViewModels
             });
             ShowReTypePassCommand = new Command(() =>
             {
-                hideRetypePass = !hideRetypePass;
+                HideReTypePass = !HideReTypePass;
             });
             ResetField();
 
 
             HidePass = true;
-            hideRetypePass = true;
+            HideReTypePass = true;
         }
 
 

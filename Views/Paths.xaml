@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.Paths"
-             xmlns:models="clr-namespace:benProj.Models"
-             Title="Paths">
+<ContentPage
+    x:Class="benProj.Views.Paths"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:benProj.Models"
+    Title="Paths">
     <VerticalStackLayout>
         <Label
-         HorizontalOptions="Center"
-         Text="עמוד אימונים"
-         VerticalOptions="Center" />
+            HorizontalOptions="Center"
+            Text="עמוד אימונים"
+            VerticalOptions="Center" />
         <CollectionView ItemsSource="{Binding Courses}">
             <CollectionView.EmptyView>
                 <Label HorizontalTextAlignment="Center" Text="אין ריצות." />
@@ -16,40 +17,37 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Course">
-                    <Border StrokeThickness="10" >
+                    <Border StrokeThickness="10">
                         <StackLayout Margin="5" BackgroundColor="White">
                             <Label
-                             
-                             HorizontalTextAlignment="Center"
-                             FontAttributes="Bold" 
-                             Text="{Binding CourseName}" 
-                             TextDecorations="Underline"  />
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding CourseName}"
+                                TextDecorations="Underline" />
 
 
                             <!--<Label Text="מרחק בק''מ" HorizontalTextAlignment="Start"/>-->
-                            <Label Text="{Binding Distance}" HorizontalTextAlignment="Start" TextColor="blue"/>
-                            
-                            
-                            
-                            <Grid ColumnDefinitions="*,*,*,*"
-                               RowDefinitions="*,*,*">
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Distance}"
+                                TextColor="blue" />
+
+
+
+                            <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*">
                                 <Ellipse
-                                 Grid.Column="0"
-                                 Fill="{StaticResource BenPrimary }"
-                                 HeightRequest="40"
-                                 VerticalOptions="Center"
-                                 WidthRequest="40" />
+                                    Grid.Column="0"
+                                    Fill="{StaticResource BenPrimary}"
+                                    HeightRequest="40"
+                                    VerticalOptions="Center"
+                                    WidthRequest="40" />
                                 <Label
-                                 FontSize="20"
-                                 HorizontalOptions="Center"
-                                 VerticalOptions="Center"
-                                 Text="{Binding Difficulty}"
-                                 TextColor="White"
-                                  />
-                                <Label 
-                                 Text="רמת קושי=>" 
-                                 HorizontalTextAlignment="End"
-                                />
+                                    FontSize="20"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Difficulty}"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                                <Label HorizontalTextAlignment="End" Text="רמת קושי=&gt;" />
                             </Grid>
                         </StackLayout>
                     </Border>

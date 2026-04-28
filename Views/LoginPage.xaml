@@ -5,61 +5,62 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="LoginPage">
     <Grid
-        RowDefinitions="auto,*,auto"
-        Padding="20,0,20,0" 
+        Padding="20,0,20,0"
         ColumnSpacing="10"
+        RowDefinitions="auto,*,auto"
         RowSpacing="10">
         <!--  title  -->
 
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="{StaticResource BenPrimary}" Offset="0.0" />
-                <GradientStop Color="White" Offset="0.5" />
+                <GradientStop Offset="0.0" Color="{StaticResource BenPrimary}" />
+                <GradientStop Offset="0.5" Color="White" />
             </LinearGradientBrush>
         </Grid.Background>
         <Label
-                
-                Margin="4"
-                BackgroundColor="Transparent"
-                FontSize="13"
-                HorizontalOptions="Center"
-               TextColor="White"
-                Text="ברוכים הבאים "
-                VerticalOptions="Center" />
+            Margin="4"
+            BackgroundColor="Transparent"
+            FontSize="13"
+            HorizontalOptions="Center"
+            Text="ברוכים הבאים "
+            TextColor="White"
+            VerticalOptions="Center" />
         <!--  End title  -->
 
 
-        <Frame BackgroundColor="White" Grid.Row="1">
+        <Frame Grid.Row="1" BackgroundColor="White">
             <ScrollView>
-                <VerticalStackLayout Spacing="15" >
+                <VerticalStackLayout Spacing="15">
 
                     <!--  שדה ראשוןןן  -->
                     <Entry Placeholder="Enter Email" Text="{Binding EmailEntry}" />
                     <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorEmail}" />
-                    
-                    
-                    
+
+
+
                     <!--  שדה ראשוןןן  -->
                     <!--  שדה שני  -->
                     <Grid ColumnDefinitions="*,auto">
                         <Entry
                             Grid.Column="0"
-                        Placeholder="Enter Password"
-                        IsPassword="{Binding ShowPassword}"
-                        Text="{Binding PasswordEntry}" />
+                            IsPassword="{Binding ShowPassword}"
+                            Placeholder="Enter Password"
+                            Text="{Binding PasswordEntry}" />
 
-                        <Button  
-                            Grid.Column="1" 
-                            HeightRequest="35"  
-                            WidthRequest="40" 
-                            
-                            ImageSource="eye.png" 
-                            IsEnabled="True"
+                        <Button
+                            Grid.Column="1"
                             BackgroundColor="{StaticResource BenPrimary}"
-                            Command="{Binding ViewPassCommand}"/>
+                            Command="{Binding ViewPassCommand}"
+                            HeightRequest="35"
+                            ImageSource="eye.png"
+                            IsEnabled="True"
+                            WidthRequest="40" />
                     </Grid>
-                    
-                    <Label Style="{StaticResource errorLabel}" Text="{Binding PasswordError}" TextColor="Red" />
+
+                    <Label
+                        Style="{StaticResource errorLabel}"
+                        Text="{Binding PasswordError}"
+                        TextColor="Red" />
                     <!--  שדה שני  -->
 
                     <!--  FOOTER  -->
@@ -70,46 +71,44 @@
         </Frame>
         <!--  FOOTER  -->
         <Grid
-   
-             Grid.Row="3"
-             ColumnSpacing="5"
-    
-             ColumnDefinitions="*,*" 
-             RowDefinitions="*,*" >
+            Grid.Row="3"
+            ColumnDefinitions="*,*"
+            ColumnSpacing="5"
+            RowDefinitions="*,*">
 
 
 
 
             <Button
-             Grid.Column="0"
-             Grid.ColumnSpan="2"
-             Grid.Row="0"
-             TextColor="White"
-             Background="{StaticResource BenPrimary}"
-             CornerRadius="20"
-             HorizontalOptions="Fill"
-             VerticalOptions="Center"
-             Text="היכנס"
-             Command="{Binding EnterAppCommand}" />
-                    
-            <Button
-             Grid.Column="0" 
-             Grid.Row="1"
-             Background="Transparent"
-             TextColor="{StaticResource BenPrimary}"
-             HorizontalOptions="Fill"
-             Text= "איפוס שדות"
-             Command="{Binding ResetCommand}"/>
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Background="{StaticResource BenPrimary}"
+                Command="{Binding EnterAppCommand}"
+                CornerRadius="20"
+                HorizontalOptions="Fill"
+                Text="היכנס"
+                TextColor="White"
+                VerticalOptions="Center" />
 
             <Button
-             Grid.Row="1"
-             Grid.Column="1"
-             IsEnabled="True"
-             Background="Transparent"
-             TextColor="{StaticResource BenPrimary}"
-             HorizontalOptions="Fill"
-             Text="אין לך חשבון?" 
-             Command="{Binding GoToRegisterCommand}"/>
+                Grid.Row="1"
+                Grid.Column="0"
+                Background="Transparent"
+                Command="{Binding ResetCommand}"
+                HorizontalOptions="Fill"
+                Text="איפוס שדות"
+                TextColor="{StaticResource BenPrimary}" />
+
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Background="Transparent"
+                Command="{Binding GoToRegisterCommand}"
+                HorizontalOptions="Fill"
+                IsEnabled="True"
+                Text="אין לך חשבון?"
+                TextColor="{StaticResource BenPrimary}" />
         </Grid>
 
     </Grid>

@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Shell
     x:Class="benProj.AppShellAuth"
- xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
- xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
- xmlns:local="clr-namespace:benProj"
- xmlns:views="clr-namespace:benProj.Views"
- Title="benProj"
-     Shell.FlyoutBehavior="Flyout" FlowDirection="LeftToRight" Background="Transparent">
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:benProj"
+    xmlns:views="clr-namespace:benProj.Views"
+    Title="benProj"
+    Background="Transparent"
+    FlowDirection="LeftToRight"
+    Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-     Title="מסלולים"
-     ContentTemplate="{DataTemplate views:CoursePage}"
-     Route="CoursePage"/>
+        Title="מסלולים"
+        ContentTemplate="{DataTemplate views:CoursePage}"
+        Route="CoursePage" />
 
     <ShellContent
-     Title="אימונים"
-     ContentTemplate="{DataTemplate views:TrainingListPage}"
-     Route="TrainingListPage"/>
+        Title="אימונים"
+        ContentTemplate="{DataTemplate views:TrainingListPage}"
+        Route="TrainingListPage" />
 
     <ShellContent
-    Title="מטרה אישית"
-    ContentTemplate="{DataTemplate views:PersonalGoal}"
-    Route="PersonalGoal"/>
+        Title="מטרה אישית"
+        ContentTemplate="{DataTemplate views:PersonalGoal}"
+        Route="PersonalGoal" />
 
     <ShellContent
-    Title="בניית מסלול"
-    ContentTemplate="{DataTemplate views:CreatingPath}"
-    Route="CreatingPath" IsVisible="False"/>
+        Title="בניית מסלול"
+        ContentTemplate="{DataTemplate views:CreatingPath}"
+        IsVisible="False"
+        Route="CreatingPath" />
 
     <MenuItem Clicked="MenuItem_Logout_Clicked" Text="Logout" />
 </Shell>

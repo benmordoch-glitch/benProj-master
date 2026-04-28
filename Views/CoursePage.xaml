@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.CoursePage"
-             xmlns:models="clr-namespace:benProj.Models"
-             xmlns:viewmodels="clr-namespace:benProj.ViewModels"
-             
-             Title="מסלולים">
+<ContentPage
+    x:Class="benProj.Views.CoursePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:benProj.Models"
+    xmlns:viewmodels="clr-namespace:benProj.ViewModels"
+    Title="מסלולים">
     <VerticalStackLayout>
         <Label
+            FontSize="25"
             HorizontalOptions="Center"
             Text="מסלולים"
-            VerticalOptions="Center" 
-            FontSize="25"/>
+            VerticalOptions="Center" />
 
         <CollectionView ItemsSource="{Binding Courses}">
 
@@ -21,33 +21,31 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Course">
-                    <Border StrokeThickness="1" >
+                    <Border StrokeThickness="1">
                         <StackLayout Margin="2" BackgroundColor="White">
-                            
+
                             <Label
-                                HorizontalTextAlignment="Center"
-                                FontAttributes="Bold" 
+                                FontAttributes="Bold"
                                 FontSize="15"
-                                Text="{Binding CourseName}" 
-                                TextDecorations="Underline"  />
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding CourseName}"
+                                TextDecorations="Underline" />
                             <HorizontalStackLayout>
-                            <Label 
-                                Text="{Binding Distance}" 
-                                HorizontalTextAlignment="Start" 
-                                TextColor="blue"/>
-                                <Label 
-                                Text="m" 
-                                HorizontalTextAlignment="Start" 
-                                TextColor="blue"/>
+                                <Label
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Distance}"
+                                    TextColor="blue" />
+                                <Label
+                                    HorizontalTextAlignment="Start"
+                                    Text="m"
+                                    TextColor="blue" />
 
                             </HorizontalStackLayout>
-                            <Grid 
-                                ColumnDefinitions="*,*,*"
-                                RowDefinitions="*,*,*">
+                            <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
                                 <Ellipse
                                     Grid.Row="1"
                                     Grid.Column="3"
-                                    Fill="{StaticResource BenPrimary }"
+                                    Fill="{StaticResource BenPrimary}"
                                     HeightRequest="40"
                                     WidthRequest="40" />
                                 <Label
@@ -55,15 +53,14 @@
                                     Grid.Column="3"
                                     FontSize="20"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="Center"
                                     Text="{Binding Difficulty}"
                                     TextColor="White"
-                                     />
-                                <Label 
-                                     Grid.Column="3"
-                                    Text="רמת קושי" 
-                                    HorizontalTextAlignment="Center" 
-                                    TextColor="blue"/>
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="3"
+                                    HorizontalTextAlignment="Center"
+                                    Text="רמת קושי"
+                                    TextColor="blue" />
                             </Grid>
                         </StackLayout>
                     </Border>
@@ -71,14 +68,14 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-       <Button
-           IsEnabled="True"
-           FontSize="20"
-           Background="Transparent"
-           TextColor="{StaticResource BenPrimary}"
-           HorizontalOptions="Fill"
-           Text="להמשך מידע" 
-           Command="{Binding GoToTrainingCommand}"/>
+        <Button
+            Background="Transparent"
+            Command="{Binding GoToTrainingCommand}"
+            FontSize="20"
+            HorizontalOptions="Fill"
+            IsEnabled="True"
+            Text="להמשך מידע"
+            TextColor="{StaticResource BenPrimary}" />
 
     </VerticalStackLayout>
 </ContentPage>

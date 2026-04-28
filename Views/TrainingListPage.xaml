@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="benProj.Views.TrainingListPage"
-             xmlns:models="clr-namespace:benProj.Models"
-             xmlns:viewmodels="clr-namespace:benProj.ViewModels"
-             xmlns:comp="clr-namespace:benProj.Components"
-             
-             Title="TrainingListPage">
+<ContentPage
+    x:Class="benProj.Views.TrainingListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:comp="clr-namespace:benProj.Components"
+    xmlns:models="clr-namespace:benProj.Models"
+    xmlns:viewmodels="clr-namespace:benProj.ViewModels"
+    Title="TrainingListPage">
 
     <ScrollView>
         <VerticalStackLayout>
             <Label
+                FontSize="25"
                 HorizontalOptions="Center"
                 Text="אימונים"
-                VerticalOptions="Center" 
-                FontSize="25" />
+                VerticalOptions="Center" />
 
-            <Picker ItemsSource="{Binding CoursesOption}"/>
+            <Picker ItemsSource="{Binding CoursesOption}" />
             <CollectionView ItemsSource="{Binding Trainings}">
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
@@ -25,55 +25,54 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Training">
-                        <Border StrokeThickness="1" >
+                        <Border StrokeThickness="1">
                             <StackLayout Margin="2" BackgroundColor="White">
-                                <Grid RowDefinitions="*,*"
-                                      ColumnDefinitions="*,*,*" >
-                                    
-                                    <Label Grid.Column="0"
-                                        Text="{Binding StartDate}"
-                                        HorizontalTextAlignment="Start" 
-                                        TextColor="#f44336"/>
+                                <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
 
-                                    <Label Grid.Column="1"
-                                         Text="{Binding CourseRef.CourseName}"
-                                         HorizontalTextAlignment="Center" 
-                                         FontSize="20"/>
-                                    
-                                    <Label  Grid.Column="2" Grid.Row="2"
-                                        Text="זמן בדקות"
-                                        HorizontalTextAlignment="Center" 
-                                            FontSize="19"
-                                        TextColor="blue"/>
-                                </Grid>
-                                <Grid 
-                                        ColumnDefinitions="*,*,*,*"
-                                        RowDefinitions="*,*,*">
-                                    <Rectangle Grid.Row="2" 
-                                            Grid.Column="3"
-                                               
-                                            Fill="{StaticResource BenPrimary }"
-                                            HeightRequest="35"
-                                            VerticalOptions="Center"
-                                            WidthRequest="100"
-                                            Margin="1"/>
                                     <Label
-                                        
+                                        Grid.Column="0"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding StartDate}"
+                                        TextColor="#f44336" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="20"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding CourseRef.CourseName}" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        FontSize="19"
+                                        HorizontalTextAlignment="Center"
+                                        Text="זמן בדקות"
+                                        TextColor="blue" />
+                                </Grid>
+                                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*">
+                                    <Rectangle
+                                        Grid.Row="2"
+                                        Grid.Column="3"
+                                        Margin="1"
+                                        Fill="{StaticResource BenPrimary}"
+                                        HeightRequest="35"
+                                        VerticalOptions="Center"
+                                        WidthRequest="100" />
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="3"
                                         FontSize="20"
                                         HorizontalOptions="Center"
-                                        VerticalOptions="Center"
                                         Text="{Binding Duration}"
-                                        TextColor="White" />
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
                                 </Grid>
                                 <Button
-                                    CornerRadius="100"
                                     BackgroundColor="Beige"
+                                    CornerRadius="100"
                                     IsEnabled="True"
-                                    TextColor="Blue"
                                     Text="הוספת ריצה"
-                               />
+                                    TextColor="Blue" />
 
                             </StackLayout>
                         </Border>
@@ -87,7 +86,7 @@
 
 
     <!--<Button
- 
+
   HorizontalOptions="Center"
   Text="Show Notification 2"
   VerticalOptions="Center" />-->
