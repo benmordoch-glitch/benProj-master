@@ -16,8 +16,9 @@
                 Text="אימונים"
                 VerticalOptions="Center" />
 
-            <Picker ItemsSource="{Binding CoursesOption}" />
+            <Picker ItemsSource="{Binding CoursesOption}" SelectedItem="{Binding SelectedCourse}"/>
             <CollectionView ItemsSource="{Binding Trainings}">
+                
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
                 </CollectionView.EmptyView>

@@ -27,6 +27,10 @@
                     <Entry Placeholder="איזה דברים בריצה אתה לא מצליח ?" Text="{Binding EntryRunFailes}" HorizontalTextAlignment="End"/>
                     <Entry Placeholder="איך הגעת אלינו?" Text="{Binding EntryHowKnowUs}" HorizontalTextAlignment="End"/>-->
 
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
                     <Entry
                         HorizontalTextAlignment="End"
                         Placeholder="מה המטרה שאני רוצה להשיג?"

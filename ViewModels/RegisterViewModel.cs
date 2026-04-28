@@ -271,6 +271,15 @@ namespace benProj.ViewModels
         /// <summary>
         /// FamilyNameField
         /// </summary>
+        /// 
+        private string coursesOption;
+
+        public string CoursesOption
+        {
+            get { return coursesOption; }
+            set { coursesOption = value; }
+        }
+
 
         private bool hidePass;
         public bool HidePass
@@ -359,7 +368,7 @@ namespace benProj.ViewModels
         public ICommand ResetCommand { get; set; }
         public ICommand GoToLoginCommand { get; set; }
         public ICommand TryRegisterCommand { get; set; }
-
+        public ICommand filterTrianingsCommand { get; set; }
         public ICommand ShowPassCommand { get; set; }
 
         public ICommand ShowReTypePassCommand { get; set; }
@@ -378,6 +387,10 @@ namespace benProj.ViewModels
             ShowReTypePassCommand = new Command(() =>
             {
                 HideReTypePass = !HideReTypePass;
+            });
+            filterTrianingsCommand = new Command(() =>
+            {
+                CoursesOption = CoursesOption;
             });
             ResetField();
 
@@ -433,7 +446,7 @@ namespace benProj.ViewModels
             if (isRegisterEnable)
             {
                 await AppService.GetInstance().TryRegisterAsync(EntryEmail, EntryPassword, EntryPrivateName, EntryFamilyName);
-                await Shell.Current.GoToAsync("//TrainingListPage");
+                await Shell.Current.GoToAsync("//CoursePage");
 
 
             }

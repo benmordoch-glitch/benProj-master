@@ -65,10 +65,12 @@ namespace benProj.ViewModels
         #endregion
 
         public ICommand GoToTrainingCommand { get; set; }
+        public ICommand GoToTrainingOnlyFilteredCommand { get; set; }
         public CourseViewModel()
         {
+           
             InitAsyncMethods();
-            GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
+            
         }
 
         #region Functions
@@ -76,8 +78,14 @@ namespace benProj.ViewModels
         {
             List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
             Courses = new ObservableCollection<Course>(c);
+            GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
+            GoToTrainingOnlyFilteredCommand = new Command(async () => await GoToTrainingFilteredAsync());
         }
         public async Task GoToTrainingListPageAsync()
+        {
+            await Shell.Current.GoToAsync("//TrainingListPage");
+        }
+        public async Task GoToTrainingFilteredAsync()
         {
             await Shell.Current.GoToAsync("//TrainingListPage");
         }

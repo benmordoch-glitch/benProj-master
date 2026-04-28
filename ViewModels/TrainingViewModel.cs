@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 //using benProj.Components;
 
 namespace benProj.ViewModels
@@ -37,18 +38,42 @@ namespace benProj.ViewModels
                 OnPropertyChanged();
             }
         }
+        private string selectedCourse;
 
+        public string SelectedCourse
+        {
+            get { 
+                return selectedCourse; 
+            }
+            set { 
+                selectedCourse = value;
+                if (value == "All Courses")
+                {
+                    List<Training> tempTrain = AppService.GetInstance().GetAllTrainingFromMemory();
+                    Trainings = new ObservableCollection<Training>(tempTrain);
+                } else
+                {
+                    List<Training> tempTrain = AppService.GetInstance().GetFilteredTraining(selectedCourse);
+                    Trainings = new ObservableCollection<Training>(tempTrain);
+                }
+                 
+                OnPropertyChanged();
+            }
+        }
 
+        //public ICommand TrainingSelectedCommand { get; }
         // public ICommand AlertNewCourseCommand { get; set; }
         public TrainingViewModel()
         {
+            //TrainingSelectedCommand = new Command<Training>(OnTrainingSelected);
             InitAsyncMethods();
+
             //AlertNewCourseCommand = new Command(async () => await GoToRegister());
+           
         }
         #region Functions
 
-
-       
+      
         public async Task InitAsyncMethods()
         {
             CoursesOption = AppService.GetInstance().GetCoursesForPicker();
@@ -56,6 +81,16 @@ namespace benProj.ViewModels
             Trainings = new ObservableCollection<Training>(t);
 
         }
+
+        //private async void OnTrainingSelected(Training training)
+        //{
+        //    if (training == null)
+        //        return;
+
+        //    // מעבר עמוד עם פרמטר
+        //    await Shell.Current.GoToAsync($"trainingListPage?courseName={training.CourseRef.CourseName}");
+        //}
+
         #endregion
     }
 

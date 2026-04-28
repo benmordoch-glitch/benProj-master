@@ -254,6 +254,11 @@ namespace benProj.Service
 
             return null;
         }
+        public List<Training> GetAllTrainingFromMemory()
+        {
+            return Trainings;
+        }
+      
         public List<Training> GetFilteredTraining(string courseName)
         {
             List<Training> filteredTrainings = new List<Training>();
@@ -267,6 +272,7 @@ namespace benProj.Service
             return filteredTrainings;
 
         }
+       
 
         public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
         {
@@ -341,9 +347,8 @@ namespace benProj.Service
                 CoursesOption.Add(c.CourseName);
             }
             return CoursesOption;
-
-
         }
+
 
         //public bool AddCourse(Cours cours)
         //{
