@@ -68,7 +68,8 @@ namespace benProj.ViewModels
         public ICommand GoToTrainingOnlyFilteredCommand { get; set; }
         public CourseViewModel()
         {
-           
+            GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
+            GoToTrainingOnlyFilteredCommand = new Command<string>(async (courseName) => await GoToTrainingFilteredAsync(courseName));
             InitAsyncMethods();
             
         }
@@ -78,16 +79,16 @@ namespace benProj.ViewModels
         {
             List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
             Courses = new ObservableCollection<Course>(c);
-            GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
-            GoToTrainingOnlyFilteredCommand = new Command(async () => await GoToTrainingFilteredAsync());
+            
         }
         public async Task GoToTrainingListPageAsync()
         {
             await Shell.Current.GoToAsync("//TrainingListPage");
         }
-        public async Task GoToTrainingFilteredAsync()
+        public async Task GoToTrainingFilteredAsync(string courseName)
         {
-            await Shell.Current.GoToAsync("//TrainingListPage");
+            // await Shell.Current.GoToAsync("//TrainingListPage");
+            await Shell.Current.GoToAsync($"//TrainingListPage?Filter={courseName}");
         }
         #endregion
         // In a common app this function would be called from a dedicated page

@@ -23,21 +23,15 @@
                 <DataTemplate x:DataType="models:Course">
                     <Border StrokeThickness="1" Background="SeaGreen">
                         <StackLayout Margin="5" BackgroundColor="White">
-                            
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="15"
-                                HorizontalTextAlignment="Center"
-                               Text="{Binding CourseName}"
-                                TextDecorations="Underline" />
                             <Button
-                                     Text="{Binding CourseName}"
-                                    BackgroundColor="DarkBlue"
-                                    IsEnabled="True"
-                                Command="{Binding GoToTrainingOnlyFilteredCommand}"
-                                  
-
-                            />
+                                Text="{Binding CourseName}"
+                                BackgroundColor="DarkBlue"
+                                IsEnabled="True"
+                                Command="{Binding GoToTrainingOnlyFilteredCommand, Source={x:RelativeSource AncestorType={x:Type viewmodels:CourseViewModel}, Mode=FindAncestorBindingContext}}"
+                                CommandParameter="{Binding CourseName}"
+    
+                                      />
+                     
                             <HorizontalStackLayout>
                                 <Label
                                     HorizontalTextAlignment="Start"
@@ -77,15 +71,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Button
-            Background="Transparent"
-            Command="{Binding GoToTrainingCommand}"
-            FontSize="20"
-            HorizontalOptions="Fill"
-            IsEnabled="True"
-            Text="לאימונים"
-            TextColor="{StaticResource BenPrimary}" />
-
     </VerticalStackLayout>
 </ContentPage>

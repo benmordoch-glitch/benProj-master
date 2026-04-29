@@ -446,7 +446,7 @@ namespace benProj.ViewModels
             if (isRegisterEnable)
             {
                 await AppService.GetInstance().TryRegisterAsync(EntryEmail, EntryPassword, EntryPrivateName, EntryFamilyName);
-                await Shell.Current.GoToAsync("//CoursePage");
+                await Shell.Current.GoToAsync("//LoginPage");
 
 
             }

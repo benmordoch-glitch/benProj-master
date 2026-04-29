@@ -16,8 +16,10 @@ using System.Windows.Input;
 
 namespace benProj.ViewModels
 {
+    [QueryProperty(nameof(SelectedCourse), "Filter")]
     class TrainingViewModel : ViewModelBase
     {
+        private string TextForAllCourses = "All Courses";
         private ObservableCollection<Training> trainings;
         public ObservableCollection<Training> Trainings
         {
@@ -32,31 +34,53 @@ namespace benProj.ViewModels
 
         public List<string> CoursesOption
         {
-            get { return 
-                    coursesOption; }
-            set { coursesOption = value;
+            get
+            {
+                return
+                    coursesOption;
+            }
+            set
+            {
+                coursesOption = value;
                 OnPropertyChanged();
             }
         }
-        private string selectedCourse;
+       
 
+        public string Filter
+        {
+     
+            set
+            {
+                if (Trainings != null)
+                {
+                    SelectedCourse = value;
+                }
+
+            }
+        }
+        private string selectedCourse;
         public string SelectedCourse
         {
-            get { 
-                return selectedCourse; 
+            get
+            {
+                return selectedCourse;
             }
-            set { 
+            set
+            {
                 selectedCourse = value;
-                if (value == "All Courses")
+                if (value == TextForAllCourses)
                 {
+                    // כל המסלולים
                     List<Training> tempTrain = AppService.GetInstance().GetAllTrainingFromMemory();
                     Trainings = new ObservableCollection<Training>(tempTrain);
-                } else
+                }
+                else
                 {
                     List<Training> tempTrain = AppService.GetInstance().GetFilteredTraining(selectedCourse);
                     Trainings = new ObservableCollection<Training>(tempTrain);
                 }
-                 
+
                 OnPropertyChanged();
             }
         }
@@ -69,16 +93,20 @@ namespace benProj.ViewModels
             InitAsyncMethods();
 
             //AlertNewCourseCommand = new Command(async () => await GoToRegister());
-           
+
         }
         #region Functions
 
-      
+
         public async Task InitAsyncMethods()
         {
-            CoursesOption = AppService.GetInstance().GetCoursesForPicker();
-            List <Training> t = await AppService.GetInstance().GetTrainingsFromFirebaseAsync();
+            CoursesOption = AppService.GetInstance().GetCoursesForPicker();         
+            List<Training> t = await AppService.GetInstance().GetTrainingsFromFirebaseAsync();
             Trainings = new ObservableCollection<Training>(t);
+
+            SelectedCourse = TextForAllCourses;
+         
+
 
         }
 

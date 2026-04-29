@@ -1,16 +1,16 @@
-﻿using Firebase.Auth;
+﻿using benProj.Models;
+using benProj.Views;
+using Firebase.Auth;
 using Firebase.Auth.Providers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using benProj.Models;
 using Firebase.Auth.Repository;
 using Firebase.Database;
 using Firebase.Database.Query;
-using benProj.Views;
-
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 // name collision
 using FirebaseUser = Firebase.Auth.User;
 using User = benProj.Models.User;
@@ -90,6 +90,7 @@ namespace benProj.Service
                     await client
                         .Child("users")
                         .Child(respond.User.Uid)
+                        .Child("privateData")
                         .PutAsync(new
                         {
                             privateName = privateName,
@@ -166,7 +167,8 @@ namespace benProj.Service
                 // Don't put the password in the Person :)
 
                 // ((App)Application.Current).SetAuthenticatedShell();
-
+                CoursesFromFirebase = await GetCoursesFromFirebaseAsync();
+                Trainings = await GetTrainingsFromFirebaseAsync();
                 return true;
             }
             catch (FirebaseAuthException e)
@@ -261,6 +263,10 @@ namespace benProj.Service
       
         public List<Training> GetFilteredTraining(string courseName)
         {
+
+         //   List<Training> ttt = await GetTrainingsFromFirebaseAsync();
+            
+
             List<Training> filteredTrainings = new List<Training>();
             foreach (Training tr in Trainings)
             {
@@ -269,8 +275,8 @@ namespace benProj.Service
                     filteredTrainings.Add(tr);
                 }
             }
-            return filteredTrainings;
 
+            return filteredTrainings;
         }
        
 
