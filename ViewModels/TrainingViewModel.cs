@@ -68,10 +68,13 @@ namespace benProj.ViewModels
             }
             set
             {
+                if (selectedCourse == value)
+                    return;
+
                 selectedCourse = value;
+
                 if (value == TextForAllCourses)
                 {
-                    // כל המסלולים
                     List<Training> tempTrain = AppService.GetInstance().GetAllTrainingFromMemory();
                     Trainings = new ObservableCollection<Training>(tempTrain);
                 }

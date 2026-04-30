@@ -11,7 +11,9 @@ namespace benProj
             UserAppTheme = AppTheme.Light;
             // default is unauthenticated shell
             MainPage = new AppShellNotAuth();
+
         }
+
         public void SetAuthenticatedShell()
         {
             MainPage = new AppShellAuth();
@@ -21,5 +23,6 @@ namespace benProj
         {
             MainPage = new AppShellNotAuth();
         }
+
     }
 }
