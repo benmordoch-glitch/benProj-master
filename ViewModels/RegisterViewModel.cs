@@ -115,28 +115,6 @@ namespace benProj.ViewModels
         /// FamilyNameField
         /// </summary>
 
-        //private string entryUserName = string.Empty;
-        //public string EntryUserName
-        //{
-        //    get { return entryUserName; }
-        //    set
-        //    {
-        //        if (value != null)
-        //        {
-        //            entryUserName = value;
-        //            if (value.Length < 2)
-        //            {
-        //                LblErrorUserName = "User Name too short";
-        //            }
-        //            else
-        //            {
-        //                LblErrorUserName = "";
-        //            }
-        //            HandleButtonRegister();
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
 
         private string lblErrorUserName = string.Empty;
         public string LblErrorUserName
@@ -167,16 +145,18 @@ namespace benProj.ViewModels
                 {
                     entryEmail = value;
 
-                    string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-                    bool isPasswordOk = Regex.IsMatch(entryEmail, pattern);
-                    if (!(isPasswordOk || value == string.Empty))
+                    string pattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$";
+                    bool isEmailOk = Regex.IsMatch(value, pattern);
+
+                    if (!isEmailOk && value != string.Empty)
                     {
-                        LblErrorEmail = "Email not valid!";
+                        lblErrorEmail = "Email must be a valid address, include '@', and a domain (e.g., name@example.com)";
                     }
                     else
                     {
-                        LblErrorEmail = string.Empty;
+                        lblErrorEmail = string.Empty;
                     }
+
 
                     HandleButtonRegister();
                     OnPropertyChanged();
@@ -193,6 +173,7 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     lblErrorEmail = value;
+                    HandleButtonRegister();
                     OnPropertyChanged();
                 }
             }
@@ -238,19 +219,23 @@ namespace benProj.ViewModels
                 if (value != null)
                 {
                     entryPassword = value;
-                    string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
+
+                    string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$";
                     bool isPasswordOk = Regex.IsMatch(value, pattern);
-                    if (!(isPasswordOk || value == string.Empty))
+
+                    if (!isPasswordOk && value != string.Empty)
                     {
-                        ErrorPassword = "Password not valid!";
+                        ErrorPassword = "Password must be at least 6 characters and include uppercase, lowercase, a number, and a special character";
                     }
                     else
                     {
-                        ErrorPassword = "";
+                        ErrorPassword = string.Empty;
                     }
+
                     HandleButtonRegister();
                     OnPropertyChanged();
                 }
+                
             }
         }
 

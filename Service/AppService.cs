@@ -22,7 +22,6 @@ namespace benProj.Service
         public static AppService serviceRegister;
         private List<Course> CoursesFromFirebase;
         private List<Training> Trainings;
-        private List<Models.Path> paths;
         //private List<Path> paths;
 
 
@@ -141,7 +140,7 @@ namespace benProj.Service
 
         public async Task<bool> TryLoginAsync(string emailString, string passwordString)
         {
-            if (emailString == null || passwordString == null)
+            if (emailString == null || passwordString == null || passwordString=="")
             {
                 return false;
             }
@@ -174,8 +173,9 @@ namespace benProj.Service
             catch (FirebaseAuthException e)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                   "Error",
-                   e.Message,
+                   "מייל או סיסמה לא  קיימים",
+                   //e.Message,
+                   e.Reason.ToString(),
                    "OK"
                );
                 return false;

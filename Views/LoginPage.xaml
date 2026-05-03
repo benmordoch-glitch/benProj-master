@@ -35,10 +35,8 @@
                     <!--  שדה ראשוןןן  -->
                     <Entry Placeholder="Enter Email" Text="{Binding EmailEntry}" />
                     <Label Style="{StaticResource errorLabel}" Text="{Binding LblErrorEmail}" />
-
-
-
                     <!--  שדה ראשוןןן  -->
+
                     <!--  שדה שני  -->
                     <Grid ColumnDefinitions="*,auto">
                         <Entry
@@ -57,16 +55,18 @@
                             WidthRequest="40" />
                     </Grid>
 
-                    <Label
-                        Style="{StaticResource errorLabel}"
-                        Text="{Binding PasswordError}"
-                        TextColor="Red" />
+
                     <!--  שדה שני  -->
 
                     <!--  FOOTER  -->
 
-
+                    <Label
+                     Style="{StaticResource errorLabel}"
+                     Text="{Binding PasswordError}"
+                     TextColor="Red" 
+                     FontSize="30"/>
                 </VerticalStackLayout>
+                
             </ScrollView>
         </Frame>
         <!--  FOOTER  -->
@@ -75,10 +75,6 @@
             ColumnDefinitions="*,*"
             ColumnSpacing="5"
             RowDefinitions="*,*">
-
-
-
-
             <Button
                 Grid.Row="0"
                 Grid.Column="0"

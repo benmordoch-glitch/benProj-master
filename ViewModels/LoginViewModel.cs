@@ -64,7 +64,6 @@ namespace benProj.ViewModels
                 }
             }
         }
-
         private string passwordEntry = string.Empty;
         public string PasswordEntry
         {
@@ -73,22 +72,41 @@ namespace benProj.ViewModels
             {
                 if (value != null)
                 {
+
                     passwordEntry = value;
-                    //string pattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";    ///// לטפל בזה בעתיד 
-                    //bool isPasswordOk = Regex.IsMatch(value, pattern);
-                    //if (!isPasswordOk)
-                    //{
-                    //    PasswordError = "Password not valid!";
-                    //}
-                    //else
-                    //{
-                    //    PasswordError = "";
-                    //}
                     HandleButtonLogin();
                     OnPropertyChanged();
                 }
             }
         }
+
+        //private string passwordEntry = string.Empty;
+        //public string PasswordEntry
+        //{
+        //    get { return passwordEntry; }
+        //    set
+        //    {
+        //        if (value != null)
+        //        {
+        //            passwordEntry = value;
+
+        //            string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$";
+        //            bool isPasswordOk = Regex.IsMatch(value, pattern);
+        //            if(value != string.Empty || )
+
+        //            if (!isPasswordOk && value != string.Empty)
+        //            {
+        //                PasswordError = "Password must be at least 6 characters and include uppercase, lowercase, a number, and a special character";
+        //            }
+        //            else
+        //            {
+        //                PasswordError = string.Empty;
+        //            }
+        //            HandleButtonLogin();
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
 
         private string passwordError;
         public string PasswordError
@@ -148,8 +166,8 @@ namespace benProj.ViewModels
             IsLoginEnable = true;
             ShowPassword = true;
 
-            EmailEntry = "ben@gmail.com";
-            PasswordEntry = "123456";
+           // EmailEntry = "ben@gmail.com";
+            //PasswordEntry = "123456";
         }
 
         private void ResetField()
@@ -182,13 +200,13 @@ namespace benProj.ViewModels
         {
             if (await AppService.GetInstance().TryLoginAsync(EmailEntry, PasswordEntry))
             {
-                LblErrorEmail = "It works";
+                LblErrorEmail = "נכנסת בהצלחה";
                 ((App)Application.Current).SetAuthenticatedShell();
                 //await Shell.Current.GoToAsync("//CreatingPath");
             }
             else
             {
-                LblErrorEmail = "GET OUT";
+                LblErrorEmail = "מייל או סיסמה אינם נכונים";
             }
         }
 
