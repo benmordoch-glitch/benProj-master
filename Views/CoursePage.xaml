@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:benProj.Models"
     xmlns:viewmodels="clr-namespace:benProj.ViewModels"
+    xmlns:comps="clr-namespace:benProj.Components"
     Title="מסלולים">
     <VerticalStackLayout>
         <Label
@@ -31,13 +32,24 @@
                                 CommandParameter="{Binding CourseName}"
     
                                       />
-                     
+
                             <HorizontalStackLayout>
                                 <Label
                                     HorizontalTextAlignment="Start"
                                     Text="{Binding Distance}"
                                     TextColor="blue"
                                     FontSize="35"/>
+
+                                <!--<GraphicsView
+                                    BindingContext="{Binding CourseMap}"
+                                    HeightRequest="200"
+                                    WidthRequest="200" />-->
+
+                                <comps:CourseDrawer
+                                    Points="{Binding Points}"
+                                    HeightRequest="200"
+                                    WidthRequest="200" />
+
                                 <Label
                                     HorizontalTextAlignment="Start"
                                     Text="m"

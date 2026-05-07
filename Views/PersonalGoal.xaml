@@ -21,24 +21,27 @@
         <Frame Grid.Row="1" BackgroundColor="#FFFFFF">
             <ScrollView>
                 <VerticalStackLayout Spacing="15">
-                    <!--<Entry Placeholder="כמה זמן את/ה בתחום הריצה?" Text="{Binding EntryTimeRunning}" HorizontalTextAlignment="End" />
-                    <Entry Placeholder="?מה המטרה שאת/ה מנסה להשיג" Text="{Binding EntryGoal}" HorizontalTextAlignment="End" />
-                    <Entry Placeholder="מה המשקל שלך?" Text="{Binding EntryStartWeight}" HorizontalTextAlignment="End"/>
-                    <Entry Placeholder="איזה דברים בריצה אתה לא מצליח ?" Text="{Binding EntryRunFailes}" HorizontalTextAlignment="End"/>
-                    <Entry Placeholder="איך הגעת אלינו?" Text="{Binding EntryHowKnowUs}" HorizontalTextAlignment="End"/>-->
-
-                    <CheckBox IsChecked="{Binding IsSelected}" />
-                    <CheckBox IsChecked="{Binding IsSelected}" />
-                    <CheckBox IsChecked="{Binding IsSelected}" />
-                    <CheckBox IsChecked="{Binding IsSelected}" />
+                                                    <!--<Entry Placeholder="כמה זמן את/ה בתחום הריצה?" Text="{Binding EntryTimeRunning}" HorizontalTextAlignment="End" />
+                                                    <Entry Placeholder="?מה המטרה שאת/ה מנסה להשיג" Text="{Binding EntryGoal}" HorizontalTextAlignment="End" />
+                                                    <Entry Placeholder="מה המשקל שלך?" Text="{Binding EntryStartWeight}" HorizontalTextAlignment="End"/>
+                                                    <Entry Placeholder="איזה דברים בריצה אתה לא מצליח ?" Text="{Binding EntryRunFailes}" HorizontalTextAlignment="End"/>
+                                                    <Entry Placeholder="איך הגעת אלינו?" Text="{Binding EntryHowKnowUs}" HorizontalTextAlignment="End"/>-->
+                    <!--<Picker ItemsSource="{Binding CoursesOption}" SelectedItem="{Binding SelectedCourse}"/>
+                    <CollectionView ItemsSource="{Binding Trainings}">-->
                     <Entry
+                        HorizontalTextAlignment="End"
+                        Placeholder="?מה המשקל ההתחלתי"
+                        Text="{Binding EntryWeight}" />
+                        <Entry
                         HorizontalTextAlignment="End"
                         Placeholder="מה המטרה שאני רוצה להשיג?"
                         Text="{Binding EntryGoal}" />
-                    <Entry
-                        HorizontalTextAlignment="End"
-                        Placeholder="מה המשקל שלך?"
-                        Text="{Binding EntryWeight}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                    <CheckBox IsChecked="{Binding IsSelected}" />
+                   
+                    
                     <Entry
                         HorizontalTextAlignment="End"
                         Placeholder="איזה דבר אני משפר כרגע?"
@@ -64,12 +67,6 @@
                 IsEnabled="True"
                 Text="שלח"
                 VerticalOptions="Center" />
-
-
-
         </Grid>
-
-
-
     </Grid>
 </ContentPage>

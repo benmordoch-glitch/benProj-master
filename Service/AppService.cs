@@ -22,9 +22,8 @@ namespace benProj.Service
         public static AppService serviceRegister;
         private List<Course> CoursesFromFirebase;
         private List<Training> Trainings;
+        private List<Models.Path> paths;
         //private List<Path> paths;
-
-
         static FirebaseAuthClient? auth;
         static FirebaseClient? client;
         static public AuthCredential? loginAuthUser;
@@ -36,7 +35,7 @@ namespace benProj.Service
             {
                 serviceRegister = new AppService();
                 serviceRegister.InitAuth();
-                //serviceRegister.CreateFakeData();
+                //serviceRegister.CreateFakeData(); // בהתחלה לפני ההתממשקות עם פייר בייס עשינו דאטא שיהיה שיעזור להכנס באפליקציה
             }
             return serviceRegister;
         }
@@ -50,7 +49,6 @@ namespace benProj.Service
                 {
                     new EmailProvider() //אנחנו נשתמש בשירות חינמי של התחברות עם מייל
                 },
-                //UserRepository = new FileUserRepository("appUserData") //לא חובה, שם של קובץ בטלפון הפרטי שאפשר לשמור בו את מזהה ההתחברות כדי לא הכניס כל פעם את הסיסמא 
             };
             auth = new FirebaseAuthClient(config); //ההתחברות
 
@@ -202,6 +200,8 @@ namespace benProj.Service
             public string CourseName { get; set; }
             public int Difficulty { get; set; }
             public double Distance { get; set; }
+            // TODO: the ? is there because not all points are complete
+            public Dictionary<string, Coordinate>? Points { get; set; }
         }
         public async Task<List<Course>> GetCoursesFromFirebaseAsync()
         {
@@ -219,6 +219,7 @@ namespace benProj.Service
                         CourseName = fbCourse.Object.CourseName,
                         Difficulty = fbCourse.Object.Difficulty,
                         Distance = fbCourse.Object.Distance,
+                        Points = fbCourse.Object.Points != null ? fbCourse.Object.Points.Values.ToList() : new List<Coordinate>(),
                     };
                     parsedCourses.Add(course);
                 }
@@ -228,9 +229,9 @@ namespace benProj.Service
             catch (Exception e)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
+                    "שגיאה",
                     e.Message,
-                    "OK"
+                    "מצוין"
                 );
                 return new List<Course>();
             }
@@ -278,7 +279,6 @@ namespace benProj.Service
 
             return filteredTrainings;
         }
-       
 
         public async Task<List<Training>> GetTrainingsFromFirebaseAsync()
         {
@@ -306,9 +306,9 @@ namespace benProj.Service
             catch (Exception e)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
+                    "שגיאה",
                     e.Message,
-                    "OK"
+                    "מצוין"
                 );
                 return new List<Training>();
             }
@@ -356,7 +356,7 @@ namespace benProj.Service
         }
 
 
-        //public bool AddCourse(Cours cours)
+        //public bool AddCourse(Course course)
         //{
         //    // Will add in DB
         //    courses.Add(cours);

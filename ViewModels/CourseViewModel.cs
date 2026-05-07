@@ -25,13 +25,26 @@ namespace benProj.ViewModels
             }
         }
 
-        public List<Coordinate> path;
+        private GraphicsView courseMap;
+        public GraphicsView CourseMap
+        {
+            get
+            {
+                return courseMap;
+            }
+            set
+            {
+                courseMap = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string courseName;
         public string CourseName
         {
             get { return courseName; }
-            set {
+            set
+            {
                 courseName = value;
                 OnPropertyChanged(nameof(courseName));
             }
@@ -41,17 +54,20 @@ namespace benProj.ViewModels
         public double CourseDistance
         {
             get { return courseDistance; }
-            set {
+            set
+            {
                 courseDistance = value;
-                if(courseDistance != 0)
+                if (courseDistance != 0)
                     OnPropertyChanged(nameof(courseDistance));
             }
         }
+
         private int courseDifficulty;
         public int CourseDifficulty
         {
             get { return courseDifficulty; }
-            set {
+            set
+            {
                 courseDifficulty = value;
                 if (courseDifficulty != 0)
                     OnPropertyChanged(nameof(courseDifficulty));
@@ -61,6 +77,16 @@ namespace benProj.ViewModels
             }
         }
 
+        //public List<Coordinate> path;
+        //public List<Coordinate> Path
+        //{
+        //    get { return path; }
+        //    set
+        //    {
+        //        path = value;
+        //        OnPropertyChanged(nameof(Path));
+        //    }
+        //}
 
         #endregion
 
@@ -71,7 +97,6 @@ namespace benProj.ViewModels
             GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
             GoToTrainingOnlyFilteredCommand = new Command<string>(async (courseName) => await GoToTrainingFilteredAsync(courseName));
             InitAsyncMethods();
-            
         }
 
         #region Functions
@@ -79,12 +104,14 @@ namespace benProj.ViewModels
         {
             List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
             Courses = new ObservableCollection<Course>(c);
-            
+
         }
+
         public async Task GoToTrainingListPageAsync()
         {
             await Shell.Current.GoToAsync("//TrainingListPage");
         }
+
         public async Task GoToTrainingFilteredAsync(string courseName)
         {
             // await Shell.Current.GoToAsync("//TrainingListPage");

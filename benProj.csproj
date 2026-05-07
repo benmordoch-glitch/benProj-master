@@ -92,6 +92,9 @@
 	  <MauiXaml Update="AppShellNotAuth.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\CourseDrawer.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\CourseSelector.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

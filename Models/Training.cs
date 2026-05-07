@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace benProj.Models
 {
-    class Training
+    public class Training
     {
         public String Id { get; set; }
         public Course CourseRef { get; set; } // ריצה בטיילת

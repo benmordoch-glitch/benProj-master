@@ -20,7 +20,7 @@ namespace benProj.ViewModels
             get { return isLoginEnable; }
             set
             {
-                isLoginEnable =! value;
+                isLoginEnable = !value;
                 OnPropertyChanged();
             }
         }
@@ -166,8 +166,8 @@ namespace benProj.ViewModels
             IsLoginEnable = true;
             ShowPassword = true;
 
-           // EmailEntry = "ben@gmail.com";
-            //PasswordEntry = "123456";
+            EmailEntry = "ben@gmail.com";
+            PasswordEntry = "123456";
         }
 
         private void ResetField()
@@ -198,7 +198,8 @@ namespace benProj.ViewModels
         }
         private async Task TryLogin()
         {
-            if (await AppService.GetInstance().TryLoginAsync(EmailEntry, PasswordEntry))
+            bool success = await AppService.GetInstance().TryLoginAsync(EmailEntry, PasswordEntry);
+            if (success)
             {
                 LblErrorEmail = "נכנסת בהצלחה";
                 ((App)Application.Current).SetAuthenticatedShell();

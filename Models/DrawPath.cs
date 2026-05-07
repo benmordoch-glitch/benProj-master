@@ -9,7 +9,7 @@ using Microsoft.Maui.Graphics;
 
 namespace benProj.Models
 {
-    class DrawPath : IDrawable
+    public class DrawPath : IDrawable
     {
         public List<Location> Locations { get; set; } = new List<Location>();
         public Location? ReferenceLocation { get; set; }

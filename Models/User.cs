@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace benProj.Models
 {
-    class User
+    public class User
     {
         public string Id { get; set; }
         public string privateName { get; set; }
