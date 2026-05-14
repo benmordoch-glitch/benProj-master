@@ -99,16 +99,16 @@ public partial class CreatingPath : ContentPage
                 gpsLocations.Add(smooth);
 
                 // עדכון התצוגה
-                lblGeo.Text = $"Lat: {smooth.Latitude:F6}, Lon: {smooth.Longitude:F6}";
+                //lblGeo.Text = $"Lat: {smooth.Latitude:F6}, Lon: {smooth.Longitude:F6}";
 
-                graphicView.Drawable = new DrawPath
-                {
-                    Locations = gpsLocations,
-                    ReferenceLocation = referenceLocation,
-                    ConvertToMetersFunc = ConvertToMeters
-                };
+                //graphicView.Drawable = new DrawPath
+                //{
+                //    Locations = gpsLocations,
+                //    ReferenceLocation = referenceLocation,
+                //    ConvertToMetersFunc = ConvertToMeters
+                //};
 
-                graphicView.Invalidate();
+                //graphicView.Invalidate();
             }
         };
     }
@@ -127,9 +127,9 @@ public partial class CreatingPath : ContentPage
         {
             trainingStatus = TrainingStatus.Run;
 
-            butStop.IsEnabled = true;
-            butStartPause.Text = "Pause";
-            butStartPause.BackgroundColor = Colors.DarkGreen;
+            //butStop.IsEnabled = true;
+            //butStartPause.Text = "Pause";
+            //butStartPause.BackgroundColor = Colors.DarkGreen;
 
             timer.Start();
         }
@@ -138,8 +138,8 @@ public partial class CreatingPath : ContentPage
             trainingStatus = TrainingStatus.Pause;
             timer.Stop();
 
-            butStartPause.Text = "Continue";
-            butStartPause.BackgroundColor = Colors.LightGreen;
+            //butStartPause.Text = "Continue";
+            //butStartPause.BackgroundColor = Colors.LightGreen;
         }
     }
 
@@ -148,21 +148,22 @@ public partial class CreatingPath : ContentPage
     private void Button_Stop(object sender, EventArgs e)
     {
         timer.Stop();
-
         gpsLocations.Clear();
         referenceLocation = null;
-
         trainingStatus = TrainingStatus.Stop;
 
-        butStop.IsEnabled = false;
-        butStartPause.Text = "Start";
-        butStartPause.BackgroundColor = Colors.Green;
+        // שימוש ב-Dispatcher של הדף הנוכחי
+        //Dispatcher.Dispatch(() =>
+        //{
+        //    butStop.IsEnabled = false;
+        //    butStartPause.Text = "Start";
+        //    butStartPause.BackgroundColor = Colors.Green;
 
-        lblGeo.Text = "";
-        graphicView.Drawable = null;
-        graphicView.Invalidate();
+        //    lblGeo.Text = "";
+        //    graphicView.Drawable = null;
+        //    graphicView.Invalidate();
+        //});
     }
-
     // -------------------- GET LOCATION --------------------
 
     private async Task<Microsoft.Maui.Devices.Sensors.Location?> GetLocation()

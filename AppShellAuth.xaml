@@ -28,7 +28,7 @@
     <ShellContent
         Title="בניית מסלול"
         ContentTemplate="{DataTemplate views:CreatingPath}"
-        IsVisible="False"
+        IsVisible="True"
         Route="CreatingPath" />
 
     <MenuItem Clicked="MenuItem_Logout_Clicked" Text="Logout" />

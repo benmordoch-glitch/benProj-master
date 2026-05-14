@@ -8,7 +8,84 @@
     xmlns:viewmodels="clr-namespace:benProj.ViewModels"
     Title="TrainingListPage">
 
-    <ScrollView>
+
+
+
+    <CollectionView ItemsSource="{Binding Trainings}" Margin="10">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:Training">
+                <Frame Margin="0,8" 
+                   Padding="15" 
+                   CornerRadius="15" 
+                   HasShadow="True" 
+                   BorderColor="#F0F0F0"
+                   BackgroundColor="White">
+
+                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, *, Auto">
+
+                        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="2">
+                            <Label Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy}'}" 
+                               FontSize="12" 
+                               TextColor="Gray" 
+                               FontAttributes="Bold" />
+                            <Label Text="{Binding StartDate, StringFormat='{0:HH:mm}'}" 
+                               FontSize="11" 
+                               TextColor="#B0B0B0" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Margin="20,0" VerticalOptions="Center">
+                            <Label Text="{Binding CourseRef.CourseName}" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#2C3E50" 
+                               HorizontalOptions="Start" />
+                            <Label Text="מסלול הושלם בהצלחה" 
+                               FontSize="12" 
+                               TextColor="#27AE60" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End">
+                            <Label Text="זמן" 
+                               FontSize="10" 
+                               HorizontalOptions="Center" 
+                               TextColor="Gray" 
+                               Margin="0,0,0,3"/>
+                            <Frame BackgroundColor="{StaticResource BenPrimary}" 
+                               Padding="8,4" 
+                               CornerRadius="10" 
+                               HasShadow="False">
+                                <Label Text="{Binding Duration, StringFormat='{0:hh\\:mm\\:ss}'}" 
+                                   TextColor="White" 
+                                   FontAttributes="Bold" 
+                                   FontSize="14" />
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <Button Grid.Row="1" Grid.ColumnSpan="3"
+                            Text="צפה בפרטי האימון"
+                            BackgroundColor="#F8F9FA"
+                            TextColor="{StaticResource BenPrimary}"
+                            FontSize="12"
+                            HeightRequest="35"
+                            CornerRadius="8"
+                            Margin="0,10,0,0"
+                            BorderColor="{StaticResource BenPrimary}"
+                            BorderWidth="1" />
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+        <CollectionView.EmptyView>
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                <Label Text="🏃‍♂️" FontSize="50" HorizontalOptions="Center" />
+                <Label Text="עדיין לא בוצעו אימונים" FontSize="18" TextColor="Gray" HorizontalOptions="Center" />
+                <Label Text="צאו לדרך והתחילו לרוץ!" FontSize="14" TextColor="LightGray" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </CollectionView.EmptyView>
+    </CollectionView>
+    
+    <!--<ScrollView>
         <VerticalStackLayout>
             <Label
                 FontSize="25"
@@ -18,12 +95,10 @@
 
             <Picker ItemsSource="{Binding CoursesOption}" SelectedItem="{Binding SelectedCourse}"/>
             <CollectionView ItemsSource="{Binding Trainings}">
-                
+
                 <CollectionView.EmptyView>
                     <Label HorizontalTextAlignment="Center" Text="אין אימונים." />
                 </CollectionView.EmptyView>
-
-
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Training">
                         <Border StrokeThickness="1">
@@ -82,7 +157,7 @@
             </CollectionView>
         </VerticalStackLayout>
 
-    </ScrollView>
+    </ScrollView>-->
 
 
 

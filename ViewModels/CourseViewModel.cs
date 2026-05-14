@@ -1,124 +1,124 @@
-﻿using benProj.Models;
-using benProj.Service;
-using benProj.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿    using benProj.Models;
+    using benProj.Service;
+    using benProj.ViewModels;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Input;
 
-namespace benProj.ViewModels
-{
-    class CourseViewModel : ViewModelBase
+    namespace benProj.ViewModels
     {
-        #region Get&Set
-        private ObservableCollection<Course> courses;
-        public ObservableCollection<Course> Courses
+        class CourseViewModel : ViewModelBase
         {
-            get { return courses; }
-            set
+            #region Get&Set
+            private ObservableCollection<Course> courses;
+            public ObservableCollection<Course> Courses
             {
-                courses = value;
-                OnPropertyChanged(nameof(Courses));
+                get { return courses; }
+                set
+                {
+                    courses = value;
+                    OnPropertyChanged(nameof(Courses));
+                }
             }
-        }
 
-        private GraphicsView courseMap;
-        public GraphicsView CourseMap
-        {
-            get
+            private GraphicsView courseMap;
+            public GraphicsView CourseMap
             {
-                return courseMap;
+                get
+                {
+                    return courseMap;
+                }
+                set
+                {
+                    courseMap = value;
+                    OnPropertyChanged();
+                }
             }
-            set
+
+            private string courseName;
+            public string CourseName
             {
-                courseMap = value;
-                OnPropertyChanged();
+                get { return courseName; }
+                set
+                {
+                    courseName = value;
+                    OnPropertyChanged(nameof(courseName));
+                }
             }
-        }
 
-        private string courseName;
-        public string CourseName
-        {
-            get { return courseName; }
-            set
+            private double courseDistance;
+            public double CourseDistance
             {
-                courseName = value;
-                OnPropertyChanged(nameof(courseName));
+                get { return courseDistance; }
+                set
+                {
+                    courseDistance = value;
+                    if (courseDistance != 0)
+                        OnPropertyChanged(nameof(courseDistance));
+                }
             }
-        }
 
-        private double courseDistance;
-        public double CourseDistance
-        {
-            get { return courseDistance; }
-            set
+            private int courseDifficulty;
+            public int CourseDifficulty
             {
-                courseDistance = value;
-                if (courseDistance != 0)
-                    OnPropertyChanged(nameof(courseDistance));
-            }
-        }
+                get { return courseDifficulty; }
+                set
+                {
+                    courseDifficulty = value;
+                    if (courseDifficulty != 0)
+                        OnPropertyChanged(nameof(courseDifficulty));
+                    else
+                        courseDifficulty = 0;
 
-        private int courseDifficulty;
-        public int CourseDifficulty
-        {
-            get { return courseDifficulty; }
-            set
+                }
+            }
+
+            //public List<Coordinate> path;
+            //public List<Coordinate> Path
+            //{
+            //    get { return path; }
+            //    set
+            //    {
+            //        path = value;
+            //        OnPropertyChanged(nameof(Path));
+            //    }
+            //}
+
+            #endregion
+
+            public ICommand GoToTrainingCommand { get; set; }
+            public ICommand GoToTrainingOnlyFilteredCommand { get; set; }
+            public CourseViewModel()
             {
-                courseDifficulty = value;
-                if (courseDifficulty != 0)
-                    OnPropertyChanged(nameof(courseDifficulty));
-                else
-                    courseDifficulty = 0;
+                GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
+                GoToTrainingOnlyFilteredCommand = new Command<string>(async (courseName) => await GoToTrainingFilteredAsync(courseName));
+                InitAsyncMethods();
+            }
+
+            #region Functions
+            public async Task InitAsyncMethods()
+            {
+                List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
+                Courses = new ObservableCollection<Course>(c);
 
             }
-        }
 
-        //public List<Coordinate> path;
-        //public List<Coordinate> Path
-        //{
-        //    get { return path; }
-        //    set
-        //    {
-        //        path = value;
-        //        OnPropertyChanged(nameof(Path));
-        //    }
-        //}
+            public async Task GoToTrainingListPageAsync()
+            {
+                await Shell.Current.GoToAsync("//TrainingListPage");
+            }
 
-        #endregion
-
-        public ICommand GoToTrainingCommand { get; set; }
-        public ICommand GoToTrainingOnlyFilteredCommand { get; set; }
-        public CourseViewModel()
-        {
-            GoToTrainingCommand = new Command(async () => await GoToTrainingListPageAsync());
-            GoToTrainingOnlyFilteredCommand = new Command<string>(async (courseName) => await GoToTrainingFilteredAsync(courseName));
-            InitAsyncMethods();
-        }
-
-        #region Functions
-        public async Task InitAsyncMethods()
-        {
-            List<Course> c = await AppService.GetInstance().GetCoursesFromFirebaseAsync();
-            Courses = new ObservableCollection<Course>(c);
+            public async Task GoToTrainingFilteredAsync(string courseName)
+            {
+                // await Shell.Current.GoToAsync("//TrainingListPage");
+                await Shell.Current.GoToAsync($"//TrainingListPage?Filter={courseName}");
+            }
+            #endregion
+            // In a common app this function would be called from a dedicated page
 
         }
-
-        public async Task GoToTrainingListPageAsync()
-        {
-            await Shell.Current.GoToAsync("//TrainingListPage");
-        }
-
-        public async Task GoToTrainingFilteredAsync(string courseName)
-        {
-            // await Shell.Current.GoToAsync("//TrainingListPage");
-            await Shell.Current.GoToAsync($"//TrainingListPage?Filter={courseName}");
-        }
-        #endregion
-        // In a common app this function would be called from a dedicated page
-
     }
-}

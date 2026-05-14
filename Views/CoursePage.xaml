@@ -44,17 +44,15 @@
                                     BindingContext="{Binding CourseMap}"
                                     HeightRequest="200"
                                     WidthRequest="200" />-->
-
-                                <comps:CourseDrawer
-                                    Points="{Binding Points}"
-                                    HeightRequest="200"
-                                    WidthRequest="200" />
-
                                 <Label
                                     HorizontalTextAlignment="Start"
                                     Text="m"
                                     TextColor="blue" 
                                     FontSize="35"/>
+                                <comps:CourseDrawer
+                                 Points="{Binding Points}"
+                                 HeightRequest="200"
+                                 WidthRequest="200" />
 
                             </HorizontalStackLayout>
                             <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
@@ -82,6 +80,64 @@
                     </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
+
+            <!--<CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Course">
+                    <Frame Margin="10,5" 
+               Padding="0" 
+               CornerRadius="15" 
+               HasShadow="True" 
+               BorderColor="#E0E0E0">
+
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto">
+
+                            <BoxView Grid.ColumnSpan="2" HeightRequest="50" Color="#00008B" />
+                            <Label Grid.ColumnSpan="2"
+                       Text="{Binding CourseName}"
+                       TextColor="White"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="0" Padding="15" Spacing="5">
+                                <Label Text="{Binding Distance, StringFormat='{0}m'}" 
+                           FontSize="28" 
+                           TextColor="#1A237E" 
+                           FontAttributes="Bold" />
+                                <Label Text="Welcome to .NET MAUI!" 
+                           FontSize="14" 
+                           TextColor="Gray" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="1" 
+                                     Padding="15" 
+                                     VerticalOptions="Center" 
+                                     HorizontalOptions="Center">
+                                <Label Text="רמת קושי" 
+                           FontSize="12" 
+                           TextColor="#1A237E" 
+                           HorizontalOptions="Center" />
+                                <Frame BackgroundColor="#D81B60" 
+                           HeightRequest="45" 
+                           WidthRequest="45" 
+                           CornerRadius="22.5" 
+                           Padding="0" 
+                           HasShadow="False">
+                                    <Label Text="{Binding Difficulty}" 
+                               TextColor="White" 
+                               FontAttributes="Bold" 
+                               FontSize="18"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+                                </Frame>
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>-->
         </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
